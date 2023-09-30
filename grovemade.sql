@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Авг 01 2022 г., 00:18
--- Версия сервера: 5.7.33-log
--- Версия PHP: 7.4.27
+-- Host: 127.0.0.1:3306
+-- Generation Time: Sep 29, 2023 at 04:54 PM
+-- Server version: 8.0.24
+-- PHP Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,26 +18,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `grovemade`
+-- Database: `grovemade`
 --
-CREATE DATABASE IF NOT EXISTS `grovemade` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `grovemade`;
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `productID` int(11) NOT NULL,
-  `quantity` int(11) DEFAULT '1',
-  `userID` int(11) NOT NULL
+  `id` int NOT NULL,
+  `productID` int NOT NULL,
+  `quantity` int DEFAULT '1',
+  `userID` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `cart`
+-- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`id`, `productID`, `quantity`, `userID`) VALUES
@@ -47,16 +45,16 @@ INSERT INTO `cart` (`id`, `productID`, `quantity`, `userID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
-  `categoryID` int(11) NOT NULL,
-  `categoryName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `categoryID` int NOT NULL,
+  `categoryName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`categoryID`, `categoryName`) VALUES
@@ -69,32 +67,32 @@ INSERT INTO `category` (`categoryID`, `categoryName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
-  `orderID` int(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `firstname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lastname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `apartment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `postalCode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shippingMethod` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `orderID` int NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `company` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apartment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postalCode` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shippingMethod` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int NOT NULL,
   `price` float DEFAULT NULL,
   `datetime` datetime NOT NULL,
-  `productID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Placed' COMMENT 'Stages:\r\n● Placed\r\n● Processed\r\n● Packing\r\n● Shipping\r\n● Awaiting\r\n● Complete\r\n● Canceled'
+  `productID` int NOT NULL,
+  `userID` int NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Placed' COMMENT 'Stages:\r\n● Placed\r\n● Processed\r\n● Packing\r\n● Shipping\r\n● Awaiting\r\n● Complete\r\n● Canceled'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`orderID`, `email`, `country`, `firstname`, `lastname`, `company`, `address`, `apartment`, `city`, `postalCode`, `phone`, `shippingMethod`, `quantity`, `price`, `datetime`, `productID`, `userID`, `status`) VALUES
@@ -204,31 +202,31 @@ INSERT INTO `order` (`orderID`, `email`, `country`, `firstname`, `lastname`, `co
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
-  `productID` int(11) NOT NULL,
-  `productName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `productMaterial` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `productShortName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descriptionTitle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descriptionText` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `productID` int NOT NULL,
+  `productName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `productMaterial` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `productShortName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descriptionTitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descriptionText` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` float DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `sales` int(11) DEFAULT '0',
-  `categoryID` int(11) NOT NULL,
-  `subcategoryName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int DEFAULT NULL,
+  `sales` int DEFAULT '0',
+  `categoryID` int NOT NULL,
+  `subcategoryName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `added` datetime NOT NULL,
-  `sellerID` int(11) NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dimensions` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `origin` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `material` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `sellerID` int NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dimensions` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `origin` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `material` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`productID`, `productName`, `productMaterial`, `productShortName`, `descriptionTitle`, `descriptionText`, `price`, `quantity`, `sales`, `categoryID`, `subcategoryName`, `added`, `sellerID`, `image`, `dimensions`, `origin`, `material`) VALUES
@@ -253,16 +251,16 @@ INSERT INTO `product` (`productID`, `productName`, `productMaterial`, `productSh
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `subcategory`
+-- Table structure for table `subcategory`
 --
 
 CREATE TABLE `subcategory` (
-  `subcategoryName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `categoryID` int(11) NOT NULL
+  `subcategoryName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `categoryID` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `subcategory`
+-- Dumping data for table `subcategory`
 --
 
 INSERT INTO `subcategory` (`subcategoryName`, `categoryID`) VALUES
@@ -290,46 +288,46 @@ INSERT INTO `subcategory` (`subcategoryName`, `categoryID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `UserID` int(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `lastname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `UserID` int NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birthdayDate` date DEFAULT NULL,
-  `gender` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `apartment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `postalCode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `telephone` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `access` int(11) NOT NULL DEFAULT '1' COMMENT 'Access level (0-3)',
+  `gender` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `apartment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postalCode` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telephone` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `access` int NOT NULL DEFAULT '1' COMMENT 'Access level (0-3)',
   `registrationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`UserID`, `email`, `password`, `firstname`, `lastname`, `birthdayDate`, `gender`, `address`, `apartment`, `city`, `postalCode`, `country`, `telephone`, `access`, `registrationDate`) VALUES
-(1, 'admin_Alex@grovemade.com', '200ceb26807d6bf99fd6f4f0d1ca54d4', 'Alex', 'Reign', '2000-01-01', 'Male', '1851 Giben Rd SW', '', 'Atlanta', 'GA 30315', 'United States of America', '+1 700-143-5554', 3, '2022-07-30 00:52:58'),
-(2, 'alexwhitepost@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Alex', 'White', '1987-02-14', 'Male', NULL, NULL, NULL, NULL, NULL, '+380678234912', 2, '2022-07-30 00:53:52'),
+(1, 'admin_Alex@grovemade.com', '25d55ad283aa400af464c76d713c07ad', 'Alex', 'Reign', '2000-01-01', 'Male', '1851 Giben Rd SW', '', 'Atlanta', 'GA 30315', 'United States of America', '+1 700-143-5554', 3, '2022-07-30 00:52:58'),
+(2, 'alexwhitepost@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Alex', 'White', '1987-02-15', 'Male', NULL, NULL, NULL, NULL, NULL, '+380678234912', 2, '2022-07-30 00:53:52'),
 (3, 'somevisitor@grove.com', '96e79218965eb72c92a549dd5a330112', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-07-30 00:54:56'),
 (5, 'somevisitor2@grove.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-07-30 14:54:15'),
 (6, 'seller_exmpl@grove.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL, NULL, 'male', NULL, NULL, NULL, NULL, NULL, NULL, 2, '2022-07-30 17:49:01'),
 (7, 'seller2_exmpl@grove.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2022-07-30 18:53:29'),
-(8, 'somevisitor3@grove.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-07-31 15:45:54');
+(8, 'somevisitor3@grove.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL, '2003-03-24', 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-07-31 15:45:54');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
@@ -337,13 +335,13 @@ ALTER TABLE `cart`
   ADD KEY `UserId_cart_users_FK` (`userID`);
 
 --
--- Индексы таблицы `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`categoryID`);
 
 --
--- Индексы таблицы `order`
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`orderID`),
@@ -351,7 +349,7 @@ ALTER TABLE `order`
   ADD KEY `UserId_orders_users_FK` (`userID`);
 
 --
--- Индексы таблицы `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`productID`),
@@ -360,7 +358,7 @@ ALTER TABLE `product`
   ADD KEY `SubcategoryName_product_subcategory_FK` (`subcategoryName`);
 
 --
--- Индексы таблицы `subcategory`
+-- Indexes for table `subcategory`
 --
 ALTER TABLE `subcategory`
   ADD PRIMARY KEY (`subcategoryName`),
@@ -368,65 +366,65 @@ ALTER TABLE `subcategory`
   ADD KEY `CategoryId_subcategory_category_FK` (`categoryID`);
 
 --
--- Индексы таблицы `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`UserID`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `categoryID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT для таблицы `order`
+-- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `orderID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
--- AUTO_INCREMENT для таблицы `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `productID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT для таблицы `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `UserID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `ProductId_cart_product_FK` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
   ADD CONSTRAINT `UserId_cart_users_FK` FOREIGN KEY (`userID`) REFERENCES `user` (`UserID`);
 
 --
--- Ограничения внешнего ключа таблицы `order`
+-- Constraints for table `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `ProductId_orders_product_FK` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
   ADD CONSTRAINT `UserId_orders_users_FK` FOREIGN KEY (`userID`) REFERENCES `user` (`UserID`);
 
 --
--- Ограничения внешнего ключа таблицы `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `CategoryId_product_category_FK` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`),
@@ -434,7 +432,7 @@ ALTER TABLE `product`
   ADD CONSTRAINT `SubcategoryName_product_subcategory_FK` FOREIGN KEY (`subcategoryName`) REFERENCES `subcategory` (`subcategoryName`);
 
 --
--- Ограничения внешнего ключа таблицы `subcategory`
+-- Constraints for table `subcategory`
 --
 ALTER TABLE `subcategory`
   ADD CONSTRAINT `CategoryId_subcategory_category_FK` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`);
