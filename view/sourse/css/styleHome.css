@@ -1,0 +1,435 @@
+/* MAIN */
+main {
+  position: relative;
+  z-index: 1;
+}
+main .banner-desk-shelf-system {
+  background-image: url("../../images/https___siteleaf.grovemade.com_uploads_grovemade-walnut-hardwood-desk-shelf-galB-B1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  color: #FFFFFF;
+}
+main .banner-desk-shelf-system__link {
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  color: #FFFFFF;
+}
+main .banner-desk-shelf-system__innerText {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  top: calc(50% - 30px);
+}
+main .banner-desk-shelf-system__title {
+  line-height: 46px;
+  font-size: 43px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+main .banner-desk-shelf-system__subtitle {
+  line-height: 17.5px;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+main .banner-desk-shelf-system__span {
+  width: 95px;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 13px;
+}
+main .design-inspires {
+  text-align: center;
+  margin-top: 80px;
+}
+main .design-inspires__title {
+  font-size: 43px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: 0em;
+}
+main .design-inspires__text {
+  margin-top: 23px;
+  color: #A0A0A0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.8000000119px;
+  margin-bottom: 26px;
+  color: #A0A0A0;
+}
+main .design-inspires__goto_shop {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 21px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+}
+main .sample-products {
+  width: 100%;
+  margin-top: 80px;
+}
+main .sample-products .link {
+  position: relative;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 1.4px;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1;
+  color: #000000;
+}
+main .sample-products .link:focus {
+  color: #000000;
+}
+main .sample-products .desk_pads {
+  margin-left: 50px;
+  width: calc(50% - 50px - 20px);
+  float: left;
+}
+main .sample-products .desk_pads__img {
+  background-image: url("../../images/Products/https___siteleaf.grovemade.com_uploads_grovemade-black-leather-desk-pad-xl-galB-A5.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 440px;
+}
+main .sample-products .desk_pads__text {
+  margin-top: 48px;
+  height: 30px;
+  font-size: 27px;
+  line-height: 30px;
+  text-align: center;
+}
+main .sample-products .desk_pads__link {
+  top: 25px;
+  left: calc(50% - 47.5px);
+}
+main .sample-products .laptop_stands {
+  margin-right: 50px;
+  width: calc(50% - 50px - 20px);
+  float: right;
+}
+main .sample-products .laptop_stands__img {
+  background-image: url("../../images/Products/https___siteleaf.grovemade.com_uploads_tall-laptop-stand-walnut-galB-C2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 440px;
+}
+main .sample-products .laptop_stands__text {
+  margin-top: 48px;
+  height: 30px;
+  font-size: 27px;
+  line-height: 30px;
+  text-align: center;
+}
+main .sample-products .laptop_stands__link {
+  top: 25px;
+  left: calc(50% - 47.5px);
+}
+main .featured_products {
+  position: relative;
+  top: 150px;
+  width: 100%;
+}
+main .featured_products__title {
+  text-align: center;
+  font-size: 33px;
+  line-height: 36px;
+  font-weight: 400;
+}
+main .featured_products__text {
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.8000000119px;
+  text-align: center;
+  color: #A0A0A0;
+}
+main .featured_products .featured_products__swiper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+main .featured_products .featured_products-carousel {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 200px;
+  left: 63px;
+  right: 63px;
+  width: calc(100% - 126px);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
+main .featured_products .featured_products-carousel .product {
+  position: relative;
+  margin-right: 25px;
+  flex-grow: 1;
+  margin: 12.5px;
+  float: left;
+  width: calc(25% - 25px);
+  border-radius: 5px;
+}
+main .featured_products .featured_products-carousel .product a {
+  width: 100%;
+  color: #A0A0A0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: "din2014", Helvetica, sans-serif;
+}
+main .featured_products .featured_products-carousel .product__background {
+  width: 100%;
+  height: 100%;
+}
+main .featured_products .featured_products-carousel .product__image-wrapper {
+  background-color: rgba(0, 0, 0, 0.028);
+}
+main .featured_products .featured_products-carousel .product__image-wrapper > img {
+  padding: 20px;
+  width: 100%;
+}
+main .featured_products .featured_products-carousel .product__title {
+  margin-top: 20px;
+}
+main .featured_products .featured_products-carousel .product__price {
+  margin-top: 5px;
+}
+main .banner-home-office-inspiration {
+  background-image: url("../../images/https___siteleaf.grovemade.com_uploads_bannerB-desk-collection-A1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  color: #FFFFFF;
+  margin-top: 95px;
+}
+main .banner-home-office-inspiration__link {
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  color: #FFFFFF;
+}
+main .banner-home-office-inspiration__innerText {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  top: calc(50% - 30px);
+}
+main .banner-home-office-inspiration__title {
+  line-height: 46px;
+  font-size: 43px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+main .banner-home-office-inspiration__subtitle {
+  line-height: 17.5px;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+main .banner-home-office-inspiration__span {
+  width: 95px;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 13px;
+}
+main .about {
+  position: relative;
+  top: 150px;
+  width: 100%;
+}
+main .about__title {
+  text-align: center;
+  font-size: 33px;
+  line-height: 36px;
+  font-weight: 400;
+}
+main .about__text {
+  position: relative;
+  width: 777px;
+  left: calc(50% - 388.5px + 0.5px);
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.8000000119px;
+  text-align: center;
+  color: #A0A0A0;
+}
+main .about__image {
+  margin: 23px 194px 38px 194px;
+}
+main .about__image img {
+  width: 100%;
+}
+main .employees {
+  position: relative;
+  top: 150px;
+  width: 100%;
+  margin-top: 100px;
+}
+main .employees__title {
+  text-align: center;
+  font-size: 33px;
+  line-height: 36px;
+  font-weight: 400;
+}
+main .employees__text {
+  position: relative;
+  width: 777px;
+  left: calc(50% - 388.5px + 0.5px);
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.8000000119px;
+  text-align: center;
+  color: #A0A0A0;
+}
+main .employees__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  margin-top: 80px;
+  margin-right: 50px;
+  margin-left: 50px;
+  gap: 25px 25px;
+}
+main .employees__grid .employee {
+  width: 200px;
+  height: 270px;
+}
+main .read-about {
+  position: relative;
+  top: 275px;
+  width: 100%;
+  margin: 0 0 400px 0;
+}
+main .read-about__title {
+  text-align: center;
+  font-size: 34px;
+  line-height: 36px;
+  font-weight: 400;
+}
+main .read-about__link {
+  position: relative;
+  text-decoration: none;
+  width: 237px;
+  left: calc(50% - 118.5px + 0.5px);
+  top: 45px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.8000000119px;
+  text-align: center;
+  color: #000000;
+}
+main .desing-inspiring {
+  margin: 0 100px 50px 100px !important;
+  background-color: #9AA8B1;
+  height: 400px;
+  color: #FFFFFF;
+  position: relative;
+  width: calc(100% - 200px);
+}
+main .desing-inspiring__innerText {
+  position: relative;
+  text-align: center;
+  top: 50%;
+}
+main .desing-inspiring__innerText .logo-image {
+  top: calc(50% - 84px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 34px;
+  width: 40px;
+}
+main .desing-inspiring__title {
+  line-height: 46px;
+  font-size: 43px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+main .desing-inspiring__subtitle {
+  line-height: 17.5px;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+main .error {
+  position: relative;
+  width: calc(100% - 200px);
+  margin: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+main .error h1 {
+  font-size: 70px;
+  font-family: "RobotoRegular";
+  font-weight: 400;
+  margin: 47px 0;
+  text-align: center;
+}
+main .error p {
+  margin: 0 0 32px 0;
+  font-family: "din2014";
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+main .error a {
+  padding: 0 20px;
+  background-color: #000000;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 42px;
+  font-family: "din2014", Helvetica, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+main .new-label {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  top: -13px;
+  left: 13px;
+  padding: 5px 0;
+  width: 75px;
+  height: 45px;
+  background-color: #96A3AC;
+  transform: rotate(45deg);
+}
+main .new-label::before {
+  content: "new";
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  font-size: 10px;
+  color: #FFFFFF;
+}
+main .new-label-wrapper {
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}

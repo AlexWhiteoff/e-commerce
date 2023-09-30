@@ -1,0 +1,329 @@
+@import "variable";
+@import "mixins";
+
+/* MAIN */
+main {
+	position: relative;
+	z-index: 1;
+
+	// section: banner The Desk Shelf System
+	.banner-desk-shelf-system {
+		@include banner_create(
+			"../../images/https___siteleaf.grovemade.com_uploads_grovemade-walnut-hardwood-desk-shelf-galB-B1.jpg"
+		);
+	}
+
+	// section: Design Inspires
+	.design-inspires {
+		text-align: center;
+		margin-top: 80px;
+
+		&__title {
+			font-size: 43px;
+			font-weight: 400;
+			line-height: 58px;
+			letter-spacing: 0em;
+		}
+
+		&__text {
+			margin-top: 23px;
+			color: $fontSecondColor;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 24px;
+			letter-spacing: 0.800000011920929px;
+			margin-bottom: 26px;
+			color: $fontSecondColor;
+		}
+
+		&__goto_shop {
+			font-weight: normal;
+			font-size: 13px;
+			line-height: 21px;
+			letter-spacing: 1.4px;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: #000000;
+		}
+	}
+
+	// section: sample products
+	.sample-products {
+		width: 100%;
+		margin-top: 80px;
+		
+		.link {
+			position: relative;
+			font-size: 17px;
+			font-weight: 400;
+			line-height: 15px;
+			letter-spacing: 1.4px;
+			text-decoration: none;
+			cursor: pointer;
+			z-index: 1;
+			color: $black;
+
+			&:focus {
+				color: $black;
+			}
+		}
+
+		.desk_pads {
+			margin-left: 50px;
+			width: calc(50% - 50px - 20px);
+			float: left;
+
+			&__img {
+				background-image: url("../../images/Products/https___siteleaf.grovemade.com_uploads_grovemade-black-leather-desk-pad-xl-galB-A5.jpg");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				width: 100%;
+				height: 440px;
+			}
+
+			&__text {
+				margin-top: 48px;
+				height: 30px;
+				font-size: 27px;
+				line-height: 30px;
+				text-align: center;
+			}
+
+			&__link {
+				top: 25px;
+				left: calc(50% - 95px / 2);
+			}
+		}
+
+		.laptop_stands {
+			margin-right: 50px;
+			width: calc(50% - 50px - 20px);
+			float: right;
+
+			&__img {
+				background-image: url("../../images/Products/https___siteleaf.grovemade.com_uploads_tall-laptop-stand-walnut-galB-C2.jpg");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				width: 100%;
+				height: 440px;
+			}
+
+			&__text {
+				margin-top: 48px;
+				height: 30px;
+				font-size: 27px;
+				line-height: 30px;
+				text-align: center;
+			}
+
+			&__link {
+				top: 25px;
+				left: calc(50% - 95px / 2);
+			}
+		}
+	}
+
+	// section: featured_products
+	.featured_products {
+		position: relative;
+		top: 150px;
+		width: 100%;
+
+		&__title {
+			text-align: center;
+			font-size: 33px;
+			line-height: 36px;
+			font-weight: 400;
+		}
+
+		&__text {
+			margin-top: 15px;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 18px;
+			letter-spacing: 0.800000011920929px;
+			text-align: center;
+			color: $fontSecondColor;
+		}
+
+		.featured_products__swiper {
+			display: flex;
+			justify-content: center;
+			margin-top: 50px;
+		}
+
+		.featured_products-carousel {
+			position: relative;
+			margin-top: 50px;
+			margin-bottom: 200px;
+			left: 63px;
+			right: 63px;
+			width: calc(100% - 126px);
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			overflow: hidden;
+
+			.product {
+				position: relative;
+				margin-right: 25px;
+				flex-grow: 1;
+				margin: 12.5px;
+				float: left;
+				width: calc(25% - 25px);
+				border-radius: 5px;
+
+				a {
+					width: 100%;
+					color: $fontSecondColor;
+					text-decoration: none;
+					font-weight: 500;
+					font-size: 15px;
+					font-family: "din2014", Helvetica, sans-serif;
+				}
+
+				&__background {
+					width: 100%;
+					height: 100%;
+				}
+				&__image-wrapper {
+					background-color: rgba(0, 0, 0, 0.028);
+
+					& > img {
+						padding: 20px;
+						width: 100%;
+					}
+				}
+				&__title {
+					margin-top: 20px;
+				}
+				&__price {
+					margin-top: 5px;
+				}
+			}
+		}
+	}
+
+	// section: Home Office Inspiration
+	.banner-home-office-inspiration {
+		@include banner_create(
+			"../../images/https___siteleaf.grovemade.com_uploads_bannerB-desk-collection-A1.jpg"
+		);
+		margin-top: 95px;
+	}
+
+	// section: Made The Hard Way
+	.about {
+		position: relative;
+		top: 150px;
+		width: 100%;
+
+		&__title {
+			text-align: center;
+			font-size: 33px;
+			line-height: 36px;
+			font-weight: 400;
+		}
+
+		&__text {
+			position: relative;
+			width: 777px;
+			left: calc(50% - 777px / 2 + 0.5px);
+			margin-top: 15px;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 18px;
+			letter-spacing: 0.800000011920929px;
+			text-align: center;
+			color: $fontSecondColor;
+		}
+
+		&__image {
+			margin: 23px 194px 38px 194px;
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	// section: Make Work Meaningful (employee list)
+	.employees {
+		position: relative;
+		top: 150px;
+		width: 100%;
+		margin-top: 100px;
+		&__title {
+			text-align: center;
+			font-size: 33px;
+			line-height: 36px;
+			font-weight: 400;
+		}
+
+		&__text {
+			position: relative;
+			width: 777px;
+			left: calc(50% - 777px / 2 + 0.5px);
+			margin-top: 15px;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 18px;
+			letter-spacing: 0.800000011920929px;
+			text-align: center;
+			color: $fontSecondColor;
+		}
+
+		&__grid {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			justify-items: center;
+			align-items: center;
+			margin-top: 80px;
+			margin-right: 50px;
+			margin-left: 50px;
+			gap: 25px 25px;
+
+			.employee {
+				width: 200px;
+				height: 270px;
+			}
+		}
+	}
+
+	// section: READ MORE ABOUT OUR STORY
+	.read-about {
+		position: relative;
+		top: 275px;
+		width: 100%;
+		margin: 0 0 400px 0;
+
+		&__title {
+			text-align: center;
+			font-size: 34px;
+			line-height: 36px;
+			font-weight: 400;
+		}
+
+		&__link {
+			position: relative;
+			text-decoration: none;
+			width: 237px;
+			left: calc(50% - 237px / 2 + 0.5px);
+			top: 45px;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 18px;
+			letter-spacing: 0.800000011920929px;
+			text-align: center;
+			color: $black;
+		}
+	}
+
+	@include design-inspires-block();
+
+	@include errorPage(relative);
+
+	@include newProductLabel;
+}

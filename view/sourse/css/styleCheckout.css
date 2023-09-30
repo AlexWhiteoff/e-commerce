@@ -1,0 +1,690 @@
+/* MAIN */
+main {
+  position: relative;
+  z-index: 1;
+  top: 0;
+  color: #4b4d51;
+}
+main * {
+  box-sizing: border-box;
+}
+main .snackbar {
+  position: fixed;
+  border: 3px solid rgba(247, 70, 70, 0.5019607843);
+  background-color: rgba(255, 193, 193, 0.5019607843);
+  left: 5px;
+  top: 5px;
+  width: 360px;
+  height: auto;
+  border-radius: 5px;
+  color: #9e3a3a;
+  z-index: 10;
+  transition: all 0.3s linear;
+}
+main .snackbar__header {
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  cursor: pointer;
+  font-family: "Roboto", serif;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding-left: 40px;
+  padding-right: 20px;
+  border-bottom: 1px solid rgba(247, 70, 70, 0.5019607843);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+main .snackbar__title {
+  float: left;
+}
+main .snackbar__dropdown-btn {
+  float: right;
+}
+main .snackbar__text {
+  padding-left: 20px;
+  line-height: 45px;
+  font-family: "Roboto", serif;
+}
+main article {
+  width: 55%;
+  height: 100%;
+  float: left;
+}
+main article label {
+  font-size: 12px;
+}
+main article .header {
+  position: relative;
+  width: 32vw;
+  top: 56px;
+  text-align: center;
+  right: 66px;
+  float: right;
+  font-size: 42px;
+}
+main article .header .logo-image {
+  position: absolute;
+  background-image: url("../../images/gm_logo_small.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  height: 35px;
+  width: 40px;
+  left: 50%;
+  transform: translate(-500%, 25%);
+  filter: invert(100%);
+}
+main article .header a {
+  color: #4b4d51;
+  text-decoration: none;
+  font-family: "din2014", Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+main article .header__navigation {
+  font-size: 13px;
+  word-spacing: 10px;
+  text-transform: capitalize;
+  color: #333333;
+  font-family: "din2014", Helvetica, sans-serif;
+}
+main article .header__navigation a {
+  color: #333333;
+  text-transform: capitalize;
+  letter-spacing: normal;
+}
+main article .header__navigation .disabled {
+  color: #737373;
+}
+main article .form-section {
+  position: relative;
+  width: 32vw;
+  top: 56px;
+  right: 66px;
+  float: right;
+}
+main article .form-section #email-checkbox:checked {
+  background-color: #4b4d51;
+}
+main article .form-section__contact-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+main article .form-section__contact-info-title {
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-bottom: 18px;
+}
+main article .form-section__email-input {
+  padding: 11px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+main article .form-section__email-input:focus {
+  border: 1px solid #4b4d51;
+}
+main article .form-section__shipping-address {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+main article .form-section__shipping-address-title {
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-bottom: 18px;
+}
+main article .form-section__shipping-address select,
+main article .form-section__shipping-address input[type=text] {
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: all 0.2s linear;
+}
+main article .form-section__shipping-address select:focus,
+main article .form-section__shipping-address input[type=text]:focus {
+  border: 1px solid #4b4d51;
+}
+main article .form-section__shipping-address #firstname,
+main article .form-section__shipping-address #city {
+  width: 50%;
+  float: left;
+  margin-right: 5px;
+}
+main article .form-section__shipping-address #lastname,
+main article .form-section__shipping-address #postalCode {
+  width: 50%;
+  float: right;
+  margin-left: 5px;
+}
+main article .form-section__shipping-address .row-block {
+  display: flex;
+  flex-direction: row;
+}
+main article .form-section__shipping-address button {
+  margin-top: 30px;
+  width: 175px;
+  height: 60px;
+  background-color: #4b4d51;
+  color: #fafafa;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+main article .form-section__shipping-address button:hover {
+  background-color: #323437;
+}
+main article .form-section__shipping-address a {
+  color: #4b4d51;
+  text-decoration: none;
+  margin-left: 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+main article .form-section__info-block {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  width: 570px;
+  min-width: 530px;
+  padding: 12px 16px;
+  float: right;
+  margin-top: 28px;
+  margin-bottom: 48px;
+}
+main article .form-section__info-block--block {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  font-size: 13px;
+  font-family: sans-serif;
+}
+main article .form-section__info-block--name {
+  width: 120px;
+  color: #737373;
+}
+main article .form-section__info-block--value {
+  width: 100%;
+  color: #333333;
+}
+main article .form-section__info-block--changeButton {
+  margin-left: 15px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #3a3b3e;
+  text-decoration: none;
+}
+main article .form-section__info-block hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dddddd;
+}
+main article .form-section__shipping-block {
+  width: 570px;
+  min-width: 530px;
+  float: right;
+}
+main article .form-section__shipping-block fieldset {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+main article .form-section__shipping-block--block {
+  font-family: sans-serif;
+}
+main article .form-section__shipping-block--block:first-child {
+  border-bottom: 1px solid #dddddd;
+}
+main article .form-section__shipping-block--block label {
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+main article .form-section__shipping-block--title {
+  font-size: 18px;
+  font-family: #333333;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+main article .form-section__shipping-block--check {
+  width: 35px;
+  padding-left: 10px;
+}
+main article .form-section__shipping-block--name {
+  font-size: 14px;
+  width: 100%;
+  color: #545454;
+  text-transform: capitalize;
+}
+main article .form-section__shipping-block--price {
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+main article .form-section__payment-block {
+  width: 570px;
+  min-width: 530px;
+  float: right;
+}
+main article .form-section__payment-block--header {
+  margin-bottom: 21px;
+}
+main article .form-section__payment-block--title {
+  font-size: 18px;
+  font-family: #333333;
+  font-weight: 400;
+}
+main article .form-section__payment-block--text {
+  font: 14px sans-serif;
+  color: #545454;
+  margin-top: 3.5px;
+}
+main article .form-section__payment-block--content-box {
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  color: #545454;
+}
+main article .form-section__payment-block--content-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d9d9d9;
+}
+main article .form-section__payment-block--content-header ul {
+  display: flex;
+  list-style: none;
+}
+main article .form-section__payment-block--content-header ul .payment-icon {
+  border-radius: 0.2142857143em;
+  background-size: cover;
+  background-repeat: no-repeat !important;
+  transition: all 0.2s ease-in-out;
+  width: 38px;
+  height: 24px;
+  margin-left: 2px;
+}
+main article .form-section__payment-block--content-header ul .payment-icon .visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  width: 2px;
+  height: 2px;
+  margin: -2px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+main article .form-section__payment-block--content-header ul .payment-icon--visa {
+  background: url("/view/images/svg/visa.svg");
+}
+main article .form-section__payment-block--content-header ul .payment-icon--mastercard {
+  background: url("/view/images/svg/mastercard.svg");
+}
+main article .form-section__payment-block--content-header ul .payment-icon--american-express {
+  background: url("/view/images/svg/american-express.svg");
+}
+main article .form-section__payment-block--content-header ul .payment-icon--discover {
+  background: url("/view/images/svg/discover.svg");
+}
+main article .form-section__payment-block--content-header ul .payment-icon--known {
+  filter: grayscale(0) !important;
+  opacity: 1;
+}
+main article .form-section__payment-block--content-header ul .payment-icon--unknown {
+  filter: grayscale(100%) !important;
+  opacity: 0.5;
+}
+main article .form-section__payment-block--content-label {
+  font: 14px sans-serif;
+  color: #333333;
+  font-weight: 600;
+}
+main article .form-section__payment-block--content-main {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fafafa;
+}
+main article .form-section__payment-block--content-main input {
+  padding: 13px 11px;
+  margin: 6px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  color: #333333;
+  transition: all 0.2s linear;
+}
+main article .form-section__payment-block--content-main input:nth-child(-n+2) {
+  width: 100%;
+}
+main article .form-section__payment-block--content-main input:nth-last-child(-n+2) {
+  width: calc(50% - 12px);
+}
+main article .form-section__payment-block--content-main input:focus {
+  border: 1px solid #333333;
+}
+main article .form-section__billing-address-block {
+  width: 570px;
+  min-width: 530px;
+  float: right;
+  font-family: sans-serif;
+}
+main article .form-section__billing-address-block fieldset {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+main article .form-section__billing-address-block--block:first-child {
+  border-bottom: 1px solid #dddddd;
+}
+main article .form-section__billing-address-block--block label {
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+}
+main article .form-section__billing-address-block--header {
+  margin-bottom: 21px;
+}
+main article .form-section__billing-address-block--title {
+  font-size: 18px;
+  font-family: #333333;
+  font-weight: 400;
+  margin-top: 25px;
+}
+main article .form-section__billing-address-block--text {
+  font: 14px sans-serif;
+  color: #545454;
+  margin-top: 3.5px;
+}
+main article .form-section__billing-address-block--check {
+  width: 35px;
+  padding-left: 10px;
+}
+main article .form-section__billing-address-block--name {
+  font-size: 14px;
+  width: 100%;
+  color: #545454;
+  text-transform: capitalize;
+}
+main article .form-section__billing-address-block--price {
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+main article .form-section__billing-address-block #different-billing-address {
+  display: none;
+}
+main article .form-section__billing-address {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 16px;
+  border-top: 1px solid #dddddd;
+  background-color: #fafafa;
+}
+main article .form-section__billing-address select,
+main article .form-section__billing-address input[type=text] {
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: all 0.2s linear;
+}
+main article .form-section__billing-address select:focus,
+main article .form-section__billing-address input[type=text]:focus {
+  border: 1px solid #4b4d51;
+}
+main article .form-section__billing-address #firstname,
+main article .form-section__billing-address #city {
+  width: 50%;
+  float: left;
+  margin-right: 5px;
+}
+main article .form-section__billing-address #lastname,
+main article .form-section__billing-address #postalCode {
+  width: 50%;
+  float: right;
+  margin-left: 5px;
+}
+main article .form-section__billing-address .row-block {
+  display: flex;
+  flex-direction: row;
+}
+main article .form-section__billing-address button {
+  margin-top: 30px;
+  width: 175px;
+  height: 60px;
+  background-color: #4b4d51;
+  color: #fafafa;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+main article .form-section__billing-address button:hover {
+  background-color: #323437;
+}
+main article .form-section__billing-address a {
+  color: #4b4d51;
+  text-decoration: none;
+  margin-left: 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+main article .form-section .controls-block {
+  right: 66px;
+  width: 570px;
+  min-width: 530px;
+  float: right;
+}
+main article .form-section .controls-block button {
+  margin-top: 30px;
+  width: 175px;
+  height: 60px;
+  background-color: #4b4d51;
+  color: #fafafa;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+main article .form-section .controls-block button:hover {
+  background-color: #323437;
+}
+main article .form-section .controls-block a {
+  color: #4b4d51;
+  text-decoration: none;
+  margin-left: 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+main .order-summary {
+  border-left: 1px solid #e1e1e1;
+  background-color: #fafafa;
+  width: 45%;
+  height: 100vh;
+  overflow: hidden;
+  float: right;
+}
+main .order-summary__sections {
+  width: 22vw;
+  margin: 56px 0 0 44px;
+}
+main .order-summary__section--product-container {
+  margin-top: 10px;
+}
+main .order-summary__section--product-container {
+  line-height: 65px;
+  font-family: "din2014", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+}
+main .order-summary__section--product-image {
+  width: 65px;
+  height: 65px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  float: left;
+}
+main .order-summary__section--product-quantity {
+  position: relative;
+  z-index: 10;
+  border-radius: 50%;
+  background-color: #808080;
+  font-size: 12px;
+  font-family: sans-serif;
+  width: 21px;
+  height: 21px;
+  color: white;
+  text-align: center;
+  float: left;
+  line-height: 21px;
+  transform: translate(-50%, -50%);
+}
+main .order-summary__section--product-title {
+  padding-left: 80px;
+}
+main .order-summary__section--product-price {
+  float: right;
+  position: relative;
+  font-family: "din2014", sans-serif;
+  top: -66px;
+}
+main .order-summary hr {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+main .order-summary__section--discount {
+  display: flex;
+  flex-direction: column;
+}
+main .order-summary__section--discount-input {
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  width: 70%;
+}
+main .order-summary__section--discount-button-check {
+  width: 29%;
+  height: 41px;
+  background-color: #4b4d51;
+  color: #fafafa;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+main .order-summary__section--discount-button-check:hover {
+  background-color: #323437;
+}
+main .order-summary__section--subtotal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 0 5px 0;
+}
+main .order-summary__section--subtotal-text {
+  font-size: 14px;
+}
+main .order-summary__section--subtotal-value {
+  font-size: 14px;
+}
+main .order-summary__section--total {
+  display: flex;
+}
+main .order-summary__section--total-text {
+  width: 60%;
+  line-height: 30px;
+  font-size: 16px;
+}
+main .order-summary__section--total-currency {
+  width: 20%;
+  text-align: right;
+  padding-right: 5px;
+  font-size: 12px;
+  line-height: 30px;
+  color: #717171;
+}
+main .order-summary__section--total-value {
+  width: 20%;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: right;
+}
+main .section__header {
+  position: relative;
+  width: 32vw;
+  top: 100px;
+  text-align: center;
+  left: 50%;
+  transform: translate(-45%, 0);
+  font-size: 42px;
+}
+main .section__header__link {
+  text-decoration: none;
+}
+main .section__header--text {
+  text-transform: uppercase;
+  color: #333333;
+  font-weight: 600;
+  font-family: "Roboto";
+  letter-spacing: 3px;
+}
+main .section__header .logo-image {
+  position: absolute;
+  background-image: url("../../images/gm_logo_small.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  height: 35px;
+  width: 40px;
+  left: 50%;
+  transform: translate(-470%, 18%);
+  filter: invert(100%);
+}
+main .section__gratitude {
+  position: relative;
+  top: 156px;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+main .section__gratitude--text {
+  font-size: 32px;
+}
+main .section__gratitude--button-return {
+  top: 50px;
+  position: relative;
+  padding: 15px 40px;
+  background-color: #4b4d51;
+  color: #fafafa;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: 1px solid #808080;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: "din2014";
+}
+main .section__gratitude--button-return:hover {
+  background-color: #323437;
+}
