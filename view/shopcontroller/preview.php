@@ -1,9 +1,12 @@
 <?php
 
+use core\Configuration;
 use models\AccountModel;
 
 $userModel = new AccountModel();
 $user = $userModel->getCurrentUser();
+$productImageDir = Configuration::get('paths', 'paths')['ProductImagesDir'];
+
 ?>
 <main id="main" class='preview'>
     <section class="product">
@@ -18,9 +21,9 @@ $user = $userModel->getCurrentUser();
                 <div class="product__price">$<?= $model["price"]; ?></div>
 
                 <? if ($model['count'] > 0) : ?>
-                    <span class="product__add-to-cart-btn">Add to cart</span>
+                    <button class="product__add-to-cart-btn">Add to cart</button>
                 <? else : ?>
-                    <span class="product__out-of-stock-btn">Out Of Stock</span>
+                    <button class="product__add-to-cart-btn" disabled>Out Of Stock</button>
                 <? endif; ?>
 
                 <span class="product__ships-in">Ships In 2-3 Weeks</span>
@@ -51,11 +54,11 @@ $user = $userModel->getCurrentUser();
         </div>
     </section>
 
-    <section class="desing-inspiring">
-        <div class="desing-inspiring__innerText">
+    <section class="brand-highlight">
+        <div class="brand-highlight__innerText">
             <div class="logo-image"></div>
-            <h2 class="desing-inspiring__title">Design Inspires</h2>
-            <div class="desing-inspiring__subtitle">
+            <h2 class="brand-highlight__title">Design Inspires</h2>
+            <div class="brand-highlight__subtitle">
                 Build your dream workspace, so you can get your best work done.
             </div>
         </div>
@@ -64,9 +67,11 @@ $user = $userModel->getCurrentUser();
 
 <script>
     const imgURL = <?= json_encode($productModel['imgPath']); ?>;
+    // const imgURL = '/assets/temp/0_6766ed2018cf1_preview.png';
+    console.log(imgURL);
     const imageWrapper = document.querySelector(".product__image-wrapper");
     if (imgURL === null) {
-        const productImgURL = "/files/products/" + <?= json_encode($productModel["image"] . '_xl.png') ?>;
+        const productImgURL = <?= $productImageDir . json_encode($productModel["image"] . '_xl.png') ?>;
         document.addEventListener("DOMContentLoaded", () => {
             const image = document.createElement("img");
             image.src = productImgURL;

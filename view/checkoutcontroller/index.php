@@ -1,12 +1,14 @@
 <?php
 
-use files\library\mainFunctions;
+use core\Configuration;
+use core\Utils;
 use models\ProductModel;
 
-$functions = new mainFunctions();
 $productModel = new ProductModel;
 
-$countries = $functions->getCountries();
+$countries = Utils::getCountries();
+$productImageDir = Configuration::get('paths', 'Paths')['ProductImagesDirRelative'];
+
 ?>
 
 <main id="main">
@@ -24,7 +26,7 @@ $countries = $functions->getCountries();
     <article id="article">
         <section class="header">
             <a href="/" class="logo header__link">
-                <div class="logo-image"></div>Grovemade
+                <div class="logo-image"></div>Woodmade
             </a>
             <div id="nav" class="header__navigation">
                 <a href="/">Cart</a>
@@ -42,8 +44,8 @@ $countries = $functions->getCountries();
                     <h3 class="form-section__contact-info-title">Contact information</h3>
                     <input type="email" class="form-section__email-input" placeholder="Email" id="email" autocapitalize="off" spellcheck="false" id="checkout_email" name="email" value="<?= $moduleUser['email'] ?>">
                     <label for="email-checkbox">
-                        <input type="checkbox" name="check" id="email-checkbox" class="checkbox form-section__email-checkbox" checked>
-                        Email me with news and offers
+                        <input type="checkbox" name="check" id="email-checkbox" class="checkbox" checked>
+                        <span class="checkbox-label">Email me with news and offers</span>
                     </label>
                 </div>
                 <div class="form-section__shipping-address">
@@ -89,10 +91,10 @@ $countries = $functions->getCountries();
                     <? endif; ?>
 
                     <label for="saveinfo-checkbox">
-                        <input type="checkbox" name="saveinfo" id="saveinfo-checkbox" class="checkbox form-section__email-checkbox">
-                        Save this information for next time
+                        <input type="checkbox" name="saveinfo" id="saveinfo-checkbox" class="checkbox">
+                        <span class="checkbox-label">Save this information for next time</span>
                     </label>
-                    <div class="name-block">
+                    <div class="controls-block">
                         <button type="submit" id="continue-button">Continue to shipping</button>
                         <a href="/">Return to main page</a>
                     </div>
@@ -115,8 +117,8 @@ $countries = $functions->getCountries();
 
                     <div class="order-summary__section--product-container">
                         <div class="order-summary__section--product-image-wrapper">
-                            <? if (is_file('files/products/' . $product['image']  . '_s.png')) : ?>
-                                <img src="/files/products/<?= $product['image'] . '_s.png'; ?>" class="order-summary__section--product-image">
+                            <? if (is_file($productImageDir . $product['image']  . '_s.png')) : ?>
+                                <img src="/<?= $productImageDir . $product['image'] . '_s.png'; ?>" class="order-summary__section--product-image" alt="Product thumbnail">
                             <? endif; ?>
                         </div>
                         <div class="order-summary__section--product-quantity"><?= $cartProduct['quantity']; ?></div>
@@ -126,16 +128,16 @@ $countries = $functions->getCountries();
                 <? endforeach; ?>
             </div>
             <hr>
+            <form method="get">
             <div class="order-summary__section--discount">
-                <form method="get">
                     <? if ($_GET['discount'] == null) : ?>
                         <input type="text" name="discount" id="discount-input" class="order-summary__section--discount-input" placeholder="Gift card or discount code">
                     <? else : ?>
                         <input type="text" name="discount" id="discount-input" class="order-summary__section--discount-input" placeholder="Gift card or discount code" value="<?= $_GET['discount']; ?>">
                     <? endif; ?>
                     <button class="order-summary__section--discount-button-check" id="discount-button-check" type="submit">Apply</button>
-                </form>
-            </div>
+                </div>
+            </form>
             <hr>
             <div class="order-summary__section--subtotal">
                 <div class="order-summary__section--subtotal-text">Subtotal</div>
@@ -211,17 +213,17 @@ $countries = $functions->getCountries();
             }
         }
         localStorage.checkOutFields = JSON.stringify(checkOutFields);
-        console.log("click");
     }
 
     discountButton.addEventListener("click", saveCheckoutField);
 
     const continueButton = document.getElementById("continue-button");
-    console.log(document.getElementById("saveinfo-checkbox").checked);
+
     continueButton.addEventListener("click", () => {
         if (document.getElementById("saveinfo-checkbox").checked === true)
             saveCheckoutField();
     });
+
     <? if (!empty($messageClass)) : ?>
         var messageText = <? echo json_encode($messageText); ?>;
     <? endif; ?>

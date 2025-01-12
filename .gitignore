@@ -1,0 +1,57 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Build directories
+dist/
+build/
+.temp/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# PHP-specific files
+*.cache
+*.session
+
+# Configuration files
+.env
+.env.local
+.env.*.local
+
+# Prepros config
+prepros.config
+
+# IDE and editor-specific files
+.vscode/
+.idea/
+*.iml
+
+# Composer
+/vendor/
+
+# Other files
+*.bak
+*.swp
+*.tmp
+*.pid
+
+# Ignore images in temp directories
+assets/temp/
+
+# Ignore certain image types in assets/logs
+assets/logs/*.png
+assets/logs/*.jpg
+assets/logs/*.svg
+
+# Ignore compiled files
+*.min.js
+*.min.css

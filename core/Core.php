@@ -13,18 +13,16 @@ class Core
 
     private function __construct()
     {
-        spl_autoload_register('\core\Core::__autoload');
+        spl_autoload_register([self::class, '__autoload']);
 
-        global $config;
+        $dbConfig = Configuration::get('config', 'Database');
 
         self::$dataBase = new Database(
-            $config['Database']['Server'],
-            $config['Database']['Username'],
-            $config['Database']['Password'],
-            $config['Database']['Database']
+            $dbConfig['Server'],
+            $dbConfig['Username'],
+            $dbConfig['Password'],
+            $dbConfig['Database']
         );
-
-        $this->__deleteTmpFiles();
     }
 
     /**
@@ -48,14 +46,19 @@ class Core
     {
         return self::$dataBase;
     }
+
     /**
      * System initialization
      */
     public function init()
     {
         session_start();
+        date_default_timezone_set('Europe/Kiev');
+        Logger::log('Session started', 'INFO');
         self::$mainTemplate = new Template();
+        // TempFiles::init();
     }
+
     /**
      * Performs the basic process of the CMS-system
      */
@@ -68,50 +71,58 @@ class Core
             $pathParts = explode('/', $path);
         }
 
-        empty($pathParts[0]) ? $className = 'controller\\HomeController' : $className = 'controller\\' . ucfirst($pathParts[0]) . 'Controller';
-        empty($pathParts[1]) ? $methodName = 'actionIndex' : $methodName = 'action' . ucfirst($pathParts[1]);
+        $className = empty($pathParts[0])
+            ? 'controller\\HomeController'
+            : 'controller\\' . ucfirst($pathParts[0]) . 'Controller';
 
-        if (class_exists($className)) {
-            $controller = new $className();
+        $methodName = empty($pathParts[1])
+            ? 'actionIndex'
+            : 'action' . ucfirst($pathParts[1]);
 
-            if (method_exists($controller, $methodName)) {
-                $method = new \ReflectionMethod($className, $methodName);
-                $paramsArray = [];
-                foreach ($method->getParameters() as $parameter) {
-                    array_push($paramsArray, isset($_GET[$parameter->name]) ? $_GET[$parameter->name] : null);
+        Logger::log("Attempting to load class: {$className}, method: {$methodName}", 'INFO');
+
+        $methodName = class_exists($className) && method_exists($className, $methodName) ? $methodName : 'action404';
+        $className = class_exists($className) && $methodName !== 'action404' ? $className : 'controller\\HomeController';
+
+
+        $controller = new $className();
+
+
+        $method = new \ReflectionMethod($className, $methodName);
+
+        if ($method->isPublic()) {
+            $paramsArray = [];
+            foreach ($method->getParameters() as $parameter) {
+                if (!$parameter->isOptional() && !isset($_GET[$parameter->name])) {
+                    Logger::log("Missing required parameter: {$parameter->name}");
+                    throw new \Exception("Missing required parameter: {$parameter->name}");
                 }
-                $result = $method->invokeArgs($controller, $paramsArray);
-                if (is_array($result)) {
-                    self::$mainTemplate->setParams($result);
-                }
-            } else
-                // throw new \Exception('404 Not found');
-                header('Location: /home/404');
-        } else
-            // throw new \Exception('404 Not found');
-            header('Location: /home/404');
+                $paramsArray[] = $_GET[$parameter->name] ?? $parameter->getDefaultValue();
+            }
+
+            $result = $method->invokeArgs($controller, $paramsArray);
+
+            if (is_array($result)) {
+                self::$mainTemplate->setParams($result);
+            }
+        }
+
+        return;
     }
+
     /**
      * Autoloader classes
      * @param $classname string Class name
      */
     public static function __autoload($className)
     {
-        $fileName = $className . '.php';
-        if (is_file($fileName))
+        $fileName = __DIR__ . '/../' . str_replace('\\', '/', $className) . '.php';
+
+        if (is_file($fileName)) {
             include($fileName);
-    }
-
-    /**
-     * Deleting temporary files older than 24h
-     */
-    public function __deleteTmpFiles()
-    {
-        $dir = "files/tmp/";
-
-        foreach (glob($dir . '*') as $file) {
-            if (time() - filectime($file) > 86400)
-                unlink($file);
+        } else {
+            Logger::log("File not found for class '$className': $fileName", 'WARNING');
+            return;
         }
     }
 

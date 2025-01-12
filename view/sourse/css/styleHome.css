@@ -3,27 +3,48 @@ main {
   position: relative;
   z-index: 1;
 }
+main section:not(.banner-desk-shelf-system) {
+  margin-top: 100px;
+}
 main .banner-desk-shelf-system {
-  background-image: url("../../images/https___siteleaf.grovemade.com_uploads_grovemade-walnut-hardwood-desk-shelf-galB-B1.jpg");
+  position: relative;
+  background-image: url("/assets/images/promo/promo1.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 500px;
+  height: 550px;
   display: flex;
-  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+}
+main .banner-desk-shelf-system::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(30, 31, 30, 0.4);
+  pointer-events: none;
+  z-index: 1;
+}
+main .banner-desk-shelf-system > * {
+  position: relative;
+  z-index: 2;
 }
 main .banner-desk-shelf-system__link {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
-  text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
 }
 main .banner-desk-shelf-system__innerText {
   position: relative;
-  width: 100%;
-  height: 270px;
-  top: calc(50% - 30px);
+  text-align: center;
 }
 main .banner-desk-shelf-system__title {
   line-height: 46px;
@@ -42,38 +63,56 @@ main .banner-desk-shelf-system__span {
   font-weight: 100;
   font-size: 13px;
 }
-main .design-inspires {
+main .cta-banner {
   text-align: center;
-  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-main .design-inspires__title {
+main .cta-banner__title {
   font-size: 43px;
   font-weight: 400;
   line-height: 58px;
-  letter-spacing: 0em;
+  color: #eeeeee;
 }
-main .design-inspires__text {
+main .cta-banner__text {
   margin-top: 23px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.8000000119px;
   margin-bottom: 26px;
-  color: #A0A0A0;
+  width: 780px;
 }
-main .design-inspires__goto_shop {
+main .cta-banner__goto_shop {
   font-weight: normal;
   font-size: 13px;
   line-height: 21px;
   letter-spacing: 1.4px;
   text-transform: uppercase;
   text-decoration: none;
-  color: #000000;
+  color: #eeeeee;
+}
+main .cta-banner__image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 30px;
+  height: 550px;
+}
+main .cta-banner__image {
+  width: 100%;
 }
 main .sample-products {
-  width: 100%;
-  margin-top: 80px;
+  margin-inline: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.5rem;
 }
 main .sample-products .link {
   position: relative;
@@ -84,62 +123,42 @@ main .sample-products .link {
   text-decoration: none;
   cursor: pointer;
   z-index: 1;
-  color: #000000;
+  color: #eeeeee;
 }
 main .sample-products .link:focus {
-  color: #000000;
+  color: #eeeeee;
 }
-main .sample-products .desk_pads {
-  margin-left: 50px;
-  width: calc(50% - 50px - 20px);
-  float: left;
+main .sample-products .sample {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  gap: 1rem;
 }
-main .sample-products .desk_pads__img {
-  background-image: url("../../images/Products/https___siteleaf.grovemade.com_uploads_grovemade-black-leather-desk-pad-xl-galB-A5.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+main .sample-products .sample__image-wrapper {
   width: 100%;
-  height: 440px;
+  max-width: 450px;
+  aspect-ratio: 4/3;
+  overflow: hidden;
 }
-main .sample-products .desk_pads__text {
-  margin-top: 48px;
+main .sample-products .sample__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .sample-products .sample__text {
   height: 30px;
   font-size: 27px;
   line-height: 30px;
+  color: #4cc24c;
   text-align: center;
 }
-main .sample-products .desk_pads__link {
-  top: 25px;
-  left: calc(50% - 47.5px);
-}
-main .sample-products .laptop_stands {
-  margin-right: 50px;
-  width: calc(50% - 50px - 20px);
-  float: right;
-}
-main .sample-products .laptop_stands__img {
-  background-image: url("../../images/Products/https___siteleaf.grovemade.com_uploads_tall-laptop-stand-walnut-galB-C2.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 440px;
-}
-main .sample-products .laptop_stands__text {
-  margin-top: 48px;
-  height: 30px;
-  font-size: 27px;
-  line-height: 30px;
+main .sample-products .sample__link {
   text-align: center;
-}
-main .sample-products .laptop_stands__link {
-  top: 25px;
-  left: calc(50% - 47.5px);
 }
 main .featured_products {
   position: relative;
-  top: 150px;
   width: 100%;
 }
 main .featured_products__title {
@@ -147,6 +166,7 @@ main .featured_products__title {
   font-size: 33px;
   line-height: 36px;
   font-weight: 400;
+  color: #eeeeee;
 }
 main .featured_products__text {
   margin-top: 15px;
@@ -155,81 +175,95 @@ main .featured_products__text {
   line-height: 18px;
   letter-spacing: 0.8000000119px;
   text-align: center;
-  color: #A0A0A0;
-}
-main .featured_products .featured_products__swiper {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
+  color: #a0a0a0;
 }
 main .featured_products .featured_products-carousel {
-  position: relative;
-  margin-top: 50px;
-  margin-bottom: 200px;
-  left: 63px;
-  right: 63px;
-  width: calc(100% - 126px);
   display: flex;
-  flex-wrap: nowrap;
+  margin: 50px 50px 0 50px;
+  box-sizing: border-box;
+  width: calc(100% - 100px);
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   overflow: hidden;
 }
 main .featured_products .featured_products-carousel .product {
   position: relative;
-  margin-right: 25px;
   flex-grow: 1;
-  margin: 12.5px;
-  float: left;
-  width: calc(25% - 25px);
+  max-width: 350px;
+  min-width: 200px;
   border-radius: 5px;
 }
 main .featured_products .featured_products-carousel .product a {
   width: 100%;
-  color: #A0A0A0;
+  color: #a0a0a0;
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
-  font-family: "din2014", Helvetica, sans-serif;
+  font-family: "Roboto", Helvetica, sans-serif;
 }
-main .featured_products .featured_products-carousel .product__background {
-  width: 100%;
-  height: 100%;
+main .featured_products .featured_products-carousel .product__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 main .featured_products .featured_products-carousel .product__image-wrapper {
   background-color: rgba(0, 0, 0, 0.028);
+  width: 100%;
+  height: 100%;
 }
 main .featured_products .featured_products-carousel .product__image-wrapper > img {
-  padding: 20px;
   width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
 }
 main .featured_products .featured_products-carousel .product__title {
   margin-top: 20px;
+  color: #eeeeee;
 }
 main .featured_products .featured_products-carousel .product__price {
   margin-top: 5px;
 }
 main .banner-home-office-inspiration {
-  background-image: url("../../images/https___siteleaf.grovemade.com_uploads_bannerB-desk-collection-A1.jpg");
+  position: relative;
+  background-image: url("/assets/images/promo/promo2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 500px;
+  height: 550px;
   display: flex;
-  color: #FFFFFF;
-  margin-top: 95px;
+  justify-content: center;
+  align-items: center;
+}
+main .banner-home-office-inspiration::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(30, 31, 30, 0.4);
+  pointer-events: none;
+  z-index: 1;
+}
+main .banner-home-office-inspiration > * {
+  position: relative;
+  z-index: 2;
 }
 main .banner-home-office-inspiration__link {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
-  text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
 }
 main .banner-home-office-inspiration__innerText {
   position: relative;
-  width: 100%;
-  height: 270px;
-  top: calc(50% - 30px);
+  text-align: center;
 }
 main .banner-home-office-inspiration__title {
   line-height: 46px;
@@ -250,7 +284,6 @@ main .banner-home-office-inspiration__span {
 }
 main .about {
   position: relative;
-  top: 150px;
   width: 100%;
 }
 main .about__title {
@@ -258,6 +291,7 @@ main .about__title {
   font-size: 33px;
   line-height: 36px;
   font-weight: 400;
+  color: #eeeeee;
 }
 main .about__text {
   position: relative;
@@ -269,17 +303,10 @@ main .about__text {
   line-height: 18px;
   letter-spacing: 0.8000000119px;
   text-align: center;
-  color: #A0A0A0;
-}
-main .about__image {
-  margin: 23px 194px 38px 194px;
-}
-main .about__image img {
-  width: 100%;
+  color: #a0a0a0;
 }
 main .employees {
   position: relative;
-  top: 150px;
   width: 100%;
   margin-top: 100px;
 }
@@ -288,6 +315,7 @@ main .employees__title {
   font-size: 33px;
   line-height: 36px;
   font-weight: 400;
+  color: #eeeeee;
 }
 main .employees__text {
   position: relative;
@@ -299,7 +327,7 @@ main .employees__text {
   line-height: 18px;
   letter-spacing: 0.8000000119px;
   text-align: center;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 main .employees__grid {
   display: flex;
@@ -318,7 +346,6 @@ main .employees__grid .employee {
 }
 main .read-about {
   position: relative;
-  top: 275px;
   width: 100%;
   margin: 0 0 400px 0;
 }
@@ -327,6 +354,7 @@ main .read-about__title {
   font-size: 34px;
   line-height: 36px;
   font-weight: 400;
+  color: #eeeeee;
 }
 main .read-about__link {
   position: relative;
@@ -339,71 +367,103 @@ main .read-about__link {
   line-height: 18px;
   letter-spacing: 0.8000000119px;
   text-align: center;
-  color: #000000;
+  color: #eeeeee;
 }
-main .desing-inspiring {
-  margin: 0 100px 50px 100px !important;
-  background-color: #9AA8B1;
-  height: 400px;
-  color: #FFFFFF;
+main .brand-highlight {
   position: relative;
   width: calc(100% - 200px);
+  height: 400px;
+  background-color: #9ab19c;
+  color: #ffffff;
+  border-radius: 5px;
+  margin-inline: 100px !important;
 }
-main .desing-inspiring__innerText {
+main .brand-highlight__innerText {
   position: relative;
-  text-align: center;
-  top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
 }
-main .desing-inspiring__innerText .logo-image {
-  top: calc(50% - 84px);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 34px;
-  width: 40px;
+main .brand-highlight__innerText .logo-image {
+  background-image: url("/assets/svg/logo.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  height: 81px;
+  width: 81px;
 }
-main .desing-inspiring__title {
+main .brand-highlight__title {
   line-height: 46px;
   font-size: 43px;
   font-weight: 400;
-  margin-bottom: 12px;
 }
-main .desing-inspiring__subtitle {
+main .brand-highlight__subtitle {
   line-height: 17.5px;
   font-size: 15px;
-  margin-bottom: 28px;
 }
 main .error {
   position: relative;
   width: calc(100% - 200px);
   margin: 50px 100px;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #eeeeee;
+  gap: 2rem;
+}
+main .error__image-wrapper {
+  max-width: 600px;
+}
+main .error__image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+main .error__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  gap: 2rem;
+}
+main .error span {
+  color: #00a800;
 }
 main .error h1 {
-  font-size: 70px;
-  font-family: "RobotoRegular";
+  font-size: 48px;
+  font-family: sans-serif;
   font-weight: 400;
-  margin: 47px 0;
   text-align: center;
 }
 main .error p {
-  margin: 0 0 32px 0;
-  font-family: "din2014";
+  font-family: "Roboto";
   font-weight: 600;
-  letter-spacing: 1px;
+  line-height: 16px;
 }
 main .error a {
-  padding: 0 20px;
-  background-color: #000000;
-  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+  color: #ffffff;
   text-decoration: none;
-  text-transform: uppercase;
-  line-height: 42px;
-  font-family: "din2014", Helvetica, sans-serif;
-  font-weight: 600;
-  letter-spacing: 1px;
+  padding: 10px 20px;
+  transition: all 0.15s linear;
+  background-color: #00a800;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .error a:hover {
+  background-color: #006600;
+  color: #eeeeee;
 }
 main .new-label {
   position: relative;
@@ -415,7 +475,7 @@ main .new-label {
   padding: 5px 0;
   width: 75px;
   height: 45px;
-  background-color: #96A3AC;
+  background-color: #96a3ac;
   transform: rotate(45deg);
 }
 main .new-label::before {
@@ -424,7 +484,7 @@ main .new-label::before {
   font-weight: 600;
   letter-spacing: 1.5px;
   font-size: 10px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 main .new-label-wrapper {
   position: absolute;
@@ -432,4 +492,4 @@ main .new-label-wrapper {
   width: 60px;
   height: 60px;
   overflow: hidden;
-}
+}/*# sourceMappingURL=styleHome.css.map */

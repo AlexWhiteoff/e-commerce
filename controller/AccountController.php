@@ -49,19 +49,19 @@ class AccountController extends Controller
                             'warningsCount' => count($result),
                             'messageClass' => 'error'
                         ];
-                        return $this->render('index', $params, ['namePage' => 'Grovemade&reg; — Personal Account']);
+                        return $this->render('index', $params, ['namePage' => 'Woodmade&reg; — Personal Account']);
                     }
                 } else if ($_POST['save'] === 'user-address') {
                     $result = $this->usersModel->UpdateUserAddress($_POST);
                     if ($result === true) {
                         header("Location: /account");
                     } else {
-                        return $this->render('index', null, ['namePage' => 'Grovemade&reg; — Personal Account']);
+                        return $this->render('index', null, ['namePage' => 'Woodmade&reg; — Personal Account']);
                     }
                 } else
                     header("Location: /account");
             } else {
-                return $this->render('index', null, ['namePage' => 'Grovemade&reg; — Personal Account']);
+                return $this->render('index', null, ['namePage' => 'Woodmade&reg; — Personal Account']);
             }
         } else
             header("Location: /account/login");
@@ -87,10 +87,10 @@ class AccountController extends Controller
                     'messageText' => '<i class="fas fa-times"></i> Incorrect login or password',
                     'messageClass' => 'error'
                 ];
-                return $this->render('login', $params, ['namePage' => 'Grovemade&reg; — Sign In']);
+                return $this->render('login', $params, ['namePage' => 'Woodmade&reg; — Sign In']);
             }
         } else
-            return $this->render('login', null, ['namePage' => 'Grovemade&reg; — Sign In']);
+            return $this->render('login', null, ['namePage' => 'Woodmade&reg; — Sign In']);
     }
     /**
      * User sign up function
@@ -110,10 +110,10 @@ class AccountController extends Controller
                     'messageText' => $message,
                     'messageClass' => 'error'
                 ];
-                return $this->render('registration', $params, ['namePage' => 'Grovemade&reg; — Registration']);
+                return $this->render('registration', $params, ['namePage' => 'Woodmade&reg; — Registration']);
             }
         }
-        return $this->render('registration', null, ['namePage' => 'Grovemade&reg; — Registration']);
+        return $this->render('registration', null, ['namePage' => 'Woodmade&reg; — Registration']);
     }
     
     /**
@@ -124,7 +124,7 @@ class AccountController extends Controller
         $id = $_GET['id'];
         $user = $this->usersModel->getUserById($id);
         $currentUser = $this->usersModel->getCurrentUser();
-        $title = 'Grovemade&reg; — Personal Account';
+        $title = 'Woodmade&reg; — Personal Account';
 
         if (isset($_GET['confirm']) && $_GET['confirm'] == 'true') {
             $result = $this->usersModel->DeleteUser($id);

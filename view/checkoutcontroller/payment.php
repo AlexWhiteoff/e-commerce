@@ -1,12 +1,13 @@
 <?php
 
-use files\library\mainFunctions;
+use core\Configuration;
+use core\Utils;
 use models\ProductModel;
 
-$functions = new mainFunctions();
 $productModel = new ProductModel;
 
-$countries = $functions->getCountries();
+$countries = Utils::getCountries();
+$productImageDir = Configuration::get('paths', 'Paths')['ProductImagesDirRelative'];
 
 ?>
 
@@ -25,7 +26,7 @@ $countries = $functions->getCountries();
     <article id="article">
         <section class="header">
             <a href="/" class="logo header__link">
-                <div class="logo-image"></div>Grovemade
+                <div class="logo-image"></div>Woodmade
             </a>
             <div id="nav" class="header__navigation">
                 <a href="/">Cart</a>
@@ -60,12 +61,14 @@ $countries = $functions->getCountries();
                     <hr>
                     <div class="form-section__info-block--block">
                         <div class="form-section__info-block--name">Method</div>
-                        <div class="form-section__info-block--value"><?
-                                                                        if ($moduleUser['shippingMethod'] == 'UPS International')
-                                                                            echo 'UPS International (Transit Time 7-14 Days)';
-                                                                        else if ($moduleUser['shippingMethod'] == 'Small parcel')
-                                                                            echo 'Small Parcel Local Post (Transit Time 30-40 Days, May Be Extended Due To COVID)';
-                                                                        ?></div>
+                        <div class="form-section__info-block--value">
+                            <?
+                            if ($moduleUser['shippingMethod'] == 'UPS International')
+                                echo 'UPS International (Transit Time 7-14 Days)';
+                            else if ($moduleUser['shippingMethod'] == 'Small parcel')
+                                echo 'Small Parcel Local Post (Transit Time 30-40 Days, May Be Extended Due To COVID)';
+                            ?>
+                        </div>
                         <a href="/checkout" class="form-section__info-block--changeButton">Change</a>
                     </div>
                 </div>
@@ -103,18 +106,14 @@ $countries = $functions->getCountries();
                     </div>
                     <fieldset class="content-box">
                         <div class="form-section__billing-address-block--block">
-                            <label for="radio-same-billing-address">
-                                <div class="form-section__billing-address-block--check">
-                                    <input type="radio" name="billing-address" id="radio-same-billing-address" value="same" checked>
-                                </div>
+                            <input type="radio" name="billing-address" id="radio-same-billing-address" class="radio"="same" checked>
+                            <label for="radio-same-billing-address" class="radio-label">
                                 <span class="form-section__billing-address-block--name">Same as shipping address</span>
                             </label>
                         </div>
                         <div class="form-section__billing-address-block--block">
-                            <label for="radio-different-billing-address">
-                                <div class="form-section__billing-address-block--check">
-                                    <input type="radio" name="billing-address" id="radio-different-billing-address" value="different">
-                                </div>
+                            <input type="radio" name="billing-address" id="radio-different-billing-address" class="radio" value="different">
+                            <label for="radio-different-billing-address" class="radio-label">
                                 <span class="form-section__billing-address-block--name">Use a different billing address</span>
                             </label>
                         </div>
@@ -163,8 +162,8 @@ $countries = $functions->getCountries();
 
                     <div class="order-summary__section--product-container">
                         <div class="order-summary__section--product-image-wrapper">
-                            <? if (is_file('files/products/' . $product['image']  . '_s.png')) : ?>
-                                <img src="/files/products/<?= $product['image'] . '_s.png'; ?>" class="order-summary__section--product-image">
+                            <? if (is_file($productImageDir . $product['image']  . '_s.png')) : ?>
+                                <img src="/<?= $productImageDir . $product['image'] . '_s.png'; ?>" class="order-summary__section--product-image" alt="Product thumbnail">
                             <? endif; ?>
                         </div>
                         <div class="order-summary__section--product-quantity"><?= $cartProduct['quantity']; ?></div>

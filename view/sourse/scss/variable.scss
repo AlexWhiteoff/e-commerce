@@ -1,13 +1,42 @@
-$white: #FFFFFF;
-$blockColor: #9AA8B1;
-$lightgrey: #96A3AC;
-$dangerRed: #D3302F;
-$footerColor: #F9F9F9;
+$backgroundColor: #1e1f1e;
+$secondaryColor: #fafafa;
+$thirdColor: #dadada;
+$textColor: #eeeeee;
+$accentLightenColor: #00a800;
+$accentDarkenColor: #006600;
+$footerColor: #2e2f2e;
+$textSecondColor: #a0a0a0;
+$textThirdColor: #ffffff;
+$textLinkColor: #4cc24c;
+$selectionColor: #00660090;
+$blockColor: #9ab19c;
+$borderColor: #1a221a;
+$lightgrey: #96a3ac;
+$dangerRed: #d3302f;
 $black: #000000;
 $darkgrey: #333333;
-$fontSecondColor: #A0A0A0;
-$fontLinkColor: #f69368;
+
 $accountModalBlockWidth: 700px;
 $deleteModalBlockWidth: 36.8vw;
 $deleteModalBlockHeight: 20vh;
 $cartModalBlockWidth: 700px;
+
+$scrollbar-width: 12px;
+$scrollbar-bg: lighten($backgroundColor, 10%);
+$scrollbar-thumb: $accentDarkenColor;
+$scrollbar-thumb-hover: $accentLightenColor;
+
+$heroBackgroundColor: lighten(
+    $color: $backgroundColor,
+    $amount: 5%,
+);
+
+$order-status-colors: (
+  "Canceled": #b0b0b0,
+  "Complete": #4caf50,
+  "Awaiting": #e57373,
+  "Shipping": #ffd54f,
+  "Packing": #ffa726,
+  "Processed": #42a5f5,
+  "Placed": #fff9c4
+);

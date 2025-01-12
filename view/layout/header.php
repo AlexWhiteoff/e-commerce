@@ -1,5 +1,7 @@
 <?php
 
+use core\Configuration;
+use core\Logger;
 use models\AccountModel;
 use models\ProductModel;
 
@@ -13,12 +15,38 @@ if (array_key_exists('path', $_GET)) {
 empty($pathParts[0]) ? $className = 'Home' : $className = ucfirst($pathParts[0]);
 
 $userModel = new AccountModel();
+$productModel = new ProductModel();
+$productImageDir = Configuration::get('paths', 'Paths')['ProductImagesDirRelative'];
 
 if ($userModel->isUserAuthenticated()) {
     $user = $userModel->getCurrentUser();
-    $productModel = new ProductModel();
     $cartProducts = $productModel->getCartProductsByUserId($user['UserID']);
 }
+
+$categories = $productModel->getCategories();
+
+if (!$categories) {
+    Logger::log('Problem getting categories', 'WARNING');
+}
+
+$subcategories = $productModel->getSubcategories();
+
+if (!$subcategories) {
+    Logger::log('Problem getting subcategories', 'WARNING');
+}
+
+$sortedSubcategories = [];
+foreach ($categories as $category) {
+    $sortedSubcategories[$category['categoryID']] = [];
+    foreach ($subcategories as $subcategory) {
+        if ($subcategory['categoryID'] === $category['categoryID']) {
+            $sortedSubcategories[$category['categoryID']][] = $subcategory['subcategoryName'];
+        }
+    }
+}
+
+$maxItems = max(array_map('count', $sortedSubcategories));
+
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +58,7 @@ if ($userModel->isUserAuthenticated()) {
     <link rel="stylesheet" href="/view/sourse/css/header.css">
     <link rel="stylesheet" href="/view/sourse/css/style<?= $className ?>.css">
     <link rel="stylesheet" href="/view/sourse/css/footer.css">
-    <link rel="icon" href="/view/images/gm_logo_small.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="/assets/svg/logo.svg" type="image/png" sizes="16x16">
 
     <script src="https://kit.fontawesome.com/e0f50ec62a.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -41,7 +69,48 @@ if ($userModel->isUserAuthenticated()) {
     <? if ($className != 'Checkout') : ?>
         <header id="header">
             <nav id="nav">
-                <a href="/shop" class="header-left header__link">shop</a>
+                <div class="header__resonsive-button-shop" id="shop-dropdown-area">
+                    <span class="header-left header__link">shop</span>
+                    <div class="shop__categories hidden" id="shop-dropdown-block">
+                        <table>
+                            <tr>
+                                <?php foreach ($categories as $category): ?>
+                                    <th>
+                                        <a href="/shop?category=<?= htmlspecialchars($category['categoryID']) ?>">
+                                            <?= htmlspecialchars($category['categoryName']) ?>
+                                        </a>
+                                    </th>
+                                <?php endforeach; ?>
+                            </tr>
+
+                            <?php for ($i = 0; $i < $maxItems; $i++): ?>
+                                <tr>
+                                    <?php foreach ($categories as $category): ?>
+                                        <?php if ($i < count($sortedSubcategories[$category['categoryID']]) && $i < $maxItems) : ?>
+                                            <td>
+                                                <a href="/shop?subcategory=<?= htmlspecialchars($sortedSubcategories[$category['categoryID']][$i]) ?>">
+                                                    <?= htmlspecialchars($sortedSubcategories[$category['categoryID']][$i]) ?>
+                                                </a>
+                                            </td>
+                                        <?php else: ?>
+                                            <td></td>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </tr>
+                            <?php endfor; ?>
+                        </table>
+
+                        <hr>
+
+                        <div class="shop__shop-all">
+                            <span>
+                                Explore All Products
+                            </span>
+                            <a href="/shop" class="shop__shop-all-btn">Shop all</a>
+                        </div>
+                    </div>
+                </div>
+
                 <? if ($userModel->getUserAccessLevel() == 3) : ?>
                     <a href="/panel/admin" class="header-left header__link">panel</a>
                 <? elseif ($userModel->getUserAccessLevel() == 2) : ?>
@@ -53,7 +122,7 @@ if ($userModel->isUserAuthenticated()) {
                 </div>
 
                 <a href="/" class="logo header__link">
-                    <div class="logo-image"></div>Grovemade
+                    Woodmade
                 </a>
                 <? if ($userModel->isUserAuthenticated()) : ?>
                     <span href="#" class="header-right cart-modal-block" id="header-modal-cart-button">my cart</span>
@@ -90,8 +159,8 @@ if ($userModel->isUserAuthenticated()) {
                                     <div class="modal-block-content-cart__product-item">
                                         <a href="/shop/product?id=<?= $product['productID'] ?>">
                                             <div class="modal-block-content-cart__image-wrapper">
-                                                <? if (is_file('files/products/' . $product['image']  . '_m.png')) : ?>
-                                                    <img src="/files/products/<?= $product['image'] . '_m.png'; ?>" class="modal-block-content-cart__image">
+                                                <? if (is_file($productImageDir .  $product['image']  . '_m.png')) : ?>
+                                                    <img src="/<?= $productImageDir . $product['image'] . '_m.png'; ?>" class="modal-block-content-cart__image">
                                                 <? endif; ?>
                                             </div>
                                         </a>
@@ -108,9 +177,11 @@ if ($userModel->isUserAuthenticated()) {
                                                 </form>
                                             </div>
                                             <div class="modal-block-content-cart__overlay-product-lead-time">Ships by <?= date("m/d/Y", mktime(0, 0, 0, date("m"), date('d') + 14, date('Y'))); ?></div>
+                                            <div class="modal-block-content-cart__overlay-product-controls">
+                                                <div class="modal-block-content-cart__product-price">$<?= $product['price'] * $cartProduct['quantity']; ?></div>
+                                                <div class="modal-block-content-cart__product-remove-link"><a href="/shop/product/remove?id=<?= $product['productID'] ?>&action=remove">Remove</a></div>
+                                            </div>
                                         </div>
-                                        <div class="modal-block-content-cart__product-price">$<?= $product['price'] * $cartProduct['quantity']; ?></div>
-                                        <div class="modal-block-content-cart__product-remove-link"><a href="/shop/product/remove?id=<?= $product['productID'] ?>&action=remove">Remove</a></div>
                                     </div>
                                 <? endforeach; ?>
                             </div>
@@ -165,3 +236,16 @@ if ($userModel->isUserAuthenticated()) {
 
     <? endif; ?>
     <?= $Content ?>
+
+    <script type="text/javascript">
+        const shopDropdown = document.getElementById('shop-dropdown-block');
+        const dropdownArea = document.getElementById('shop-dropdown-area');
+
+        dropdownArea.addEventListener('mouseover', () => {
+            shopDropdown.classList.remove('hidden');
+        });
+
+        dropdownArea.addEventListener('mouseleave', () => {
+            shopDropdown.classList.add('hidden');
+        });
+    </script>

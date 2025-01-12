@@ -2,7 +2,9 @@
 
 namespace controller;
 
+use core\Configuration;
 use core\Controller;
+use core\Logger;
 use models\AccountModel;
 use models\ProductModel;
 
@@ -43,11 +45,23 @@ class ShopController extends Controller
             $image_name = $product_id . '_' . uniqid() . '.' . $extension;
 
             if ($save_file === true) {
-                move_uploaded_file($file['tmp_name'], 'files/products/' . $image_name);
+                $location = Configuration::get('paths', 'Paths')['ProductImagesDir'];
+
+                move_uploaded_file($file['tmp_name'], $location . $image_name);
                 $this->productModel->changeMainImage($product_id, $image_name);
                 return true;
             } else {
-                move_uploaded_file($file['tmp_name'], 'files/tmp/' . $image_name);
+                $location = Configuration::get('paths', 'Paths')['TempDir'];
+
+                $result = move_uploaded_file($file['tmp_name'], $location . $image_name);
+                Logger::log("$location", "INFO");
+                if (!$result) {
+                    Logger::log("Could not move uploaded file ($image_name) to temporary storage", "WARNING");
+                    return false;
+                } else {
+                    Logger::log("Moved uploaded file ($image_name) to temporary storage", "INFO");
+                }
+
                 $path = $this->productModel->createTmpImage($product_id, $image_name);
                 return $path;
             }
@@ -78,7 +92,7 @@ class ShopController extends Controller
         } else
             $products = $this->productModel->getProducts(null, ['categoryID' => 'ASC']);
 
-        return $this->render('index', ['products' => $products], ['namePage' => 'Shop Grovemade&reg;']);
+        return $this->render('index', ['products' => $products], ['namePage' => 'Shop Woodmade&reg;']);
     }
 
     /**
@@ -88,7 +102,7 @@ class ShopController extends Controller
     {
         $id = $_GET['id'];
         $product = $this->productModel->getProductById($id);
-        $title = $product['productShortName'] . ' | Grovemade&reg;';
+        $title = $product['productShortName'] . ' | Woodmade&reg;';
 
         if (isset($_GET['action']) && $_GET['action'] == 'add') {
 
@@ -111,6 +125,7 @@ class ShopController extends Controller
                     'messageClass' => 'error',
                     'model' => $product
                 ];
+                Logger::log('Error while adding product to cart: ' . $message, "ERROR");
                 return $this->render('product', $params, ['namePage' => $title]);
             }
         } else if (isset($_GET['action']) && $_GET['action'] == 'remove') {
@@ -164,7 +179,7 @@ class ShopController extends Controller
                     'model' => $_POST,
                     'productModel' => $product,
                 ];
-                return $this->render('preview', $params, ['namePage' => "Live Preview | Grovemade&reg;"]);
+                return $this->render('preview', $params, ['namePage' => "Live Preview | Woodmade&reg;"]);
             } else {
                 $result = $this->productModel->AddProduct($_POST);
 
@@ -183,11 +198,11 @@ class ShopController extends Controller
                         'warningsCount' => count($result['message']),
                         'messageClass' => 'error'
                     ];
-                    return $this->render('add', $params, ['namePage' => 'Add Product — Grovemade&reg;']);
+                    return $this->render('add', $params, ['namePage' => 'Add Product — Woodmade&reg;']);
                 }
             }
         } else
-            return $this->render('add', null, ['namePage' => 'Add Product — Grovemade&reg;']);
+            return $this->render('add', null, ['namePage' => 'Add Product — Woodmade&reg;']);
     }
 
     /**
@@ -197,7 +212,7 @@ class ShopController extends Controller
     {
         $id = $_GET['id'];
         $product = $this->productModel->getProductById($id);
-        $title = "Editing - {$product['productShortName']} | Grovemade&reg;";
+        $title = "Editing - {$product['productShortName']} | Woodmade&reg;";
         if (empty($this->user) && $this->userModel->getUserAccessLevel() != '3' && $product['sellerID'] != $this->userModel->getCurrentUser()['UserID']) {
             $forbidden = '403 Forbidden';
             return $this->render('forbidden', null, ['namePage' => $forbidden]);
@@ -218,7 +233,7 @@ class ShopController extends Controller
                     'model' => $_POST,
                     'productModel' => $product,
                 ];
-                return $this->render('preview', $params, ['namePage' => "Live Preview | Grovemade&reg;"]);
+                return $this->render('preview', $params, ['namePage' => "Live Preview | Woodmade&reg;"]);
             } else {
                 $result = $this->productModel->UpdateProduct($_POST, $id);
                 if ($result === true) {
@@ -257,7 +272,7 @@ class ShopController extends Controller
         if (isset($_GET['confirm']) && $_GET['confirm'] == 'true') {
             $this->productModel->DeleteProduct($id);
         }
-        
+
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }

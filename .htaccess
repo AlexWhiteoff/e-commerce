@@ -1,7 +1,14 @@
+# Увімкнення перезапису URL
 RewriteEngine On
 
+# Перенаправлення на HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Перевірка, чи файл або директорія існує
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?path=$1 [NC,L,QSA]
 
-ErrorDocument 404 http://grovemade/404
+# Налаштування для сторінки 404
+ErrorDocument 404 /404.php

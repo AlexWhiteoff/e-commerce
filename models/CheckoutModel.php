@@ -2,6 +2,7 @@
 
 namespace models;
 
+use core\Configuration;
 use core\Model;
 use core\Core;
 use core\Utils;
@@ -109,7 +110,7 @@ class CheckoutModel extends Model
             $order['datetime'] = date('Y-m-d H:i:s');
 
             $order['price'] = floatval($_SESSION['__cart']['product' . $cartProduct['productID']]);
-            Core::getInstance()->getDataBase()->insert('order', $order);
+            Core::getInstance()->getDataBase()->insert('orders', $order);
         }
         return true;
     }
@@ -133,8 +134,8 @@ class CheckoutModel extends Model
 
     public function discountCheck($discount)
     {
-        global $config;
-        $discountValue = $config['DiscountCode'][$discount];
+        $discounts = Configuration::get("promocodes", 'DiscountCode');
+        $discountValue = $discounts[$discount];
 
         if (empty($discountValue))
             return 0;

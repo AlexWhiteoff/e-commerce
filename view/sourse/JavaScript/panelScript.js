@@ -1,122 +1,114 @@
-//total sales chart
+// Total sales chart
 if (document.body.contains(document.querySelector(".overview"))) {
-	const TotalSalesCanvas = document.getElementById("total-sales-chart");
+    const TotalSalesCanvas = document.getElementById("total-sales-chart");
 
-	const Months = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	];
+    const formatDate = (date) => {
+        const day = date.getDate();
+        const month = date.toLocaleString("default", { month: "short" });
+        return `${month} ${day}`;
+    };
 
-	const date = new Date();
-	const prevMonth = date.getMonth() - 1;
-	const daysInPrevMonth =
-		32 - new Date(date.getFullYear(), date.getMonth() - 1, 32).getDate();
+    const today = new Date(); // Поточна дата
+    const startDate = new Date(); // Дата 28 днів тому
+    startDate.setDate(today.getDate() - 27);
 
-	const Days = [...Array(daysInPrevMonth).keys()].map((x) => ++x);
+    // Генерація міток для графіка
+    const labels = [];
+    const daysCount = 28;
 
-	const labels = [];
+    for (let i = 0; i < daysCount; i++) {
+        const date = new Date(startDate);
+        date.setDate(startDate.getDate() + i);
+        labels.push(formatDate(date));
+    }
 
-	Days.forEach((day) => {
-		labels.push(Months[prevMonth] + " " + day);
-	});
+    // Налаштування даних для графіка
+    const TotalSalesChart_data = {
+        labels: labels,
+        datasets: [
+            {
+                label: "Total sales per day",
+                data: totalSalesPhpArray, // Данні з PHP
+                fill: true,
+                backgroundColor: "rgba(154, 168, 177, 0.1)",
+                borderColor: "rgb(130, 179, 126)",
+                tension: 0.1,
+            },
+        ],
+    };
 
-	const TotalSalesChart_data = {
-		labels: labels,
-		datasets: [
-			{
-				label: " Total sales per day",
-				data: totalSalesPhpArray,
-				fill: true,
-				backgroundColor: "rgb(154,168,177, 0.1)",
-				borderColor: "rgb(154,168,177)",
-				tension: 0.1,
-			},
-		],
-	};
-
-	const totalSalesChart = new Chart(TotalSalesCanvas, {
-		type: "line",
-		data: TotalSalesChart_data,
-		options: {
-			interaction: {
-				intersect: false,
-				mode: "index",
-			},
-			plugins: {
-				legend: { display: false },
-			},
-			scales: {
-				y: {
-					display: false,
-					suggestedMin: 0,
-					suggestedMax: Math.max.apply(null, totalSalesPhpArray) + 2,
-				},
-				x: {
-					ticks: { display: false },
-				},
-			},
-		},
-	});
+    // Ініціалізація графіка
+    const totalSalesChart = new Chart(TotalSalesCanvas, {
+        type: "line",
+        data: TotalSalesChart_data,
+        options: {
+            interaction: {
+                intersect: false,
+                mode: "index",
+            },
+            plugins: {
+                legend: { display: false },
+            },
+            scales: {
+                y: {
+                    display: true,
+                    suggestedMin: 0,
+                    suggestedMax: Math.max(...totalSalesPhpArray) + 2,
+                },
+                x: {
+                    ticks: { display: false }, // Показувати дати на осі X
+                },
+            },
+        },
+    });
 }
 
 // quantity of sales by categories.
 if (document.body.contains(document.querySelector(".product-section"))) {
-	const productCanvas = document.getElementById("product-chart");
+    const productCanvas = document.getElementById("product-chart");
 
-	const productChart_data = {
-		labels: categoryList,
-		datasets: [
-			{
-				data: quantitySalesByCategories,
-				backgroundColor: chartBackgroundColor,
-				hoverOffset: 4,
-				cutout: "80%",
-			},
-		],
-	};
+    const productChart_data = {
+        labels: categoryList,
+        datasets: [
+            {
+                data: quantitySalesByCategories,
+                backgroundColor: chartBackgroundColor,
+                hoverOffset: 4,
+                cutout: "80%",
+            },
+        ],
+    };
 
-	const productChart = new Chart(productCanvas, {
-		type: "doughnut",
-		data: productChart_data,
-		options: {
-			maintainAspectRatio: false,
-			plugins: {
-				legend: {
-					display: false,
-				},
-			},
-		},
-	});
+    const productChart = new Chart(productCanvas, {
+        type: "doughnut",
+        data: productChart_data,
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+            },
+        },
+    });
 }
 
 // editing error snackbar
 if (document.body.contains(document.querySelector(".snackbar"))) {
-	const snackbarInnerText = document.querySelector(".snackbar__text");
-	const snackbarDropDownBtn = document.getElementById("dropdown-btn");
+    const snackbarInnerText = document.querySelector(".snackbar__text");
+    const snackbarDropDownBtn = document.getElementById("dropdown-btn");
 
-	snackbarDropDownBtn.addEventListener("click", () => {
-		const dropdownArrow = document.getElementById(
-			"snackbar-dropdown-arrow"
-		);
+    snackbarDropDownBtn.addEventListener("click", () => {
+        const dropdownArrow = document.getElementById("snackbar-dropdown-arrow");
 
-		if (dropdownArrow.classList.contains("fa-chevron-right")) {
-			snackbarInnerText.innerHTML = messageText;
-			dropdownArrow.classList.remove("fa-chevron-right");
-			dropdownArrow.classList.add("fa-chevron-down");
-		} else {
-			snackbarInnerText.innerHTML = "";
-			dropdownArrow.classList.remove("fa-chevron-down");
-			dropdownArrow.classList.add("fa-chevron-right");
-		}
-	});
+        if (dropdownArrow.classList.contains("fa-chevron-right")) {
+            snackbarInnerText.innerHTML = messageText;
+            dropdownArrow.classList.remove("fa-chevron-right");
+            dropdownArrow.classList.add("fa-chevron-down");
+        } else {
+            snackbarInnerText.innerHTML = "";
+            dropdownArrow.classList.remove("fa-chevron-down");
+            dropdownArrow.classList.add("fa-chevron-right");
+        }
+    });
 }

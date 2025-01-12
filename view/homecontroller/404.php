@@ -1,17 +1,16 @@
+<?php
+http_response_code(404);
+?>
+
 <main id="main">
     <section class="error">
-        <h1>404 - This Page No Longer Exists</h1>
-        <p>We're sorry for the inconvenience, but this page no longer exists.</p>
-        <a href="/">Continue browsing</a>
-    </section>
-    
-    <section class="desing-inspiring">
-        <div class="desing-inspiring__innerText">
-            <div class="logo-image"></div>
-            <h2 class="desing-inspiring__title">Design Inspires</h2>
-            <div class="desing-inspiring__subtitle">
-                Build your dream workspace, so you can get your best work done.
-            </div>
+        <div class="error__image-wrapper">
+            <img src="/assets/images/404.png" alt="Error 404" class="error__image" draggable="false">
+        </div>
+        <div class="error__text-wrapper">
+            <h1><span>Page Not Found</span><br />Lost in the Woods?</h1>
+            <p>It seems the path you’re following <span>doesn’t exist</span>.<br />But don’t worry, you can <span>find your way back</span> to explore our site!</p>
+            <a href="/">Return to the Trail</a>
         </div>
     </section>
 </main>

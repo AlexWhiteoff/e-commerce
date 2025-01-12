@@ -1,10 +1,13 @@
 <?php
 
+use core\Configuration;
 use models\ProductModel;
 
 $productModel = new ProductModel();
 $categories = $productModel->getCategories();
 $subcategories = $productModel->getSubcategories();
+
+$productImageDir = Configuration::get('paths', 'paths')['ProductImagesDir'];
 
 $model['descriptionText'] = str_replace('<br>', PHP_EOL, $model['descriptionText']);
 $model['dimensions'] = str_replace('<br>', PHP_EOL, $model['dimensions']);
@@ -78,8 +81,8 @@ $model['material'] = str_replace('<br>', PHP_EOL, $model['material']);
                     <td>
                         <div class="image">
                             <div class="image__wrapper">
-                                <? if (is_file('files/products/' . $model['image']  . '_m.png')) : ?>
-                                    <img src="/files/products/<?= $model['image'] . '_m.png'; ?>" class="image__img">
+                                <? if (is_file($productImageDir . $model['image']  . '_m.png')) : ?>
+                                    <img src="<?= $productImageDir . $model['image'] . '_m.png'; ?>" class="image__img">
                                 <? endif; ?>
                             </div>
                         </div>
@@ -159,18 +162,10 @@ $model['material'] = str_replace('<br>', PHP_EOL, $model['material']);
     editorClasses.forEach(editorClass => {
         BalloonEditor
             .create(document.querySelector(`.${editorClass}`), {
-
                 licenseKey: '',
-
-
-
             })
             .then(editor => {
                 window.editor = editor;
-
-
-
-
             })
             .catch(error => {
                 console.error('Oops, something went wrong!');

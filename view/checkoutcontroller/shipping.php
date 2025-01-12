@@ -1,16 +1,17 @@
 <?php
 
+use core\Configuration;
 use models\ProductModel;
 
 $productModel = new ProductModel;
-
+$productImageDir = Configuration::get('paths', 'Paths')['ProductImagesDirRelative'];
 ?>
 
 <main id="main">
     <article id="article">
         <section class="header">
             <a href="/" class="logo header__link">
-                <div class="logo-image"></div>Grovemade
+                <div class="logo-image"></div>Woodmade
             </a>
             <div id="nav" class="header__navigation">
                 <a href="/">Cart</a>
@@ -48,19 +49,15 @@ $productModel = new ProductModel;
                     <h2 class="form-section__shipping-block--title">Shipping method</h2>
                     <fieldset class="content-box">
                         <div class="form-section__shipping-block--block">
-                            <label for="radio_parcel_shipping-method">
-                                <div class="form-section__shipping-block--check">
-                                    <input type="radio" name="shippingMethod" id="radio_parcel_shipping-method" checked value="Small parcel">
-                                </div>
+                            <input type="radio" name="shippingMethod" id="radio_parcel_shipping-method" class="radio form-section__shipping-block--check" checked value="Small parcel">
+                            <label for="radio_parcel_shipping-method" class="radio-label form-section__shipping-block--label">
                                 <span class="form-section__shipping-block--name">Small parcel local post (transit time 30-40 days, may be extended due to COVID)</span>
                                 <div class="form-section__shipping-block--price" id='small-parcel-price' data-price="20">$20.00</div>
                             </label>
                         </div>
                         <div class="form-section__shipping-block--block">
-                            <label for="radio_ups_shipping-method">
-                                <div class="form-section__shipping-block--check">
-                                    <input type="radio" name="shippingMethod" id="radio_ups_shipping-method" value="UPS International">
-                                </div>
+                            <input type="radio" name="shippingMethod" id="radio_ups_shipping-method" class="radio form-section__shipping-block--check" value="UPS International">
+                            <label for="radio_ups_shipping-method" class="radio-label form-section__shipping-block--label">
                                 <span class="form-section__shipping-block--name">UPS International (Transit time 7-14 days)</span>
                                 <div class="form-section__shipping-block--price" id='ups-international-price' data-price="35">$35.00</div>
                             </label>
@@ -89,8 +86,8 @@ $productModel = new ProductModel;
 
                     <div class="order-summary__section--product-container">
                         <div class="order-summary__section--product-image-wrapper">
-                            <? if (is_file('files/products/' . $product['image']  . '_s.png')) : ?>
-                                <img src="/files/products/<?= $product['image'] . '_s.png'; ?>" class="order-summary__section--product-image">
+                            <? if (is_file($productImageDir . $product['image']  . '_s.png')) : ?>
+                                <img src="/<?= $productImageDir . $product['image'] . '_s.png'; ?>" class="order-summary__section--product-image" alt="Product thumbnail">
                             <? endif; ?>
                         </div>
                         <div class="order-summary__section--product-quantity"><?= $cartProduct['quantity']; ?></div>
@@ -141,13 +138,13 @@ $productModel = new ProductModel;
     radio_parcel_shipping.addEventListener('change', () => {
         const currentPrice = +document.getElementById('small-parcel-price').getAttribute('data-price');
         const shippingPrice = document.getElementById("shipping-value");
-        
+
         if (radio_parcel_shipping.checked === true) {
             <? if (count($moduleCart) === 1) : ?>
                 shippingPrice.innerHTML = "$" + Number(currentPrice).toFixed(2);
                 total.innerHTML = "$" + (Number(<?= $subtotal; ?>) + Number(currentPrice) - Number(<?= $discountPrice; ?>)).toFixed(2);
             <? else : ?>
-                shippingPrice.innerHTML = "$" + currentPrice.toFixed(2) + ' <i class="fas fa-times" style="font-size: 11px"></i> ' + "<?= count($moduleCart) ?>" + " = $" + Number(currentPrice * <?= count($moduleCart) ?>).toFixed(2) ;
+                shippingPrice.innerHTML = "$" + currentPrice.toFixed(2) + ' <i class="fas fa-times" style="font-size: 11px"></i> ' + "<?= count($moduleCart) ?>" + " = $" + Number(currentPrice * <?= count($moduleCart) ?>).toFixed(2);
                 total.innerHTML = "$" + (Number(<?= $subtotal; ?>) - Number(<?= $discountPrice; ?>) + Number(currentPrice * <?= count($moduleCart) ?>)).toFixed(2);
             <? endif; ?>
         }
@@ -162,7 +159,7 @@ $productModel = new ProductModel;
                 shippingPrice.innerHTML = "$" + Number(currentPrice).toFixed(2);
                 total.innerHTML = "$" + (Number(<?= $subtotal; ?>) + Number(currentPrice) - Number(<?= $discountPrice; ?>)).toFixed(2);
             <? else : ?>
-                shippingPrice.innerHTML = "$" + currentPrice.toFixed(2) + ' <i class="fas fa-times" style="font-size: 11px"></i> ' + "<?= count($moduleCart) ?>" + " = $" + Number(currentPrice * <?= count($moduleCart) ?>).toFixed(2) ;
+                shippingPrice.innerHTML = "$" + currentPrice.toFixed(2) + ' <i class="fas fa-times" style="font-size: 11px"></i> ' + "<?= count($moduleCart) ?>" + " = $" + Number(currentPrice * <?= count($moduleCart) ?>).toFixed(2);
                 total.innerHTML = "$" + (Number(<?= $subtotal; ?>) - Number(<?= $discountPrice; ?>) + Number(currentPrice * <?= count($moduleCart) ?>)).toFixed(2);
             <? endif; ?>
         }

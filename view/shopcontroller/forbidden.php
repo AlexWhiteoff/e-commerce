@@ -1,17 +1,12 @@
 <main id="main">
     <section class="error">
-        <h1>403 - No access to this page</h1>
-        <p>We're sorry, but you do not have access to this page</p>
-        <a href="/">Continue browsing</a>
-    </section>
-
-    <section class="desing-inspiring">
-        <div class="desing-inspiring__innerText">
-            <div class="logo-image"></div>
-            <h2 class="desing-inspiring__title">Design Inspires</h2>
-            <div class="desing-inspiring__subtitle">
-                Build your dream workspace, so you can get your best work done.
-            </div>
+        <div class="error__image-wrapper">
+            <img src="/assets/images/403.png" alt="Error 403" class="error__image" draggable="false">
+        </div>
+        <div class="error__text-wrapper">
+            <h1><span>Access Denied</span><br />Woods Are Off-Limits!</h1>
+            <p>Looks like you’re trying to wander into <span>restricted territory</span>.<br />Don’t worry, you can <span>head back and explore</span> the rest of the site!</p>
+            <a href="/">Return to Safety</a>
         </div>
     </section>
 </main>

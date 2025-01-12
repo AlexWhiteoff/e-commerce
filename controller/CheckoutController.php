@@ -44,7 +44,7 @@ class CheckoutController extends Controller
                     'moduleCart' => $cart,
                     'discount' => $_SESSION['__cart']['discount']
                 ];
-                return $this->render('index', $params, ['namePage' => 'Grovemade&reg; — Checkout']);
+                return $this->render('index', $params, ['namePage' => 'Woodmade&reg; — Checkout']);
             } else if ($_GET['step'] === 'shipping_method') {
                 if ($this->isMethodPost()) {
                     $result = $this->checkoutModel->ValidateInformation($_POST);
@@ -57,7 +57,7 @@ class CheckoutController extends Controller
                             'warningsCount' => count($result),
                             'messageClass' => 'error'
                         ];
-                        return $this->render('index', $params, ['namePage' => 'Grovemade&reg; — Checkout']);
+                        return $this->render('index', $params, ['namePage' => 'Woodmade&reg; — Checkout']);
                     }
                     $_SESSION['userInfo'] = $_POST;
                 }
@@ -94,7 +94,7 @@ class CheckoutController extends Controller
 
                             unset($_SESSION['userInfo']);
                             unset($_SESSION['__cart']);
-                            return $this->render('success', null, ['namePage' => 'Grovemade&reg; — Checkout']);
+                            return $this->render('success', null, ['namePage' => 'Woodmade&reg; — Checkout']);
                         } else {
                             unset($_SESSION['userInfo']);
                             unset($_SESSION['__cart']);
@@ -105,7 +105,7 @@ class CheckoutController extends Controller
                                 'moduleUser' => $user,
                                 'moduleCart' => $cart
                             ];
-                            return $this->render('index', $params, ['namePage' => 'Grovemade&reg; — Checkout']);
+                            return $this->render('index', $params, ['namePage' => 'Woodmade&reg; — Checkout']);
                         }
                         return $this->render('success', null, ['namePage' => 'Error']);
                     } else {
@@ -125,7 +125,7 @@ class CheckoutController extends Controller
                     'moduleUser' => $user,
                     'moduleCart' => $cart
                 ];
-                return $this->render('index', $params, ['namePage' => 'Grovemade&reg; — Checkout']);
+                return $this->render('index', $params, ['namePage' => 'Woodmade&reg; — Checkout']);
             }
         }
     }
@@ -140,7 +140,7 @@ class CheckoutController extends Controller
             'moduleCart' => $cart,
             'discount' => $_SESSION['__cart']['discount']
         ];
-        return $this->render('shipping', $params, ['namePage' => 'Grovemade&reg; — Checkout']);
+        return $this->render('shipping', $params, ['namePage' => 'Woodmade&reg; — Checkout']);
     }
 
     public function actionPayment()
@@ -154,6 +154,6 @@ class CheckoutController extends Controller
             'discount' => $_SESSION['__cart']['discount'],
             'shipping' => $_SESSION['__cart']['shippingPrice']
         ];
-        return $this->render('payment', $params, ['namePage' => 'Grovemade&reg; — Checkout']);
+        return $this->render('payment', $params, ['namePage' => 'Woodmade&reg; — Checkout']);
     }
 }

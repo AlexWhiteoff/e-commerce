@@ -1,5 +1,6 @@
 <?php
 
+use core\Configuration;
 use models\ProductModel;
 
 $productModel = new ProductModel();
@@ -28,6 +29,8 @@ else if ($_GET['object'] === 'order') {
     $product = $productModel->getProductById($model['productID']);
 }
 
+$productImageDir = Configuration::get('paths', 'Paths')['ProductImagesDirRelative'];
+
 ?>
 
 <main id="main">
@@ -35,21 +38,18 @@ else if ($_GET['object'] === 'order') {
         <h1><?= ucfirst($_GET['object']); ?> Editing</h1>
 
         <? if ($_GET['object'] === 'order') : ?>
-            <a href="/shop/product?id=<?= $product["productID"]; ?>" target="_blank">
-                <div class="product">
-                    <div class="product-image">
-                        <div class="image-wrapper">
-                            <? if (is_file('files/products/' . $product['image']  . '_s.png')) : ?>
-                                <img src="/files/products/<?= $product['image'] . '_s.png'; ?>" alt="<?= $products[$i]["productShortName"]; ?>" class="image" />
-                            <? endif; ?>
-                        </div>
+            <div class="product">
+                <a href="/shop/product?id=<?= $product["productID"]; ?>" target="_blank">
+                    <div class="product-image-wrapper">
+                        <? if (is_file($productImageDir . $product['image']  . '_s.png')) : ?>
+                            <img src="\<?= $productImageDir . $product['image'] . '_s.png'; ?>" alt="<?= $products[$i]["productShortName"]; ?>" class="product-image" />
+                        <? endif; ?>
                     </div>
                     <div class="product-body">
                         <div class="product-title">
                             <?=
                             ($product["productName"] !== '') ? $product["productName"] : "'<i>NULL</i>'";
                             ?>
-
                         </div>
                         <? if (!empty($product["productMaterial"])) : ?>
                             <div class="product-subtitle">
@@ -73,71 +73,74 @@ else if ($_GET['object'] === 'order') {
         <? endif; ?>
 
         <form method="post">
-            <table class='edit-form table'>
-                <? foreach ($model as $key => $value) : ?>
-                    <? if (!in_array($key, $exceptionRow)) : ?>
-                        <? if (!is_int($key)) : ?>
-                            <tr>
-                                <td>
-                                    <label for="input<?= ucfirst($key); ?>">
-                                        <?= ucfirst($key); ?>
-                                    </label>
-                                </td>
-                                <td>
-                                    <? if ($key === 'email') : ?>
+            <div class="form-wrapper">
+                <table class='edit-form table'>
+                    <? foreach ($model as $key => $value) : ?>
+                        <? if (!in_array($key, $exceptionRow)) : ?>
+                            <? if (!is_int($key)) : ?>
+                                <tr>
+                                    <td>
+                                        <label for="input<?= ucfirst($key); ?>">
+                                            <?= ucfirst($key); ?>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <? if ($key === 'email') : ?>
 
-                                        <input type="email" value="<?= $value; ?>" name="<?= $key; ?>" id="input<?= ucfirst($key); ?>" class="input-text">
+                                            <input type="email" value="<?= $value; ?>" name="<?= $key; ?>" id="input<?= ucfirst($key); ?>" class="input-text">
 
-                                    <? elseif (stristr($key, 'date') && $key !== 'birthdayDate') : ?>
+                                        <? elseif (stristr($key, 'date') && $key !== 'birthdayDate') : ?>
 
-                                        <?
-                                        $datetime = strtotime($value);
-                                        $date = date('Y-m-d', $datetime);
-                                        $time = date('H:i:s', $datetime);
-                                        ?>
+                                            <?
+                                            $datetime = strtotime($value);
+                                            $date = date('Y-m-d', $datetime);
+                                            $time = date('H:i:s', $datetime);
+                                            ?>
+                                            <div class="input-datetime">
+                                                <input type="date" value="<?= $date; ?>" name="date" class="input-date" max="<?= date('Y-m-d') ?>">
+                                                <input type="time" value="<?= $time; ?>" name="time" step="1" class="input-time">
+                                            </div>
 
-                                        <input type="date" value="<?= $date; ?>" name="date" class="input-date" max="<?= date('Y-m-d') ?>">
-                                        <input type="time" value="<?= $time; ?>" name="time" step="1" class="input-time">
+                                        <? elseif ($key === 'birthdayDate') : ?>
 
-                                    <? elseif ($key === 'birthdayDate') : ?>
+                                            <input type="date" max="<?= date('Y-m-d') ?>" min="<?= date('Y-m-d', strtotime('1900-01-01')) ?>" value="<?= $value; ?>" name="<?= $key; ?>" id="input<?= ucfirst($key); ?>" class="input-date">
 
-                                        <input type="date" max="<?= date('Y-m-d') ?>" min="<?= date('Y-m-d', strtotime('1900-01-01')) ?>" value="<?= $value; ?>" name="<?= $key; ?>" id="input<?= ucfirst($key); ?>" class="input-date">
+                                        <? elseif ($key === 'access' || $key === 'status') : ?>
 
-                                    <? elseif ($key === 'access' || $key === 'status') : ?>
+                                            <select name="<?= $key ?>" class="input-select" id="input<?= ucfirst($key); ?>">
+                                                <? foreach ($selectOptions as $selectKey => $selectValue) : ?>
 
-                                        <select name="<?= $key ?>" class="input-select" id="input<?= ucfirst($key); ?>">
-                                            <? foreach ($selectOptions as $selectKey => $selectValue) : ?>
+                                                    <option value="<?= $selectKey ?>" <? echo ($selectKey == $model['access'] || $selectKey == $model['status']) ? 'selected' : '' ?>>
+                                                        <?= $selectValue ?>
+                                                    </option>
 
-                                                <option value="<?= $selectKey ?>" <? echo ($selectKey == $model['access'] || $selectKey == $model['status']) ? 'selected' : '' ?>>
-                                                    <?= $selectValue ?>
-                                                </option>
+                                                <? endforeach; ?>
+                                            </select>
+                                        <? elseif ($key === 'gender') : ?>
 
-                                            <? endforeach; ?>
-                                        </select>
-                                    <? elseif ($key === 'gender') : ?>
+                                            <select name="gender" id="gender" id="input<?= ucfirst($key); ?>" class="input-select">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
 
-                                        <select name="gender" id="gender" id="input<?= ucfirst($key); ?>" class="input-select">
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
-
-                                    <? else : ?>
-                                        <input type="text" value="<?= $value; ?>" name="<?= $key; ?>" id="input<?= ucfirst($key); ?>" class="input-text">
-                                    <? endif; ?>
-                                </td>
-                            </tr>
+                                        <? else : ?>
+                                            <input type="text" value="<?= $value; ?>" name="<?= $key; ?>" id="input<?= ucfirst($key); ?>" class="input-text">
+                                        <? endif; ?>
+                                    </td>
+                                </tr>
+                            <? endif; ?>
                         <? endif; ?>
-                    <? endif; ?>
-                <? endforeach; ?>
-                <tr class="edit-form__controls">
-                    <td>
-                        <a href="/panel/">Cancel</a>
-                    </td>
-                    <td>
-                        <button type="submit" class="edit-section__update-button">Update</button>
-                    </td>
-                </tr>
-            </table>
+                    <? endforeach; ?>
+                    <tr class="edit-form__controls">
+                        <td>
+                            <a href="/panel/">Cancel</a>
+                        </td>
+                        <td>
+                            <button type="submit" class="edit-section__update-button">Update</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </form>
     </section>
 </main>

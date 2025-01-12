@@ -21,7 +21,7 @@
 			<span class="account-login__submit-span"></span>
 		</form>
 		<fieldset class="account-login__block">
-			<legend class="account-login__legendText">New to Grovemade?</legend>
+			<legend class="account-login__legendText">New to Woodmade?</legend>
 			<a class="account-login__sign-button" href="/account/registration">Create your Account</a>
 			<span class="account-login__sign-span"></span>
 		</fieldset>

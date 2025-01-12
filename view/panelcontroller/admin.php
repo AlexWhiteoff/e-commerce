@@ -1,10 +1,12 @@
 <?php
 
+use core\Configuration;
 use models\AccountModel;
 use models\ProductModel;
 
 $userModel = new AccountModel();
 $productModel = new ProductModel();
+$productImageDir = Configuration::get('paths', 'Paths')['ProductImagesDirRelative'];
 
 $users = $userModel->getUsers(null);
 $categories = $productModel->getCategories();
@@ -46,22 +48,23 @@ usort($orderList_sortedAdded_DESC, "orderSortByAdded_DESC");
 
 // --------------------------------------------------------------------------------------
 // Overview chart values
-$date = new \DateTime('-1 month');
+$endDate = new \DateTime('today');
+$startDate = (clone $endDate)->modify('-27 days');
 
-$month = $date->format('m');
-$year = $date->format('Y');
+$endDate->setTime(23, 59, 59);
 
-$daysCount = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-
-$totalSalesPerDay = array_fill(0, $daysCount, 0);
-
+$totalSalesPerDay = array_fill(0, 28, 0);
 for ($i = 0; $i < count($orderList_sortedAdded_ASC); $i++) {
-    if (date('m', strtotime($orderList_sortedAdded_ASC[$i]['datetime'])) === $month) {
-        $day = date('j', strtotime($orderList_sortedAdded_ASC[$i]['datetime']));
+    $orderDate = new \DateTime($orderList_sortedAdded_ASC[$i]['datetime']);
 
-        $totalSalesPerDay[$day - 1] += $orderList_sortedAdded_ASC[$i]['quantity'];
+    if ($orderDate >= $startDate && $orderDate <= $endDate) {
+        $dayIndex = $orderDate->diff($startDate)->days;
+        $totalSalesPerDay[$dayIndex] += $orderList_sortedAdded_ASC[$i]['quantity'];
     }
 }
+
+$startDateFormatted = $startDate->format('jS M');
+$endDateFormatted = $endDate->format('jS M');
 
 
 $totalsales = 0;
@@ -167,13 +170,13 @@ foreach ($orderList as $order) {
                     </canvas>
                     <div class="xAxis-label">
                         <div class="xAxis-label left">
-                            1st <?= $date->format('M'); ?>
+                            <?= $startDateFormatted; ?>
                         </div>
                         <div class="xAxis-label center">
-                            <?= ceil($daysCount / 2) . 'th ' . $date->format('M'); ?>
+                            <?= $startDate->modify('+13 days')->format('jS M'); ?>
                         </div>
                         <div class="xAxis-label right">
-                            <?= $daysCount . 'th ' . $date->format('M'); ?>
+                            <?= $endDateFormatted; ?>
                         </div>
                     </div>
                 </div>
@@ -354,6 +357,7 @@ foreach ($orderList as $order) {
         <?
         $salesByCategiries = array_fill(0, count($categories), 0);
         $categoryList = [];
+
         for ($i = 0; $i < count($categories); $i++) {
             $categoryList[$i] = $categories[$i]['categoryName'];
             foreach ($products as $product) {
@@ -364,15 +368,18 @@ foreach ($orderList as $order) {
         }
 
         $percentOfSales = [];
+
         for ($i = 0; $i < count($salesByCategiries); $i++) {
             $percentOfSales[$i] = round($salesByCategiries[$i] * 100 / array_sum($salesByCategiries), 0);
         }
+
         $chartBackgroundColor = [
-            '#9AA8B1',
-            '#89B5AF',
-            '#96C7C1',
-            '#DED9C4',
-            '#D0CAB2',
+            '#00a878',
+            '#6e5b40',
+            '#00d2d3',
+            '#f4a261',
+            '#264653',
+            '#fafafa',
         ];
         ?>
 
@@ -415,8 +422,8 @@ foreach ($orderList as $order) {
                                         <td>
                                             <a href="/shop/product?id=<?= $products[$i]["productID"]; ?>">
                                                 <div class="image-wrapper">
-                                                    <? if (is_file('files/products/' . $products[$i]['image']  . '_s.png')) : ?>
-                                                        <img src="/files/products/<?= $products[$i]['image'] . '_s.png'; ?>" alt="<?= $products[$i]["productShortName"]; ?>" class="image" />
+                                                    <? if (is_file($productImageDir . $products[$i]['image']  . '_s.png')) : ?>
+                                                        <img src="\<?= $productImageDir . $products[$i]['image'] . '_s.png'; ?>" alt="<?= $products[$i]["productShortName"]; ?>" class="image" />
                                                     <? endif; ?>
                                                 </div>
                                             </a>
@@ -579,8 +586,8 @@ foreach ($orderList as $order) {
                                 <td>
                                     <a href="/shop/product?id=<?= $productsByID[$orderList[$i]['productID']]["productID"]; ?>">
                                         <div class="image-wrapper">
-                                            <? if (is_file('files/products/' . $productsByID[$orderList[$i]['productID']]['image']  . '_s.png')) : ?>
-                                                <img src="/files/products/<?= $productsByID[$orderList[$i]['productID']]['image'] . '_s.png'; ?>" alt="<?= $products[$i]["productShortName"]; ?>" class="image" />
+                                            <? if (is_file($productImageDir . $productsByID[$orderList[$i]['productID']]['image']  . '_s.png')) : ?>
+                                                <img src="\<?= $productImageDir . $productsByID[$orderList[$i]['productID']]['image'] . '_s.png'; ?>" alt="<?= $products[$i]["productShortName"]; ?>" class="image" />
                                             <? endif; ?>
                                         </div>
                                     </a>

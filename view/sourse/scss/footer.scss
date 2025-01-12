@@ -1,14 +1,15 @@
-@import 'variable';
-@import 'mixins';
+@import "variable";
+@import "mixins";
 
 /* FOOTER */
 footer {
-    position: relative;
-    top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 100px;
     background-color: $footerColor;
-    padding-right: 100px;
-    padding-left: 100px;
-    z-index: 2;
+    padding-inline: 50px;
+    height: 100%;
 
     .go-up-button {
         display: flex;
@@ -20,136 +21,79 @@ footer {
         font-weight: 800;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: $white;
-        background-color: $black;
+        color: $textThirdColor;
+        background-color: $accentLightenColor;
         text-align: center;
         font-size: 15px;
-        transition: all .3s ease 0s;
+        border-radius: 0 0 15px 15px;
+        transition: all 0.2s linear;
         cursor: pointer;
 
         &:hover {
-            background-color: #444;
+            background-color: $accentDarkenColor;
         }
     }
-    
+
     .footer-links {
-        padding-top: 77px;
         position: relative;
         display: flex;
         flex-direction: column;
-        height: 100%;
-        float: left;
-        
-        a {
-            font-size: 22px;
-            font-weight: 400;
-            margin-bottom: 16px;
-            text-decoration: none;
-            color: $black;
-        }
-    }
+        justify-content: center;
+        align-content: space-between;
+        gap: 2rem;
+        margin-bottom: 20px;
 
-    .newsletter-signup {
-        padding-top: 77px;
-        position: relative;
-        width: 350px;
-        height: 100%;
-        float: left;
-        margin-left: 25px;
+        &__nav {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 1rem;
 
-        &__title {
-            font-size: 22px;
-            line-height: 24px;
-            font-weight: 400;
-            margin-bottom: 24px;
-        }
-
-        &__text {
-            font-size: 14px;
-            line-height: 16.4px;
-            letter-spacing: 0.8px;
-            color: $fontSecondColor;
-        }
-
-        &__email {
-            margin-top: 75px;
-            padding-bottom: 10px;
-            background-color: $footerColor;
-            border: none;
-            border-bottom: 1px solid $black;
-            font-size: 20px;
-            font-style: italic;
-            font-weight: normal;
-        }
-
-        &__submit {
-            background-color: $footerColor;
-            border: none;
-            padding: 12px;
-            border-bottom: 1px solid $black;
-            color: #424242;
-            font-size: 15px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin: -5px;
-            cursor: pointer;
-        }
-    }
-
-    .newsletter-signup__media-block {
-        display: none;
-        button {
-            position: absolute;
-            background-color: $footerColor;
-            border: none;
-            padding: 12px;
-            border-bottom: 1px solid $black;
-            color: #424242;
-            font-size: 15px;
-            text-transform: uppercase;
-            font-weight: 600;
-            bottom: 110px;
-            left: 285px;
-            cursor: pointer;
-        }
-    }
-
-    .copywrite {
-        position: absolute;
-        bottom: 30px;
-        right: 50px;
-
-        a {
-            font-size: 13px;
-            font-weight: 400;
-            margin-left: 40px;
-            text-decoration: none;
-            color: $fontSecondColor; 
-
-            &:last-child {
-                color: $black;
+            a {
+                font-size: 22px;
+                font-weight: 400;
+                margin-bottom: 16px;
+                text-decoration: none;
+                color: $secondaryColor;
+                transition: all .15s linear;
+                
+                &:hover {
+                    color: $textLinkColor;
+                    transition: all .15s linear;
+                }
             }
         }
-        
-        span {
-            font-size: 13px;
-            font-weight: 400;
-            color: $fontSecondColor;
+
+        &__copywrite {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+
+            a {
+                font-size: 13px;
+                font-weight: 400;
+                margin-left: 40px;
+                text-decoration: none;
+                color: $textSecondColor;
+
+                &:last-child {
+                    color: $secondaryColor;
+                }
+            }
+
+            span {
+                font-size: 13px;
+                font-weight: 400;
+                color: $textSecondColor;
+            }
         }
     }
 }
 
 /* Media */
-@media  screen and (max-width: 1400px) {
-    .swiper-pagination-bullet:nth-child(4) {
-        display: block !important;
-    }
-    .featured_products-carousel {
-        .product:last-child {
-            display: none;
-        }
-    }
-    
+@media screen and (max-width: 1400px) {
     .about__image {
         display: flex;
         width: 100%;
@@ -159,7 +103,7 @@ footer {
         img {
             float: left;
             width: 100%;
-        } 
+        }
     }
 }
 
@@ -174,28 +118,11 @@ footer {
         display: flex !important;
     }
 
-    header a.header-left, .header-right {
-        display: none !important;
-    }
-    
-    .newsletter-signup {
+    header a.header-left,
+    .header-right {
         display: none !important;
     }
 
-    .newsletter-signup__media-block {
-        display: block !important;
-    }
-
-    .swiper-pagination-bullet {
-        &:nth-child(5), &:last-child {
-            display: block !important;
-        }
-    }
-    .featured_products-carousel {
-        .product:nth-child(3) {
-            display: none;
-        }
-    }
     #modal-block-content-account {
         flex-wrap: wrap !important;
         max-width: 370px !important;
@@ -204,7 +131,7 @@ footer {
             height: 50% !important;
             width: 100% !important;
             border: none !important;
-            border-bottom: 1px solid #7D7D7D !important;
+            border-bottom: 1px solid #7d7d7d !important;
             float: left;
             font-family: serif;
             text-transform: capitalize;
@@ -216,20 +143,20 @@ footer {
                 display: flex;
                 margin: 40px;
                 font-family: "RobotoRegular", sans-serif;
-                color: $black;
+                color: $secondaryColor;
                 text-decoration: none;
                 justify-content: center;
                 text-transform: uppercase;
 
                 &::after {
-                    content: '';
+                    content: "";
                     position: absolute;
                     width: 120px;
                     height: 2px;
-                    background-color: $black;
+                    background-color: $secondaryColor;
                     display: block;
                     transform: translate(0, 25px);
-                    transition: all .2s linear;
+                    transition: all 0.2s linear;
                 }
 
                 &:hover:after {
@@ -237,6 +164,7 @@ footer {
                 }
             }
         }
+
         .modal-block-content__newCust {
             margin-top: 10px;
             border: none;
@@ -247,19 +175,11 @@ footer {
     }
 }
 
-
 /* Fonts */
 
 @font-face {
     font-family: "Roboto";
     src: url("../fonts/RobotoRegular.ttf") format("truetype");
-    font-style: normal; 
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'din2014';
-    src: url("../fonts/DIN2014-Regular.ttf") format('truetype');
     font-style: normal;
     font-weight: normal;
 }

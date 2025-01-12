@@ -1,11 +1,12 @@
 /* FOOTER */
 footer {
-  position: relative;
-  top: 70px;
-  background-color: #F9F9F9;
-  padding-right: 100px;
-  padding-left: 100px;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 100px;
+  background-color: #2e2f2e;
+  padding-inline: 50px;
+  height: 100%;
 }
 footer .go-up-button {
   display: flex;
@@ -17,119 +18,69 @@ footer .go-up-button {
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #FFFFFF;
-  background-color: #000000;
+  color: #ffffff;
+  background-color: #00a800;
   text-align: center;
   font-size: 15px;
-  transition: all 0.3s ease 0s;
+  border-radius: 0 0 15px 15px;
+  transition: all 0.2s linear;
   cursor: pointer;
 }
 footer .go-up-button:hover {
-  background-color: #444;
+  background-color: #006600;
 }
 footer .footer-links {
-  padding-top: 77px;
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  float: left;
+  justify-content: center;
+  align-content: space-between;
+  gap: 2rem;
+  margin-bottom: 20px;
 }
-footer .footer-links a {
+footer .footer-links__nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+}
+footer .footer-links__nav a {
   font-size: 22px;
   font-weight: 400;
   margin-bottom: 16px;
   text-decoration: none;
-  color: #000000;
+  color: #fafafa;
+  transition: all 0.15s linear;
 }
-footer .newsletter-signup {
-  padding-top: 77px;
-  position: relative;
-  width: 350px;
-  height: 100%;
-  float: left;
-  margin-left: 25px;
+footer .footer-links__nav a:hover {
+  color: #4cc24c;
+  transition: all 0.15s linear;
 }
-footer .newsletter-signup__title {
-  font-size: 22px;
-  line-height: 24px;
-  font-weight: 400;
-  margin-bottom: 24px;
+footer .footer-links__copywrite {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
-footer .newsletter-signup__text {
-  font-size: 14px;
-  line-height: 16.4px;
-  letter-spacing: 0.8px;
-  color: #A0A0A0;
-}
-footer .newsletter-signup__email {
-  margin-top: 75px;
-  padding-bottom: 10px;
-  background-color: #F9F9F9;
-  border: none;
-  border-bottom: 1px solid #000000;
-  font-size: 20px;
-  font-style: italic;
-  font-weight: normal;
-}
-footer .newsletter-signup__submit {
-  background-color: #F9F9F9;
-  border: none;
-  padding: 12px;
-  border-bottom: 1px solid #000000;
-  color: #424242;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin: -5px;
-  cursor: pointer;
-}
-footer .newsletter-signup__media-block {
-  display: none;
-}
-footer .newsletter-signup__media-block button {
-  position: absolute;
-  background-color: #F9F9F9;
-  border: none;
-  padding: 12px;
-  border-bottom: 1px solid #000000;
-  color: #424242;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-weight: 600;
-  bottom: 110px;
-  left: 285px;
-  cursor: pointer;
-}
-footer .copywrite {
-  position: absolute;
-  bottom: 30px;
-  right: 50px;
-}
-footer .copywrite a {
+footer .footer-links__copywrite a {
   font-size: 13px;
   font-weight: 400;
   margin-left: 40px;
   text-decoration: none;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
-footer .copywrite a:last-child {
-  color: #000000;
+footer .footer-links__copywrite a:last-child {
+  color: #fafafa;
 }
-footer .copywrite span {
+footer .footer-links__copywrite span {
   font-size: 13px;
   font-weight: 400;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 /* Media */
 @media screen and (max-width: 1400px) {
-  .swiper-pagination-bullet:nth-child(4) {
-    display: block !important;
-  }
-  .featured_products-carousel .product:last-child {
-    display: none;
-  }
   .about__image {
     display: flex;
     width: 100%;
@@ -150,20 +101,9 @@ footer .copywrite span {
   .header__burder-menu {
     display: flex !important;
   }
-  header a.header-left, .header-right {
+  header a.header-left,
+  .header-right {
     display: none !important;
-  }
-  .newsletter-signup {
-    display: none !important;
-  }
-  .newsletter-signup__media-block {
-    display: block !important;
-  }
-  .swiper-pagination-bullet:nth-child(5), .swiper-pagination-bullet:last-child {
-    display: block !important;
-  }
-  .featured_products-carousel .product:nth-child(3) {
-    display: none;
   }
   #modal-block-content-account {
     flex-wrap: wrap !important;
@@ -173,7 +113,7 @@ footer .copywrite span {
     height: 50% !important;
     width: 100% !important;
     border: none !important;
-    border-bottom: 1px solid #7D7D7D !important;
+    border-bottom: 1px solid #7d7d7d !important;
     float: left;
     font-family: serif;
     text-transform: capitalize;
@@ -185,7 +125,7 @@ footer .copywrite span {
     display: flex;
     margin: 40px;
     font-family: "RobotoRegular", sans-serif;
-    color: #000000;
+    color: #fafafa;
     text-decoration: none;
     justify-content: center;
     text-transform: uppercase;
@@ -195,7 +135,7 @@ footer .copywrite span {
     position: absolute;
     width: 120px;
     height: 2px;
-    background-color: #000000;
+    background-color: #fafafa;
     display: block;
     transform: translate(0, 25px);
     transition: all 0.2s linear;
@@ -217,10 +157,4 @@ footer .copywrite span {
   src: url("../fonts/RobotoRegular.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
-}
-@font-face {
-  font-family: "din2014";
-  src: url("../fonts/DIN2014-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
+}/*# sourceMappingURL=footer.css.map */

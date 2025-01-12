@@ -1,6 +1,6 @@
 /* MAIN */
 body {
-  background-image: url("/view/images/https___siteleaf.grovemade.com_uploads_coverB-BTS-A1.jpg");
+  background-image: url("/assets/images/bg/acc-bg.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -18,11 +18,11 @@ main .account-registration {
   flex-wrap: wrap;
   left: calc(50% - 250px);
   z-index: 2;
-  background-color: #ffffff;
+  background-color: #1e1f1e;
   top: 40px;
   width: 500px;
   padding: 50px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 main .account-login__title,
 main .account-registration__title {
@@ -32,6 +32,7 @@ main .account-registration__title {
   font-weight: 400;
   line-height: 58px;
   letter-spacing: 0em;
+  color: #eeeeee;
 }
 main .account-login input[class*=input],
 main .account-registration input[class*=input] {
@@ -40,14 +41,20 @@ main .account-registration input[class*=input] {
   margin-left: 20px;
   margin-top: 30px;
   padding-bottom: 10px;
-  background-color: #FFFFFF;
+  background-color: #1e1f1e;
+  color: #eeeeee;
   border: none;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #006600;
   font-size: 18px;
   font-style: italic;
   font-weight: normal;
   width: 360px;
   padding-left: 10px;
+  transition: all 0.15s linear;
+}
+main .account-login input[class*=input]:focus,
+main .account-registration input[class*=input]:focus {
+  border-bottom: 1px solid #00a800;
 }
 main .account-login .see-password,
 main .account-registration .see-password {
@@ -58,14 +65,14 @@ main .account-registration .see-password {
   cursor: pointer;
   padding: 5px;
   border-radius: 50%;
-  color: rgba(66, 66, 66, 0.5019607843);
+  color: #a0a0a0;
 }
 main .account-login__submit,
 main .account-registration__submit {
-  background-color: #FFFFFF;
+  background-color: #1e1f1e;
   border: none;
   padding: 12px;
-  color: #424242;
+  color: #eeeeee;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 600;
@@ -78,10 +85,10 @@ main .account-registration__submit-span {
   margin-left: 20px;
   width: 95px;
   height: 2px;
-  background-color: #000000;
+  background-color: #006600;
   display: block;
   transform: translateY(-5px);
-  transition: all 0.2s linear;
+  transition: all 0.15s linear;
 }
 main .account-login__submit:hover ~ span[class*=submit-span],
 main .account-registration__submit:hover ~ span[class*=submit-span] {
@@ -94,14 +101,15 @@ main .account-registration__block {
   float: left;
   width: 100%;
   border: none;
-  border-top: 1px solid #000000;
+  border-top: 1px solid #00a800;
   text-align: center;
   margin-top: 30px;
 }
 main .account-login__legendText,
 main .account-registration__legendText {
-  background-color: #fff;
+  background-color: #1e1f1e;
   padding: 10px;
+  color: #a0a0a0;
 }
 main .account-login__sign-button,
 main .account-registration__sign-button {
@@ -110,7 +118,7 @@ main .account-registration__sign-button {
   left: 50%;
   transform: translate(-50%, 0);
   text-decoration: none;
-  color: #000000;
+  color: #eeeeee;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 600;
@@ -123,10 +131,10 @@ main .account-registration__sign-button::after {
   position: absolute;
   width: 220px;
   height: 2px;
-  background-color: #000000;
+  background-color: #006600;
   display: block;
   transform: translate(-20px, 25px);
-  transition: all 0.2s linear;
+  transition: all 0.15s linear;
 }
 main .account-login__sign-button:hover:after,
 main .account-registration__sign-button:hover:after {
@@ -143,13 +151,14 @@ main .account-registration #password-error {
 }
 main .personal-account {
   position: relative;
-  background-color: #ffffff;
+  background-color: #1e1f1e;
   width: calc(100% - 200px);
   left: 100px;
   top: 50px;
   padding: 50px 75px;
-  border-radius: 5px;
+  border-radius: 15px;
   margin-bottom: 200px;
+  color: #eeeeee;
 }
 main .personal-account .main-title {
   font-size: 43px;
@@ -157,22 +166,22 @@ main .personal-account .main-title {
   line-height: 58px;
   letter-spacing: 0em;
   font-family: serif;
-  color: #A0A0A0;
+  color: #eeeeee;
   margin-bottom: 20px;
 }
 main .personal-account .userInfoBlock__PersonalInfo {
   padding: 30px;
   border: none;
-  border-top: 1px solid #A0A0A0;
+  border-top: 1px solid #006600;
 }
 main .personal-account .userInfoBlock__PersonalInfo-title {
   font-size: 25px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #fff;
+  background-color: #1e1f1e;
 }
 main .personal-account .userInfoBlock__PersonalInfo-title i {
-  color: #f69368;
+  color: #4cc24c;
 }
 main .personal-account .userInfoBlock__formBlock table {
   width: 100%;
@@ -187,10 +196,10 @@ main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-
   flex-direction: column;
 }
 main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-block label {
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 14px;
   margin: 5px 10px;
-  font-family: "din2014";
+  font-family: "Roboto", "Helvetica", sans-serif;
 }
 main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-block div,
 main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-block input,
@@ -199,12 +208,18 @@ main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-
   position: relative;
   top: 10px;
   padding: 5px 10px;
-  background-color: #fff;
+  background-color: #1e1f1e;
+  color: #ffffff;
   border: none;
+  transition: all 0.15s linear;
 }
 main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-block input.userInfoBlock__infoInput,
 main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-block select {
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #006600;
+}
+main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-block input.userInfoBlock__infoInput:focus,
+main .personal-account .userInfoBlock__formBlock table td .userInfoBlock__input-block select:focus {
+  border-bottom: 1px solid #00a800;
 }
 main .personal-account .userInfoBlock .save-btn,
 main .personal-account .userInfoBlock .cancel-btn {
@@ -223,10 +238,11 @@ main .personal-account .cancel-btn {
   font-weight: 600;
   letter-spacing: 0em;
   font-family: "Roboto", serif;
-  background-color: #fff;
+  color: #eeeeee;
+  background-color: #1e1f1e;
   border: none;
   margin-left: 30px;
-  transition: all 0.2s linear;
+  transition: all 0.15s linear;
   cursor: pointer;
 }
 main .personal-account .save-btn::after {
@@ -234,12 +250,15 @@ main .personal-account .save-btn::after {
   position: absolute;
   width: 60px;
   height: 2px;
-  background-color: #000000;
-  transition: all 0.2s linear;
+  background-color: #006600;
+  transition: all 0.15s linear;
   transform: translate(-50px, 25px);
 }
+main .personal-account .save-btn:disabled {
+  color: #c8c8c8;
+}
 main .personal-account .save-btn:disabled::after {
-  background-color: #B7B7B7;
+  background-color: #c8c8c8;
 }
 main .personal-account .save-btn:hover:after {
   transform: translate(-42px, 25px);
@@ -250,8 +269,8 @@ main .personal-account .cancel-btn::after {
   position: absolute;
   width: 75px;
   height: 2px;
-  background-color: #000000;
-  transition: all 0.2s linear;
+  background-color: #006600;
+  transition: all 0.15s linear;
   transform: translate(-65px, 25px);
 }
 main .personal-account .cancel-btn:hover:after {
@@ -268,17 +287,18 @@ main .personal-account .change-btn {
   font-weight: 600;
   letter-spacing: 0em;
   font-family: "Roboto", serif;
-  background-color: #fff;
+  background-color: #1e1f1e;
   border: none;
   margin-left: 30px;
+  color: #eeeeee;
 }
 main .personal-account .change-btn::after {
   content: "";
   position: absolute;
   width: 100px;
   height: 2px;
-  background-color: #000000;
-  transition: all 0.2s linear;
+  background-color: #006600;
+  transition: all 0.15s linear;
   transform: translate(-80px, 25px);
 }
 main .personal-account .change-btn:hover:after {
@@ -291,25 +311,25 @@ main .personal-account .user-address-section {
 main .personal-account .user-address-section__fieldset {
   padding: 30px;
   border: none;
-  border-top: 1px solid #A0A0A0;
+  border-top: 1px solid #006600;
 }
 main .personal-account .user-address-section__title {
   font-size: 25px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #fff;
+  background-color: #1e1f1e;
 }
 main .personal-account .user-address-section__title i {
-  color: #f69368;
+  color: #4cc24c;
 }
 main .personal-account .user-address-section__block {
   margin: 10px 50px 40px 70px;
 }
 main .personal-account .user-address-section__label {
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 14px;
   margin: 5px 10px;
-  font-family: "din2014";
+  font-family: "Roboto";
 }
 main .personal-account .user-address-section__content {
   font-size: 18px;
@@ -336,12 +356,19 @@ main .personal-account .user-address-section__change-block-content select {
   top: 10px;
   left: 5px;
   padding: 5px 10px;
-  background-color: #fff;
+  background-color: #1e1f1e;
   border: none;
-  border-bottom: 1px solid #000000;
+  color: #eeeeee;
+  border-bottom: 1px solid #006600;
+  transition: all 0.15s linear;
+  color: #eeeeee;
+}
+main .personal-account .user-address-section__change-block-content input:focus,
+main .personal-account .user-address-section__change-block-content select:focus {
+  border-bottom: 1px solid #00a800;
 }
 main .personal-account .user-address-section__change-block-content label {
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 14px;
   margin: 5px;
   font-family: "din2014";
@@ -353,16 +380,16 @@ main .personal-account .user-address-section__input-block {
 main .personal-account .orders-section {
   overflow-x: auto;
   scrollbar-width: auto;
-  scrollbar-color: #9AA8B1 #ffffff;
+  scrollbar-color: #9ab19c #1e1f1e;
 }
 main .personal-account .orders-section::-webkit-scrollbar {
   width: 0px;
-  border-left: 1px solid #f9f9f9;
+  border-left: 1px solid #006600;
 }
 main .personal-account .orders-section__fieldset {
   padding: 30px;
   border: none;
-  border-top: 1px solid #A0A0A0;
+  border-top: 1px solid #006600;
 }
 main .personal-account .orders-section__empty-block {
   width: 100%;
@@ -377,14 +404,15 @@ main .personal-account .orders-section__empty-block a {
   position: relative;
   width: 200px;
   height: 40px;
-  color: #FFFFFF;
+  color: #eeeeee;
   font-family: "Roboto";
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.15em;
   margin-top: 20px;
   border: none;
-  background-color: #000000;
+  border-radius: 15px;
+  background-color: #00a800;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -392,17 +420,18 @@ main .personal-account .orders-section__empty-block a {
   transition: all 0.3s ease;
 }
 main .personal-account .orders-section__empty-block a:hover {
-  background-color: #424242;
+  background-color: #006600;
 }
 main .personal-account .orders-section__empty-title {
   line-height: 46px;
   font-size: 40px;
   font-weight: 600;
   font-family: "serif";
-  color: #333;
+  color: #4cc24c;
+  margin-bottom: 15px;
 }
 main .personal-account .orders-section__empty-subtitle {
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 20px;
   font-family: "din2014";
 }
@@ -410,17 +439,17 @@ main .personal-account .orders-section__title {
   font-size: 25px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #fff;
+  background-color: #1e1f1e;
 }
 main .personal-account .orders-section__title i {
-  color: #f69368;
+  color: #4cc24c;
 }
 main .personal-account .orders-section__add-button {
   border: 1px solid lightgray;
   border-radius: 5px;
   font-size: 18px;
   padding: 10px 20px;
-  color: #333;
+  color: #a0a0a0;
   float: right;
   height: 40px;
   width: 70px;
@@ -437,7 +466,7 @@ main .personal-account .orders-section__table-wrapper {
   border-radius: 5px;
   border: solid 1px rgba(0, 0, 0, 0.1);
   scrollbar-width: auto;
-  scrollbar-color: #9AA8B1 #ffffff;
+  scrollbar-color: #9ab19c #1e1f1e;
 }
 main .personal-account .orders-section__table-wrapper::-webkit-scrollbar {
   width: 0px;
@@ -454,7 +483,7 @@ main .personal-account .orders-section__table thead {
 main .personal-account .orders-section__table thead th {
   position: sticky;
   top: 0;
-  background-color: #fff;
+  background-color: #1e1f1e;
   padding: 20px 15px;
   text-align: left;
   font-weight: 500;
@@ -470,10 +499,10 @@ main .personal-account .orders-section__table thead th:first-child {
 }
 main .personal-account .orders-section__table tbody tr {
   transition: all 0.1s linear;
-  background-color: #ffffff;
+  background-color: #1e1f1e;
 }
 main .personal-account .orders-section__table tbody tr:hover {
-  background-color: #f9f9f9;
+  background-color: #2b2c2b;
 }
 main .personal-account .orders-section__table tbody td {
   padding: 15px;
@@ -487,15 +516,15 @@ main .personal-account .orders-section__table tbody td:first-child {
   text-align: left;
 }
 main .personal-account .orders-section__table tbody td i {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 main .personal-account .orders-section .product-name--link {
-  color: #333;
+  color: #eeeeee;
   text-decoration: none;
   font-size: 14px;
 }
 main .personal-account .orders-section .product-name--link i {
-  color: #333;
+  color: #00a800;
 }
 main .personal-account .orders-section .product-material {
   color: #a0a0a0;
@@ -512,7 +541,7 @@ main .personal-account .orders-section .order-change-btn {
   cursor: pointer;
 }
 main .personal-account .orders-section .order-delete-btn {
-  color: #f69368;
+  color: #4cc24c;
   text-decoration: none;
   padding: 10px 20px;
   font-family: sans-serif;
@@ -586,24 +615,25 @@ main .personal-account .account-control__user-logout, main .personal-account .ac
   font-weight: 600;
   letter-spacing: 0em;
   font-family: "Roboto", serif;
-  background-color: #fff;
+  background-color: #1e1f1e;
   border: none;
   margin-left: 30px;
+  color: #d3302f;
 }
 main .personal-account .account-control__user-logout {
-  color: #000000;
   text-decoration: none;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  color: #eeeeee;
 }
 main .personal-account .account-control__user-logout::after {
   content: "";
   position: absolute;
   width: 100px;
   height: 2px;
-  background-color: #000000;
-  transition: all 0.2s linear;
+  background-color: #006600;
+  transition: all 0.15s linear;
   transform: translate(-80px, 25px);
 }
 main .personal-account .account-control__user-logout:hover:after {
@@ -611,7 +641,7 @@ main .personal-account .account-control__user-logout:hover:after {
   width: 80px;
 }
 main .personal-account .account-control__user-delete {
-  color: #f69368;
+  color: #d3302f;
   float: right;
 }
 main .personal-account .account-control__modal-block-background {
@@ -629,7 +659,7 @@ main .personal-account .account-control__modal-block-content {
   position: fixed;
   z-index: 11;
   display: none;
-  background-color: #fff;
+  background-color: #1e1f1e;
   width: 36.8vw;
   height: 20vh;
   padding: 20px;
@@ -646,7 +676,7 @@ main .personal-account .account-control__modal-block-content h2 {
 main .personal-account .account-control__modal-content-delete, main .personal-account .account-control__modal-content-cancel {
   position: fixed;
   padding: 10px 20px;
-  color: #000000;
+  color: #eeeeee;
   text-decoration: none;
   font-weight: 600;
   font-size: 20px;
@@ -661,7 +691,7 @@ main .personal-account .account-control__modal-content-cancel {
 }
 main .personal-account .account-control__modal-content-delete {
   right: 50px;
-  color: #f69368;
+  color: #d3302f;
 }
 main .error-alert-block {
   position: fixed;
@@ -670,8 +700,8 @@ main .error-alert-block {
   left: 30px;
   width: 370px;
   height: 55px;
-  background-color: #D3302F;
-  color: #FFFFFF;
+  background-color: #d3302f;
+  color: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 0px 14px 4px rgba(0, 0, 0, 0.41);
   border-bottom: 1px solid #ab2524;
@@ -701,4 +731,4 @@ main .error-alert-block__text {
   padding-left: 20px;
   line-height: 45px;
   font-family: "Roboto", serif;
-}
+}/*# sourceMappingURL=styleAccount.css.map */

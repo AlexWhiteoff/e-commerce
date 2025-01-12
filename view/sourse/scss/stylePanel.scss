@@ -3,761 +3,746 @@
 
 /* MAIN */
 main {
-	position: relative;
-	z-index: 1;
-
-	//error alert
-	.snackbar {
-		position: fixed;
-		border: 3px solid #f74646;
-		background-color: #ff838380;
-		margin-left: 20px;
-		width: 360px;
-		height: auto;
-		padding-left: 20px;
-		line-height: 45px;
-		border-radius: 5px;
-		color: #9e3a3a;
-		font-family: "Roboto", serif;
-
-		&__header {
-			display: flex;
-			justify-content: space-between;
-
-			i {
-				margin-right: 20px;
-			}
-		}
-	}
-
-	.overview {
-		width: 100%;
-		padding-bottom: 50px;
-		display: flex;
-		flex-wrap: wrap;
-		background-color: #f9f9f9;
-
-		&__title {
-			width: 100%;
-			margin: 20px 0px 5px 40px;
-			font-family: "din2014";
-			font-size: 32px;
-			font-weight: 400;
-			letter-spacing: 1px;
-		}
-
-		&__subtitle {
-			width: 100%;
-			margin-left: 40px;
-			margin-bottom: 20px;
-			font-family: "din2014";
-			font-size: 18px;
-			font-weight: 400;
-			color: $fontSecondColor;
-		}
-
-		&__left-block {
-			width: calc(50% - 50px);
-			position: relative;
-			float: right;
-			display: flex;
-			flex-wrap: wrap;
-			margin-left: 50px;
-		}
-		// current stats style (left)
-		&__current-stats {
-			display: flex;
-			height: 100px;
-		}
-
-		&__stats-block {
-			margin: 10px;
-			width: 200px;
-
-			&:first-child > .overview__block-icon {
-				@include panel-overview-icon-style(
-					#019267,
-					#00c897,
-					darken(#019267, 10),
-					#f9f9f9
-				);
-			}
-
-			&:nth-child(2) > .overview__block-icon {
-				@include panel-overview-icon-style(
-					#ffb72b,
-					#ffe61b,
-					darken(#ffb72b, 20),
-					#f9f9f9
-				);
-			}
-
-			&:last-child > .overview__block-icon {
-				@include panel-overview-icon-style(
-					#890f0d,
-					#e83a14,
-					#630606,
-					#f9f9f9
-				);
-			}
-		}
-
-		&__block-icon {
-			float: left;
-			height: 100%;
-			width: 60px;
-			position: relative;
-		}
-
-		&__block-innerText {
-			font-family: "RobotoRegular";
-			font-size: 20px;
-			margin-top: 15px;
-		}
-
-		&__block-innerSubtext {
-			font-size: 14px;
-			font-family: "din2014";
-			color: #333;
-			font-style: italic;
-		}
-
-		// overview chart style
-
-		&__total-sales-block {
-			margin-left: 20px;
-		}
-
-		&__total-sales-title {
-			width: 100%;
-			margin: 20px 0px 5px 0px;
-			font-family: "din2014";
-			font-weight: 400;
-			letter-spacing: 1px;
-			font-size: 27px;
-		}
-
-		&__total-sales-text {
-			font-family: "din2014";
-			font-size: 16px;
-			font-weight: 400;
-			color: $fontSecondColor;
-			margin-bottom: 10px;
-		}
-
-		&__total-sales-chart-wrapper {
-			div.xAxis-label {
-				display: flex;
-				flex-wrap: nowrap;
-				justify-content: space-between;
-				color: #333;
-				font-size: 14px;
-				margin-left: -10px;
-				margin-right: -13px;
-			}
-		}
-
-		// right part style
-		&__right-block {
-			width: calc(50% - 50px);
-			position: relative;
-			float: right;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-			margin-right: 50px;
-		}
-
-		&__block-content {
-			margin-top: 20px;
-			border-radius: 15px;
-			width: 350px;
-			height: 150px;
-			background-color: #ffffff;
-			padding: 20px;
-			margin: 10px;
-			box-shadow: 0 0 2px 2px lighten($fontSecondColor, 33);
-
-			&--icon {
-				position: relative;
-				z-index: 1;
-				font-size: 97px;
-				color: transparentize($blockColor, 0.75);
-				float: right;
-			}
-
-			&--text {
-				position: absolute;
-				margin-top: 60px;
-				font-family: "din2014";
-				font-size: 18px;
-				font-weight: 400;
-				color: $fontSecondColor;
-				float: left;
-				text-transform: capitalize;
-			}
-
-			&--count {
-				font-family: "din2014";
-				font-size: 28px;
-				font-weight: 600;
-				margin-top: 20px;
-				float: left;
-				letter-spacing: 1px;
-			}
-		}
-	}
-
-	.user-list {
-		margin: 50px;
-		border-top: 1px solid #dbdbdb;
-
-		&__title {
-			width: 100%;
-			margin: 20px 0px 20px 5px;
-			font-family: "din2014";
-			font-size: 32px;
-			font-weight: 400;
-			letter-spacing: 1px;
-		}
-
-		@include panel-table(100%, 420px, #96c7c1, #fff);
-
-		.user-change-btn {
-			color: $black;
-			text-decoration: none;
-			padding: 10px 20px;
-			font-family: sans-serif;
-			font-weight: 600;
-			font-size: 14px;
-			background-color: inherit;
-			border: none;
-			cursor: pointer;
-		}
-		.user-delete-btn {
-			color: $fontLinkColor;
-			text-decoration: none;
-			padding: 10px 20px;
-			font-family: sans-serif;
-			font-weight: 600;
-			font-size: 14px;
-			background-color: inherit;
-			border: none;
-			cursor: pointer;
-		}
-		.controls {
-			display: flex;
-		}
-		.user-status {
-			&.status-Admin {
-				background-color: #f7e9d770;
-				border: 1px solid darken(#f7e9d770, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-			&.status-Seller {
-				background-color: #ffeeee70;
-				border: 1px solid darken(#ffeeee70, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-			&.status-User {
-				background-color: #fff6ea70;
-				border: 1px solid darken(#fff6ea70, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-		}
-	}
-
-	.product-section {
-		margin: 50px 50px 0 50px;
-		padding: 70px 0px 0px 0px;
-		min-height: 700px;
-		border-bottom: 1px solid #dbdbdb;
-
-		&__header {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		&__body {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-
-			.product-right {
-				width: 18%;
-				height: 400px;
-				margin-right: 150px;
-			}
-		}
-
-		&__title {
-			margin: 20px 0px 20px 5px;
-			font-family: "din2014";
-			font-size: 32px;
-			font-weight: 400;
-			letter-spacing: 1px;
-			float: left;
-		}
-
-		&__add-button {
-			border: 1px solid lighten($fontSecondColor, 20);
-			border-radius: 5px;
-			font-size: 18px;
-			padding: 10px 20px;
-			color: #333;
-			float: right;
-			height: 40px;
-			width: 70px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			text-decoration: none;
-		}
-
-		&__empty {
-			width: 100%;
-			height: 500px;
-			margin: 0 100px;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-
-			&-error-title {
-				line-height: 46px;
-				font-size: 47px;
-				font-weight: 600;
-				margin-bottom: 20px;
-				font-family: "serif";
-				color: #333;
-			}
-			&-error-subtitle {
-				color: $fontSecondColor;
-				font-size: 20px;
-				font-family: "din2014";
-			}
-		}
-
-		@include panel-table(100%, 500px, #fff, #333);
-
-		.product-name {
-			&--link {
-				color: #333;
-				text-decoration: none;
-				font-size: 14px;
-				i {
-					color: #333;
-				}
-			}
-		}
-		.product-material,
-		.subcategory {
-			color: #a0a0a0;
-		}
-		.category {
-			margin-bottom: 5px;
-		}
-		.product-change-btn {
-			color: $black;
-			text-decoration: none;
-			padding: 10px 20px;
-			font-family: sans-serif;
-			font-weight: 600;
-			font-size: 14px;
-		}
-		.product-delete-btn {
-			color: $fontLinkColor;
-			text-decoration: none;
-			padding: 10px 20px;
-			font-family: sans-serif;
-			font-weight: 600;
-			font-size: 14px;
-		}
-		.controls {
-			display: flex;
-		}
-
-		.product-chart {
-			&__title {
-				margin-top: 20px;
-				width: 100%;
-				font-family: "din2014";
-				font-size: 24px;
-				font-weight: 400;
-				letter-spacing: 1px;
-			}
-
-			&__subtitle {
-				width: 100%;
-				font-family: "din2014";
-				font-size: 18px;
-				font-weight: 400;
-				color: $fontSecondColor;
-			}
-
-			&__legend {
-				.legend-item {
-					display: flex;
-					justify-content: space-between;
-					margin: 5px;
-
-					.item-left {
-						display: flex;
-						align-items: center;
-					}
-
-					&__color {
-						width: 20px;
-						height: 10px;
-						border-radius: 2px;
-						margin-bottom: 1px;
-						float: left;
-					}
-					&__name {
-						font-size: 14px;
-						margin-left: 5px;
-						float: left;
-					}
-					&__percent {
-						font-size: 14px;
-						float: right;
-					}
-				}
-			}
-		}
-	}
-
-	.orders-section {
-		margin: 50px 50px 0 50px;
-		&__title {
-			margin: 20px 0px 20px 5px;
-			font-family: "din2014";
-			font-size: 32px;
-			font-weight: 400;
-			letter-spacing: 1px;
-			float: left;
-		}
-
-		&__add-button {
-			border: 1px solid lighten($fontSecondColor, 20);
-			border-radius: 5px;
-			font-size: 18px;
-			padding: 10px 20px;
-			color: #333;
-			float: right;
-			height: 40px;
-			width: 70px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			text-decoration: none;
-		}
-
-		&__empty {
-			width: 100%;
-			height: 300px;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-
-			&-error-title {
-				line-height: 46px;
-				font-size: 47px;
-				font-weight: 600;
-				margin-bottom: 20px;
-				font-family: "serif";
-				color: #333;
-			}
-			&-error-subtitle {
-				color: $fontSecondColor;
-				font-size: 20px;
-				font-family: "din2014";
-			}
-		}
-
-		@include panel-table(100%, 480px, #89b5af, #fff);
-
-		.product-name {
-			&--link {
-				color: #333;
-				text-decoration: none;
-				font-size: 14px;
-				i {
-					color: #333;
-				}
-			}
-		}
-		.product-material {
-			color: #a0a0a0;
-		}
-
-		.order-change-btn {
-			color: $black;
-			text-decoration: none;
-			padding: 10px 20px;
-			font-family: sans-serif;
-			font-weight: 600;
-			font-size: 14px;
-			background-color: inherit;
-			border: none;
-			cursor: pointer;
-		}
-		.order-delete-btn {
-			color: $fontLinkColor;
-			text-decoration: none;
-			padding: 10px 20px;
-			font-family: sans-serif;
-			font-weight: 600;
-			font-size: 14px;
-			background-color: inherit;
-			border: none;
-			cursor: pointer;
-		}
-		.controls {
-			display: flex;
-		}
-		.order-status {
-			&.status-Canceled {
-				background-color: #96969670;
-				border: 1px solid darken(#96969670, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-			&.status-Complete {
-				background-color: #6bcb7770;
-				border: 1px solid darken(#6bcb7770, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-			&.status-Awaiting {
-				background-color: #ff6b6b70;
-				border: 1px solid darken(#ff6b6b70, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-			&.status-Shipping {
-				background-color: #ffd93d70;
-				border: 1px solid darken(#ffd93d70, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-			&.status-Packing {
-				background-color: #ffb72b70;
-				border: 1px solid darken(#ffb72b70, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-			&.status-Processed {
-				background-color: #4d96ff70;
-				border: 1px solid darken(#4d96ff70, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-			&.status-Placed {
-				background-color: #ffedda70;
-				border: 1px solid darken(#ffedda70, 10);
-				border-radius: 15px;
-				padding: 7px 10px;
-				text-align: center;
-			}
-		}
-	}
-
-	//edit page
-	.edit-section {
-		position: relative;
-		left: 100px;
-		width: calc(100% - 200px);
-		background-color: #ffffff;
-		top: 20px;
-
-		h1 {
-			text-align: center;
-			font-family: serif;
-			text-transform: capitalize;
-			font-size: 40px;
-			font-weight: 400;
-			line-height: 58px;
-			letter-spacing: 0.05em;
-			margin-bottom: 30px;
-		}
-
-		.product {
-			position: relative;
-			border: 1px solid #dbdbdb;
-			border-radius: 5px;
-			width: 400px;
-			left: 50%;
-			transform: translate(-50%, 0);
-
-			a {
-				display: flex;
-				align-items: center;
-				text-decoration: none;
-			}
-
-			&-image {
-				margin: 10px;
-				padding-right: 10px;
-				border-right: 1px solid #dbdbdb;
-			}
-			&-body {
-				width: 100%;
-				height: fit-content;
-			}
-			&-title {
-				color: #333;
-				text-decoration: none;
-				font-size: 18px;
-			}
-			&-subtitle {
-				color: $fontSecondColor;
-				text-decoration: none;
-				font-size: 16px;
-			}
-		}
-
-		table {
-			width: 100%;
-			margin-bottom: 300px;
-
-			td {
-				width: 50%;
-				height: 75px;
-
-				label {
-					float: right;
-					margin-right: 50px;
-					font-size: 14px;
-					text-transform: uppercase;
-					font-weight: 700;
-					letter-spacing: 0.15em;
-					text-decoration: none;
-					color: $black;
-				}
-
-				.input-text,
-				.input-date,
-				.input-time {
-					border: none;
-					border-bottom: 2px solid black;
-					padding: 5px 10px;
-					font-size: 15px;
-					font-family: "Roboto";
-				}
-
-				.input-text {
-					margin-left: 50px;
-					width: 350px;
-				}
-				.input-date {
-					margin-left: 50px;
-					width: 200px;
-				}
-				.input-time {
-					margin-left: -5px;
-					width: 150px;
-				}
-
-				select {
-					margin-left: 50px;
-					width: 200px;
-					border: none;
-					padding: 5px 10px;
-					font-size: 15px;
-					font-family: "Roboto";
-					border-bottom: 2px solid $fontSecondColor;
-				}
-			}
-
-			.edit-section__update-button {
-				padding: 10px 20px;
-				background-color: #ffffff;
-				font-family: "Roboto", sans-serif;
-				width: 100px;
-				color: $black;
-				text-decoration: none;
-				justify-content: center;
-				text-transform: uppercase;
-				font-size: 14px;
-				font-weight: 700;
-				border: none;
-				margin-left: 70px;
-				cursor: pointer;
-				text-align: center;
-
-				&::after {
-					content: "";
-					position: absolute;
-					height: 2px;
-					width: 78px;
-					background-color: black;
-					transform: translate(-65px, 26px);
-					transition: all 0.3s linear;
-				}
-
-				&:hover:after {
-					transform: translate(-55px, 26px);
-					width: 58px;
-				}
-			}
-
-			a {
-				padding: 10px 20px;
-				background-color: #ffffff;
-				font-family: "Roboto", sans-serif;
-				color: $black;
-				text-decoration: none;
-				justify-content: center;
-				font-size: 14px;
-				text-transform: uppercase;
-				font-weight: 700;
-				border: none;
-				float: right;
-				margin-right: 70px;
-				cursor: pointer;
-
-				&::after {
-					content: "";
-					position: absolute;
-					height: 2px;
-					width: 82px;
-					background-color: black;
-					transform: translate(-68px, 26px);
-					transition: all 0.3s linear;
-				}
-
-				&:hover:after {
-					transform: translate(-55px, 26px);
-					width: 56px;
-				}
-			}
-
-			&__controls {
-				td {
-					padding-top: 100px;
-					padding-bottom: 200px;
-				}
-			}
-		}
-	}
-
-	@include design-inspires-block();
-	
-	@include errorPage(relative);
+    position: relative;
+    z-index: 1;
+    color: $textColor;
+    //error alert
+    .snackbar {
+        position: fixed;
+        border: 3px solid #f74646;
+        background-color: #ff838380;
+        margin-left: 20px;
+        width: 360px;
+        height: auto;
+        padding-left: 20px;
+        line-height: 45px;
+        border-radius: 5px;
+        color: #9e3a3a;
+        font-family: "Roboto", serif;
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+
+            i {
+                margin-right: 20px;
+            }
+        }
+    }
+
+    .overview {
+        width: 100%;
+        padding-bottom: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: $heroBackgroundColor;
+
+        &__title {
+            width: 100%;
+            margin: 20px 0px 5px 40px;
+            font-family: "Roboto";
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: $textThirdColor;
+        }
+
+        &__subtitle {
+            width: 100%;
+            margin-left: 40px;
+            margin-bottom: 20px;
+            font-family: "Roboto";
+            font-size: 18px;
+            font-weight: 400;
+            color: $textSecondColor;
+        }
+
+        &__left-block {
+            width: calc(50% - 50px);
+            position: relative;
+            float: right;
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 50px;
+        }
+        // current stats style (left)
+        &__current-stats {
+            display: flex;
+            height: 100px;
+        }
+
+        &__stats-block {
+            margin: 10px;
+            width: 200px;
+
+            &:first-child > .overview__block-icon {
+                @include panel-overview-icon-style(#019267, #00c897, darken(#019267, 10), #f9f9f9);
+            }
+
+            &:nth-child(2) > .overview__block-icon {
+                @include panel-overview-icon-style(#ffb72b, #ffe61b, darken(#ffb72b, 20), #f9f9f9);
+            }
+
+            &:last-child > .overview__block-icon {
+                @include panel-overview-icon-style(#890f0d, #e83a14, #630606, #f9f9f9);
+            }
+        }
+
+        &__block-icon {
+            float: left;
+            height: 100%;
+            width: 60px;
+            position: relative;
+        }
+
+        &__block-innerText {
+            font-family: "RobotoRegular";
+            font-size: 20px;
+            margin-top: 15px;
+        }
+
+        &__block-innerSubtext {
+            font-size: 14px;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            color: $textColor;
+            font-style: italic;
+        }
+
+        // overview chart style
+
+        &__total-sales-block {
+            margin-left: 20px;
+        }
+
+        &__total-sales-title {
+            width: 100%;
+            margin: 20px 0px 5px 0px;
+            font-family: "Roboto";
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-size: 27px;
+        }
+
+        &__total-sales-text {
+            font-family: "Roboto";
+            font-size: 16px;
+            font-weight: 400;
+            color: $textSecondColor;
+            margin-bottom: 10px;
+        }
+
+        &__total-sales-chart-wrapper {
+            div.xAxis-label {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                color: $textColor;
+                font-size: 14px;
+                margin-left: -10px;
+                margin-right: -13px;
+            }
+        }
+
+        // right part style
+        &__right-block {
+            width: calc(50% - 50px);
+            position: relative;
+            float: right;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-right: 50px;
+        }
+
+        &__block-content {
+            margin-top: 20px;
+            border-radius: 15px;
+            width: 350px;
+            height: 150px;
+            background-color: $backgroundColor;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 0 5px 3px $accentLightenColor;
+
+            &--icon {
+                position: relative;
+                z-index: 1;
+                font-size: 97px;
+                color: $blockColor;
+                float: right;
+            }
+
+            &--text {
+                position: absolute;
+                margin-top: 60px;
+                font-family: "Roboto";
+                font-size: 18px;
+                font-weight: 400;
+                color: $textSecondColor;
+                float: left;
+                text-transform: capitalize;
+            }
+
+            &--count {
+                font-family: "Roboto";
+                font-size: 28px;
+                font-weight: 600;
+                margin-top: 20px;
+                float: left;
+                letter-spacing: 1px;
+                color: $textThirdColor;
+            }
+        }
+    }
+
+    .user-list {
+        margin: 50px;
+        border-top: 1px solid #dbdbdb;
+
+        &__title {
+            width: 100%;
+            margin: 20px 0px 20px 5px;
+            font-family: "Roboto";
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        @include panel-table(100%, 420px, $accentLightenColor, $textThirdColor, $textSecondColor, $heroBackgroundColor);
+
+        .user-change-btn {
+            color: $textLinkColor;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+        }
+
+        .user-delete-btn {
+            color: $dangerRed;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+        }
+
+        .controls {
+            display: flex;
+        }
+
+        .user-status {
+            &.status-Admin {
+                background-color: #f7e9d770;
+                border: 1px solid darken(#f7e9d770, 10);
+                border-radius: 15px;
+                padding: 7px 10px;
+                text-align: center;
+            }
+
+            &.status-Seller {
+                background-color: #ffeeee70;
+                border: 1px solid darken(#ffeeee70, 10);
+                border-radius: 15px;
+                padding: 7px 10px;
+                text-align: center;
+            }
+
+            &.status-User {
+                background-color: #fff6ea70;
+                border: 1px solid darken(#fff6ea70, 10);
+                border-radius: 15px;
+                padding: 7px 10px;
+                text-align: center;
+            }
+        }
+    }
+
+    .product-section {
+        margin: 50px 50px 0 50px;
+        padding: 70px 0px 0px 0px;
+        min-height: 700px;
+        border-bottom: 1px solid #dbdbdb;
+
+        &__header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__body {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 2em;
+
+            .product-right {
+                width: 18%;
+                height: 400px;
+                margin-right: 150px;
+            }
+        }
+
+        &__title {
+            margin: 20px 0px 20px 5px;
+            font-family: "Roboto";
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            float: left;
+        }
+
+        &__add-button {
+            border: 1px solid $accentDarkenColor;
+            border-radius: 5px;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: $accentLightenColor;
+            color: $textThirdColor;
+            float: right;
+            height: 40px;
+            width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        &__empty {
+            width: 100%;
+            height: 500px;
+            margin: 0 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &-error-title {
+                line-height: 46px;
+                font-size: 47px;
+                font-weight: 600;
+                margin-bottom: 20px;
+                font-family: "serif";
+                color: #333;
+            }
+            &-error-subtitle {
+                color: $textSecondColor;
+                font-size: 20px;
+                font-family: "Roboto";
+            }
+        }
+
+        @include panel-table(100%, 500px, $accentLightenColor, $textThirdColor, $textSecondColor, $heroBackgroundColor);
+
+        .product-name {
+            &--link {
+                color: $textColor;
+                text-decoration: none;
+                font-size: 14px;
+
+                i {
+                    color: $textLinkColor;
+                }
+            }
+        }
+
+        .product-material,
+        .subcategory {
+            color: #a0a0a0;
+        }
+
+        .category {
+            margin-bottom: 5px;
+        }
+
+        .product-change-btn {
+            color: $textLinkColor;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .product-delete-btn {
+            color: $dangerRed;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .controls {
+            display: flex;
+        }
+
+        .product-chart {
+            &__title {
+                margin-top: 20px;
+                width: 100%;
+                font-family: "Roboto";
+                font-size: 24px;
+                font-weight: 400;
+                letter-spacing: 1px;
+            }
+
+            &__subtitle {
+                width: 100%;
+                font-family: "Roboto";
+                font-size: 18px;
+                font-weight: 400;
+                color: $textSecondColor;
+            }
+
+            &__legend {
+                .legend-item {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 5px;
+
+                    .item-left {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    &__color {
+                        width: 20px;
+                        height: 10px;
+                        border-radius: 2px;
+                        margin-bottom: 1px;
+                        float: left;
+                    }
+
+                    &__name {
+                        font-size: 14px;
+                        margin-left: 5px;
+                        float: left;
+                    }
+
+                    &__percent {
+                        font-size: 14px;
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+
+    .orders-section {
+        margin: 50px 50px 0 50px;
+        &__title {
+            margin: 20px 0px 20px 5px;
+            font-family: "Roboto";
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            float: left;
+        }
+
+        &__add-button {
+            border: 1px solid lighten($textSecondColor, 20);
+            border-radius: 5px;
+            font-size: 18px;
+            padding: 10px 20px;
+            color: #333;
+            float: right;
+            height: 40px;
+            width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        &__empty {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &-error-title {
+                line-height: 46px;
+                font-size: 42px;
+                font-weight: 500;
+                margin-bottom: 20px;
+                font-family: sans-serif;
+                color: $textColor;
+
+                span {
+                    color: $textLinkColor;
+                }
+            }
+            &-error-subtitle {
+                color: $textSecondColor;
+                font-size: 20px;
+                font-family: "Roboto";
+            }
+        }
+
+        @include panel-table(100%, 480px, $accentLightenColor, $textThirdColor, $textSecondColor, $heroBackgroundColor);
+
+        .product-name {
+            &--link {
+                color: $textColor;
+                text-decoration: none;
+                font-size: 14px;
+
+                i {
+                    color: $textLinkColor;
+                }
+            }
+        }
+
+        .product-material {
+            color: $textSecondColor;
+        }
+
+        .order-change-btn {
+            color: $textLinkColor;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+        }
+
+        .order-delete-btn {
+            color: $textLinkColor;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+        }
+
+        .controls {
+            display: flex;
+
+            .order-delete-btn {
+                color: $dangerRed;
+            }
+        }
+
+        .order-status {
+            border-radius: 15px;
+            padding: 7px 10px;
+            text-align: center;
+
+            @each $status, $color in $order-status-colors {
+                &.status-#{$status} {
+                    background-color: rgba($color, 0.5);
+                    border: 1px solid darken($color, 15%);
+                    color: lighten($color, 50%);
+                }
+            }
+        }
+    }
+
+    //edit page
+    .edit-section {
+        position: relative;
+        left: 100px;
+        width: calc(100% - 200px);
+        background-color: $backgroundColor;
+        top: 20px;
+
+        h1 {
+            text-align: center;
+            font-family: serif;
+            text-transform: capitalize;
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 58px;
+            letter-spacing: 0.05em;
+            margin-bottom: 30px;
+            color: $textThirdColor;
+        }
+
+        .product {
+            position: relative;
+            box-shadow: 0px 0px 2px 2px $accentLightenColor;
+            background-color: $secondaryColor;
+            border-radius: 5px;
+            width: 425px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            a {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                padding: 10px 20px;
+            }
+
+            &-image-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 10px;
+                padding: 10px 10px 10px 0;
+                border-right: 1px solid $backgroundColor;
+
+                img {
+                    border-radius: 3px;
+                    overflow: hidden;
+                }
+            }
+
+            &-body {
+                width: 100%;
+                height: fit-content;
+            }
+
+            &-title {
+                color: #333;
+                text-decoration: none;
+                font-size: 18px;
+            }
+
+            &-subtitle {
+                color: $textSecondColor;
+                text-decoration: none;
+                font-size: 16px;
+            }
+        }
+
+        .form-wrapper {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            table {
+                width: fit-content;
+                background-color: $accentLightenColor;
+                margin-bottom: 300px;
+                padding: 0 20px;
+                border-radius: 5px;
+                border: 2px solid $secondaryColor;
+
+                td {
+                    width: 50%;
+                    height: 75px;
+
+                    label {
+                        float: right;
+                        margin-right: 50px;
+                        font-size: 14px;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        letter-spacing: 0.15em;
+                        text-decoration: none;
+                        color: $backgroundColor;
+                    }
+
+                    .input-text,
+                    .input-date,
+                    .input-time {
+                        padding: 11px;
+                        border: 1px solid #d9d9d9;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+
+                        &:focus {
+                            border: 1px solid #4b4d51;
+                        }
+                    }
+
+                    .input-text {
+                        margin-left: 50px;
+                        width: 350px;
+                    }
+
+                    .input-datetime {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 1em;
+
+                        .input-date {
+                            width: 50%;
+                            margin-left: 50px;
+                            min-width: 120px;
+                        }
+
+                        .input-time {
+                            width: 50%;
+                            margin-left: -5px;
+                            min-width: 120px;
+                        }
+                    }
+
+                    select {
+                        margin-left: 50px;
+                        width: 200px;
+                        padding: 11px;
+                        border: 1px solid #d9d9d9;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+
+                        &:focus {
+                            border: 1px solid #4b4d51;
+                        }
+                    }
+                }
+
+                a,
+                .edit-section__update-button {
+                    padding: 10px 20px;
+                    background-color: $accentLightenColor;
+                    font-family: "Roboto", sans-serif;
+                    width: 100px;
+                    color: $backgroundColor;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    font-weight: 700;
+                    border: none;
+                    margin-left: 70px;
+                    cursor: pointer;
+                    text-align: center;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        height: 2px;
+                        width: 78px;
+                        background-color: $secondaryColor;
+                        transform: translate(-65px, 26px);
+                        transition: all 0.3s linear;
+                    }
+
+                    &:hover:after {
+                        transform: translate(-55px, 26px);
+                        width: 58px;
+                    }
+                }
+
+                &__controls {
+                    td {
+                        padding-top: 100px;
+                        padding-bottom: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include brand-highlight-block();
 }

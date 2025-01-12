@@ -1,15 +1,14 @@
 <?php
 
-use files\library\mainFunctions;
+use core\Utils;
 use models\AccountModel;
 use models\ProductModel;
 
-$functions = new mainFunctions();
 $userModel = new AccountModel();
 $productModel = new ProductModel();
 
 $user = $userModel->getCurrentUser();
-$countries = $functions->getCountries();
+$countries = Utils::getCountries();
 $orderList = $productModel->getOrderList(['userID' => $user['UserID']], ['datetime' => 'DESC']);
 $products = $productModel->getProducts();
 

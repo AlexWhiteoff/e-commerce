@@ -7,7 +7,7 @@ use models\AccountModel;
 use models\ProductModel;
 
 /**
- * Контролер для модуля Account
+ * Controller for Account model
  * @package controller
  */
 class PanelController extends Controller
@@ -19,9 +19,7 @@ class PanelController extends Controller
         $this->usersModel = new AccountModel;
         $this->productModel = new ProductModel();
     }
-    /**
-     * Відображення персональної сторінки користувача
-     */
+
     public function actionIndex()
     {
         if (!empty($this->usersModel->getCurrentUser())) {
@@ -35,22 +33,24 @@ class PanelController extends Controller
             header("Location: /panel/forbidden");
         }
     }
+
     public function actionAdmin()
     {
         if (!empty($this->usersModel->getCurrentUser())) {
             if ($this->usersModel->getUserAccessLevel() === 3) {
-                return $this->render('admin', null, ['namePage' => 'Grovemade&reg; — Admin panel']);
+                return $this->render('admin', null, ['namePage' => 'Woodmade&reg; — Admin panel']);
             } else
                 header("Location: /panel/forbidden");
         } else {
             header("Location: /panel/forbidden");
         }
     }
+
     public function actionSeller()
     {
         if (!empty($this->usersModel->getCurrentUser())) {
             if ($this->usersModel->getUserAccessLevel() === 2)
-                return $this->render('seller', null, ['namePage' => 'Grovemade&reg; — Seller Panel']);
+                return $this->render('seller', null, ['namePage' => 'Woodmade&reg; — Seller Panel']);
             else
                 header("Location: /panel/forbidden");
         } else {
@@ -60,7 +60,7 @@ class PanelController extends Controller
 
     public function actionForbidden()
     {
-        return $this->render('forbidden', null, ['namePage' => 'Grovemade&reg; — Forbidden']);
+        return $this->render('forbidden', null, ['namePage' => 'Woodmade&reg; — Forbidden']);
     }
 
     public function actionDelete()
@@ -86,6 +86,7 @@ class PanelController extends Controller
         } else
             header('Location: /panel/forbidden');
     }
+
     public function actionEdit()
     {
         $id = $_GET['id'];
@@ -96,7 +97,7 @@ class PanelController extends Controller
             if ($object === 'user') {
                 if ($user['access'] === '3') {
                     $user = $this->usersModel->getUserById($id);
-                    $title = 'Grovemade&reg; — Edit User';
+                    $title = 'Woodmade&reg; — Edit User';
                     if ($this->isMethodPost()) {
 
                         $result = $this->productModel->UpdateUser($_POST, $id);
@@ -115,13 +116,13 @@ class PanelController extends Controller
                             return $this->render('edit', $params, ['namePage' => $title]);
                         }
                     } else {
-                        return $this->render('edit', ['model' => $user], ['namePage' => 'Grovemade&reg; — Edit']);
+                        return $this->render('edit', ['model' => $user], ['namePage' => 'Woodmade&reg; — Edit']);
                     }
                 } else
                     header('Location: /panel/forbidden');
             } else if ($object === 'order') {
                 $order = $this->productModel->getOrderById($id);
-                $title = 'Grovemade&reg; — Edit Order';
+                $title = 'Woodmade&reg; — Edit Order';
                 if ($this->isMethodPost()) {
                     $result = $this->productModel->UpdateOrder($_POST, $id);
 

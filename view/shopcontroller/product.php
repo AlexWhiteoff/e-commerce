@@ -1,10 +1,13 @@
 <?php
 
+use core\Configuration;
 use models\AccountModel;
 
 $userModel = new AccountModel();
+$productImageDir = Configuration::get('paths', 'Paths')['ProductImagesDirRelative'];
 $user = $userModel->isUserAuthenticated() ? $userModel->getCurrentUser() : NULL;
 ?>
+
 <main id="main">
     <? if ($userModel->isUserAuthenticated() && $user['UserID'] === $model['sellerID'] || $userModel->getUserAccessLevel() == 3) : ?>
         <section class="access-product-controls-section">
@@ -36,8 +39,8 @@ $user = $userModel->isUserAuthenticated() ? $userModel->getCurrentUser() : NULL;
     <section class="product">
         <div class="product__container">
             <div class="product__image-wrapper">
-                <? if (is_file('files/products/' . $model['image']  . '_xl.png')) : ?>
-                    <img src="/files/products/<?= $model['image'] . '_xl.png'; ?>" class="image__img">
+                <? if (is_file($productImageDir . $model['image']  . '_xl.png')) : ?>
+                    <img src="\<?= $productImageDir . $model['image']  . '_xl.png'; ?>" class="image__img">
                 <? endif; ?>
             </div>
         </div>
@@ -48,11 +51,11 @@ $user = $userModel->isUserAuthenticated() ? $userModel->getCurrentUser() : NULL;
                 <div class="product__price">$<?= $model["price"]; ?></div>
 
                 <? if ($model['quantity'] > 0) : ?>
-                    <a href="http://grovemade/shop/product?id=<?= $_GET['id'] ?>&action=add" class="product__add-to-cart-btn">Add to cart</a>
+                    <a href="/shop/product?id=<?= $_GET['id'] ?>&action=add" class="product__add-to-cart-btn">Add to cart</a>
                 <? else : ?>
                     <span class="product__out-of-stock-btn">Out Of Stock</span>
                 <? endif; ?>
-                
+
                 <span class="product__ships-in">Ships In 2-3 Weeks</span>
             </div>
         </div>
@@ -81,12 +84,12 @@ $user = $userModel->isUserAuthenticated() ? $userModel->getCurrentUser() : NULL;
         </div>
     </section>
 
-    <section class="desing-inspiring">
-        <div class="desing-inspiring__innerText">
+    <section class="brand-highlight">
+        <div class="brand-highlight__innerText">
             <div class="logo-image"></div>
-            <h2 class="desing-inspiring__title">Design Inspires</h2>
-            <div class="desing-inspiring__subtitle">
-                Build your dream workspace, so you can get your best work done.
+            <h2 class="brand-highlight__title">Create Your Space</h2>
+            <div class="brand-highlight__subtitle">
+                Transform your interior with pieces that reflect your style and elevate your everyday.
             </div>
         </div>
     </section>

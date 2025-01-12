@@ -3,111 +3,97 @@ main {
   z-index: 1;
 }
 main .banner-desk-shelf-system-shop {
-  background-image: url("../../images/https___siteleaf.grovemade.com_uploads_coverB-deskpad-A1.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+main .banner-desk-shelf-system-shop__image {
+  position: relative;
+  background-image: url("/assets/images/bg/shop-bg.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 500px;
+  height: 550px;
   display: flex;
-  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
   font-family: serif;
   height: 670px;
+  z-index: 0;
+}
+main .banner-desk-shelf-system-shop__image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(30, 31, 30, 0.4);
+  pointer-events: none;
   z-index: 1;
 }
-main .banner-desk-shelf-system-shop__link {
-  width: 100%;
-  text-decoration: none;
-  text-align: center;
-  color: #FFFFFF;
-}
-main .banner-desk-shelf-system-shop__innerText {
+main .banner-desk-shelf-system-shop__image > * {
   position: relative;
-  width: 100%;
-  height: 270px;
-  top: calc(50% - 30px);
+  z-index: 2;
 }
-main .banner-desk-shelf-system-shop__title {
+main .banner-desk-shelf-system-shop__image__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+}
+main .banner-desk-shelf-system-shop__image__innerText {
+  position: relative;
+  text-align: center;
+}
+main .banner-desk-shelf-system-shop__image__title {
   line-height: 46px;
   font-size: 43px;
   font-weight: 400;
   margin-bottom: 12px;
 }
-main .banner-desk-shelf-system-shop__subtitle {
+main .banner-desk-shelf-system-shop__image__subtitle {
   line-height: 17.5px;
   font-size: 15px;
   margin-bottom: 28px;
 }
-main .banner-desk-shelf-system-shop__span {
+main .banner-desk-shelf-system-shop__image__span {
   width: 95px;
   text-transform: uppercase;
   font-weight: 100;
   font-size: 13px;
 }
 main .banner-desk-shelf-system-shop__innerText {
+  position: relative;
   text-align: center;
-  top: calc(50% - 50px);
+  top: 150px;
+  padding-bottom: 150px;
+  margin-bottom: 150px;
 }
 main .banner-desk-shelf-system-shop__title {
-  font-size: 69px;
-}
-main .categories {
-  position: relative;
-  z-index: 2;
-  background-color: #ffffff;
-  left: 100px;
-  top: -75px;
-  width: calc(100% - 200px);
-  padding-top: 1px;
-}
-main .categories__categories-block {
-  margin: 20px 30px;
-  margin-bottom: 40px;
-}
-main .categories__categories-block table {
-  width: 100%;
-  text-align: left;
-  font-size: 14px;
-  font-family: "din2014", serif;
-}
-main .categories__header {
-  padding: 10px;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-}
-main .categories__header a {
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-decoration: none;
-  color: #000000;
-}
-main .categories__category-item {
-  padding: 5px 10px;
-}
-main .categories__category-item a {
-  cursor: pointer;
-  color: #A0A0A0;
-  text-decoration: none;
-  transition: all 0.2s linear;
-}
-main .categories__category-item a:hover {
-  color: #000000;
+  z-index: 1;
+  font-size: 48px;
+  font-weight: 400;
+  color: #eeeeee;
+  font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
 }
 main .shop-list {
   position: relative;
   z-index: 2;
-  background-color: #ffffff;
+  background-color: #1e1f1e;
   left: 100px;
-  top: -75px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   width: calc(100% - 200px);
+  border-radius: 15px 15px 0 0;
+  padding-block: 25px;
 }
 main .shop-list__product {
   position: relative;
@@ -119,11 +105,11 @@ main .shop-list__product {
 }
 main .shop-list__product a {
   width: 100%;
-  color: #A0A0A0;
+  color: #a0a0a0;
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
-  font-family: "din2014", Helvetica, sans-serif;
+  font-family: "Roboto", Helvetica, sans-serif;
 }
 main .shop-list__product-background {
   width: 100%;
@@ -136,7 +122,6 @@ main .shop-list__image-wrapper {
   background-color: rgba(0, 0, 0, 0.028);
 }
 main .shop-list__image-wrapper > img {
-  padding: 20px;
   width: 100%;
 }
 main .shop-list__product-title {
@@ -147,7 +132,7 @@ main .shop-list__product-price {
 }
 main .shop-list__empty {
   width: 100%;
-  height: 500px;
+  height: 720px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -159,15 +144,16 @@ main .shop-list__empty-error-title {
   font-weight: 600;
   margin-bottom: 20px;
   font-family: "serif";
-  color: #333;
+  color: #00a800;
 }
 main .shop-list__empty-error-subtitle {
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 20px;
-  font-family: "din2014";
+  font-family: "Roboto";
 }
 @media screen and (max-width: 938px) {
-  main .shop-list, main .categories {
+  main .shop-list,
+  main .categories {
     left: 0;
     width: 100%;
   }
@@ -177,7 +163,7 @@ main .edit-product {
   position: relative;
   left: 100px;
   width: calc(100% - 200px);
-  background-color: #ffffff;
+  background-color: #1e1f1e;
   top: 20px;
 }
 main .create-product h2,
@@ -190,10 +176,14 @@ main .edit-product h2 {
   line-height: 58px;
   letter-spacing: 0.05em;
   margin-bottom: 30px;
+  color: #ffffff;
 }
 main .create-product hr,
 main .edit-product hr {
   margin: 30px;
+  background-color: #00a800;
+  border: 0;
+  height: 1px;
 }
 main .create-product table,
 main .edit-product table {
@@ -206,6 +196,7 @@ main .edit-product table th {
   text-transform: capitalize;
   font-weight: 400;
   padding: 20px;
+  color: #a0a0a0;
 }
 main .create-product table #previewRow,
 main .edit-product table #previewRow {
@@ -225,7 +216,27 @@ main .edit-product table td label {
   font-weight: 700;
   letter-spacing: 0.15em;
   text-decoration: none;
-  color: #000000;
+  color: #eeeeee;
+}
+main .create-product table td input,
+main .create-product table td select,
+main .create-product table td textarea,
+main .create-product table td .productName,
+main .create-product table td .descriptionEditor,
+main .edit-product table td input,
+main .edit-product table td select,
+main .edit-product table td textarea,
+main .edit-product table td .productName,
+main .edit-product table td .descriptionEditor {
+  background-color: #1e1f1e;
+  color: #eeeeee;
+}
+main .create-product table td .descriptionEditor,
+main .create-product table td textarea,
+main .edit-product table td .descriptionEditor,
+main .edit-product table td textarea {
+  border: none;
+  border: 1px solid #006600;
 }
 main .create-product table td .productName:not(.hidden),
 main .create-product table td #productMaterial:not(.hidden),
@@ -237,7 +248,7 @@ main .edit-product table td #productShortName:not(.hidden),
 main .edit-product table td #descriptionTitle:not(.hidden) {
   margin-left: 50px;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #006600;
   padding: 5px 10px;
   width: 300px;
   font-size: 15px;
@@ -261,7 +272,7 @@ main .edit-product table td .productName.ck * {
 main .create-product table td .productName.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused,
 main .edit-product table td .productName.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
   border: none !important;
-  border-bottom: 2px solid black !important;
+  border-bottom: 2px solid #006600 !important;
   box-shadow: none !important;
 }
 main .create-product table td .productName.ck.ck-editor__editable_inline > :first-child,
@@ -283,13 +294,12 @@ main .edit-product table td .descriptionEditor.ck {
   font-size: 15px;
   font-family: "Roboto";
   border-radius: 5px;
-  border: 1px solid #A0A0A0;
   display: inline-flex;
   flex-direction: column;
 }
 main .create-product table td .descriptionEditor.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused,
 main .edit-product table td .descriptionEditor.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
-  border: 1px solid #A0A0A0;
+  border: 1px solid #00a800;
   box-shadow: none !important;
 }
 main .create-product table td .descriptionEditor.ck.ck-editor__editable_inline > :first-child,
@@ -310,7 +320,7 @@ main .edit-product table td #price,
 main .edit-product table td #quantity {
   margin-left: 50px;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #006600;
   padding: 5px 10px;
   width: 100px;
   font-size: 15px;
@@ -327,7 +337,6 @@ main .edit-product table td textarea {
   font-size: 15px;
   font-family: "Roboto";
   border-radius: 5px;
-  border: 1px solid #A0A0A0;
 }
 main .create-product table td select,
 main .edit-product table td select {
@@ -337,7 +346,8 @@ main .edit-product table td select {
   padding: 5px 10px;
   font-size: 15px;
   font-family: "Roboto";
-  border-bottom: 1px solid #A0A0A0;
+  border-bottom: 2px solid #006600;
+  cursor: pointer;
 }
 main .create-product table td #image,
 main .edit-product table td #image {
@@ -352,17 +362,13 @@ main .edit-product table td .image {
 main .create-product table td .image__button,
 main .edit-product table td .image__button {
   position: relative;
-  border: 1px solid #A0A0A0;
+  border: none;
+  border-bottom: 2px solid #006600;
   padding: 10px 20px;
-  border-radius: 5px;
   float: left;
-  background-color: #ffffff;
-  transition: all 0.2s linear;
+  background-color: #1e1f1e;
+  transition: all 0.15s linear;
   cursor: pointer;
-}
-main .create-product table td .image__button:hover,
-main .edit-product table td .image__button:hover {
-  background-color: #ededed;
 }
 main .create-product table td .image__wrapper,
 main .edit-product table td .image__wrapper {
@@ -371,16 +377,16 @@ main .edit-product table td .image__wrapper {
 main .create-product table td .image__wrapper img,
 main .edit-product table td .image__wrapper img {
   border-radius: 5px;
-  border: 1px solid lightgray;
+  border: 1px solid #00a800;
   width: auto;
   height: 150px;
 }
 main .create-product .create-product__add,
 main .edit-product .create-product__add {
   padding: 10px 20px;
-  background-color: #ffffff;
+  background-color: #1e1f1e;
   font-family: "Roboto", sans-serif;
-  color: #000000;
+  color: #eeeeee;
   text-decoration: none;
   justify-content: center;
   text-transform: uppercase;
@@ -396,7 +402,7 @@ main .edit-product .create-product__add::after {
   position: absolute;
   height: 2px;
   width: 130px;
-  background-color: black;
+  background-color: #00a800;
   transform: translate(-110px, 26px);
   transition: all 0.3s linear;
 }
@@ -410,23 +416,29 @@ main .edit-product .edit-product__preview {
   position: fixed;
   width: 150px;
   padding: 15px;
-  background-color: #333;
-  border: 1px solid #000000;
-  color: #f9f9f9;
+  background-color: #2b2c2b;
+  border: 1px solid #006600;
+  color: #eeeeee;
   border-radius: 35px 35px 35px 5px;
   bottom: 30px;
   right: 30px;
-  font-family: "din2014";
+  font-family: "Roboto", "Helvetica", sans-serif;
   font-size: 18px;
   font-weight: 400;
   cursor: pointer;
+  transition: all 0.15s linear;
+}
+main .create-product .edit-product__preview:hover,
+main .edit-product .edit-product__preview:hover {
+  background-color: #373937;
+  border-color: #00a800;
 }
 main .create-product .edit-product__update,
 main .edit-product .edit-product__update {
   padding: 10px 20px;
-  background-color: #ffffff;
+  background-color: #1e1f1e;
   font-family: "Roboto", sans-serif;
-  color: #000000;
+  color: #00a800;
   text-decoration: none;
   justify-content: center;
   text-transform: uppercase;
@@ -442,7 +454,7 @@ main .edit-product .edit-product__update::after {
   position: absolute;
   height: 2px;
   width: 160px;
-  background-color: black;
+  background-color: #1e1f1e;
   transform: translate(-140px, 26px);
   transition: all 0.3s linear;
 }
@@ -454,9 +466,9 @@ main .edit-product .edit-product__update:hover:after {
 main .create-product a,
 main .edit-product a {
   padding: 10px 20px;
-  background-color: #ffffff;
+  background-color: #1e1f1e;
   font-family: "Roboto", sans-serif;
-  color: #000000;
+  color: #eeeeee;
   text-decoration: none;
   justify-content: center;
   font-size: 14px;
@@ -473,7 +485,7 @@ main .edit-product a::after {
   position: absolute;
   height: 2px;
   width: 100px;
-  background-color: black;
+  background-color: #1e1f1e;
   transform: translate(-75px, 26px);
   transition: all 0.3s linear;
 }
@@ -488,6 +500,7 @@ main .edit-product #subcategory-row {
 }
 main .create-product__controls td,
 main .edit-product__controls td {
+  color: #eeeeee;
   padding-top: 100px;
   padding-bottom: 200px;
 }
@@ -496,7 +509,7 @@ main .access-product-controls-section {
   z-index: 7;
 }
 main .access-product-controls-section * {
-  transition: all 0.3s linear;
+  transition: all 0.2s linear;
 }
 main .access-product-controls-section__dropdown-arrow {
   position: fixed;
@@ -505,12 +518,13 @@ main .access-product-controls-section__dropdown-arrow {
   width: 50px;
   height: 20px;
   text-align: center;
-  z-index: 1;
-  background-color: #FFFFFF;
-  border: 1px solid #f0f0f0;
+  z-index: 3;
+  background-color: #1e1f1e;
+  border: 1px solid #006600;
   border-top: none;
   border-radius: 0 0 5px 5px;
   cursor: pointer;
+  color: #eeeeee;
 }
 main .access-product-controls-section__access-product-controls {
   position: fixed;
@@ -519,8 +533,8 @@ main .access-product-controls-section__access-product-controls {
   width: 400px;
   height: 70px;
   z-index: 2;
-  background-color: #FFFFFF;
-  border: 1px solid #f0f0f0;
+  background-color: #1e1f1e;
+  border: 1px solid #006600;
   border-top: none;
   border-radius: 0 0 0 5px;
   overflow: hidden;
@@ -528,13 +542,13 @@ main .access-product-controls-section__access-product-controls {
 main .access-product-controls-section__product-delete-modal-block, main .access-product-controls-section__product-edit {
   position: absolute;
   padding: 5px 10px;
-  color: #000000;
+  color: #eeeeee;
   text-decoration: none;
   font-weight: 600;
   font-size: 20px;
   letter-spacing: 0.08em;
   font-family: sans-serif;
-  background-color: #FFFFFF;
+  background-color: #1e1f1e;
   border-radius: 5px;
   cursor: pointer;
   top: 50%;
@@ -542,7 +556,7 @@ main .access-product-controls-section__product-delete-modal-block, main .access-
 }
 main .access-product-controls-section__product-delete-modal-block {
   right: 20px;
-  color: #f69368;
+  color: #d3302f;
 }
 main .access-product-controls-section__product-edit {
   left: 20px;
@@ -562,7 +576,7 @@ main .access-product-controls-section__modal-content-product {
   position: fixed;
   z-index: 11;
   display: none;
-  background-color: #f9f9f9;
+  background-color: #1e1f1e;
   width: 36.8vw;
   height: 20vh;
   padding: 20px;
@@ -570,6 +584,7 @@ main .access-product-controls-section__modal-content-product {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
+  color: #eeeeee;
 }
 main .access-product-controls-section__modal-content-product h2 {
   font-size: 1.55vw;
@@ -579,7 +594,7 @@ main .access-product-controls-section__modal-content-product h2 {
 main .access-product-controls-section__modal-content-delete, main .access-product-controls-section__modal-content-cancel {
   position: fixed;
   padding: 10px 20px;
-  color: #000000;
+  color: #eeeeee;
   text-decoration: none;
   font-weight: 600;
   font-size: 20px;
@@ -594,7 +609,7 @@ main .access-product-controls-section__modal-content-cancel {
 }
 main .access-product-controls-section__modal-content-delete {
   right: 50px;
-  color: #f69368;
+  color: #d3302f;
 }
 main .product {
   position: relative;
@@ -604,10 +619,11 @@ main .product {
   align-items: center;
   width: 100%;
   padding: 0 50px;
-  background-color: #f9f9f9;
+  background-color: #2b2c2b;
   height: calc(100vh - 80px);
   min-height: 500px;
   margin-bottom: 40px;
+  color: #eeeeee;
 }
 @media screen and (max-width: 700px) {
   main .product {
@@ -661,27 +677,28 @@ main .product__price {
 main .product__add-to-cart-btn {
   line-height: 40px;
   text-decoration: none;
-  color: #FFFFFF;
-  background-color: #000000;
+  border: none;
+  color: #ffffff;
+  background-color: #1e1f1e;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
-  font-family: "din2014", serif;
+  font-family: "Roboto", serif;
+  cursor: pointer;
+  border: 1px solid #006600;
+  transition: all 0.15s linear;
 }
-main .product__out-of-stock-btn {
-  line-height: 40px;
-  text-decoration: none;
-  color: #FFFFFF;
-  background-color: #b3b3b3;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 14px;
-  font-family: "din2014", serif;
+main .product__add-to-cart-btn:hover {
+  border: 1px solid #00a800;
+}
+main .product__add-to-cart-btn:disabled {
+  background-color: #9ca09c;
+  color: #1e1f1e;
 }
 main .product__ships-in {
   margin: 28px;
   font-size: 14px;
-  color: #f69368;
+  color: #4cc24c;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 500;
 }
@@ -689,6 +706,7 @@ main .description {
   padding-left: 50px;
   padding-right: 50px;
   margin: 120px 0;
+  color: #eeeeee;
 }
 main .description__title {
   font-size: 36px;
@@ -699,20 +717,21 @@ main .description__title {
   margin-bottom: 18px;
 }
 main .description__text {
-  color: #A0A0A0;
+  color: #a0a0a0;
   margin-left: 20%;
   margin-right: 20%;
   text-align: center;
   font-size: 16px;
-  font-family: "din2014", "helvetica", serif;
+  font-family: "Roboto", "helvetica", serif;
   line-height: 1.5;
 }
 main .specifications {
   padding-left: 50px;
   padding-right: 50px;
   margin: 120px 0;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid #00a800;
   padding-bottom: 80px;
+  color: #eeeeee;
 }
 main .specifications__title {
   font-size: 36px;
@@ -744,72 +763,107 @@ main .specifications__material-text, main .specifications__dimensions-text, main
   font-family: Georgia, serif;
 }
 main .specifications__dimensions {
-  border-left: 1px solid #eeeeee;
-  border-right: 1px solid #eeeeee;
+  border-left: 1px solid #00a800;
+  border-right: 1px solid #00a800;
 }
-main .desing-inspiring {
-  margin: 0 100px 50px 100px !important;
-  background-color: #9AA8B1;
-  height: 400px;
-  color: #FFFFFF;
+main .brand-highlight {
+  margin: 120px 0;
+}
+main .brand-highlight {
   position: relative;
   width: calc(100% - 200px);
+  height: 400px;
+  background-color: #9ab19c;
+  color: #ffffff;
+  border-radius: 5px;
+  margin-inline: 100px !important;
 }
-main .desing-inspiring__innerText {
+main .brand-highlight__innerText {
   position: relative;
-  text-align: center;
-  top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
 }
-main .desing-inspiring__innerText .logo-image {
-  top: calc(50% - 84px);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 34px;
-  width: 40px;
+main .brand-highlight__innerText .logo-image {
+  background-image: url("/assets/svg/logo.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  height: 81px;
+  width: 81px;
 }
-main .desing-inspiring__title {
+main .brand-highlight__title {
   line-height: 46px;
   font-size: 43px;
   font-weight: 400;
-  margin-bottom: 12px;
 }
-main .desing-inspiring__subtitle {
+main .brand-highlight__subtitle {
   line-height: 17.5px;
   font-size: 15px;
-  margin-bottom: 28px;
 }
 main .error {
   position: relative;
   width: calc(100% - 200px);
   margin: 50px 100px;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #eeeeee;
+  gap: 2rem;
+}
+main .error__image-wrapper {
+  max-width: 600px;
+}
+main .error__image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+main .error__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  gap: 2rem;
+}
+main .error span {
+  color: #00a800;
 }
 main .error h1 {
-  font-size: 70px;
-  font-family: "RobotoRegular";
+  font-size: 48px;
+  font-family: sans-serif;
   font-weight: 400;
-  margin: 47px 0;
   text-align: center;
 }
 main .error p {
-  margin: 0 0 32px 0;
-  font-family: "din2014";
+  font-family: "Roboto";
   font-weight: 600;
-  letter-spacing: 1px;
+  line-height: 16px;
 }
 main .error a {
-  padding: 0 20px;
-  background-color: #000000;
-  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+  color: #ffffff;
   text-decoration: none;
-  text-transform: uppercase;
-  line-height: 42px;
-  font-family: "din2014", Helvetica, sans-serif;
-  font-weight: 600;
-  letter-spacing: 1px;
+  padding: 10px 20px;
+  transition: all 0.15s linear;
+  background-color: #00a800;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .error a:hover {
+  background-color: #006600;
+  color: #eeeeee;
 }
 main .new-label {
   position: relative;
@@ -821,7 +875,7 @@ main .new-label {
   padding: 5px 0;
   width: 75px;
   height: 45px;
-  background-color: #96A3AC;
+  background-color: #96a3ac;
   transform: rotate(45deg);
 }
 main .new-label::before {
@@ -830,7 +884,7 @@ main .new-label::before {
   font-weight: 600;
   letter-spacing: 1.5px;
   font-size: 10px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 main .new-label-wrapper {
   position: absolute;
@@ -846,8 +900,8 @@ main .error-alert-block {
   left: 30px;
   width: 370px;
   height: 55px;
-  background-color: #D3302F;
-  color: #FFFFFF;
+  background-color: #d3302f;
+  color: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 0px 14px 4px rgba(0, 0, 0, 0.41);
   border-bottom: 1px solid #ab2524;
@@ -877,4 +931,4 @@ main .error-alert-block__text {
   padding-left: 20px;
   line-height: 45px;
   font-family: "Roboto", serif;
-}
+}/*# sourceMappingURL=styleShop.css.map */

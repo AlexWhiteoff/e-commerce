@@ -2,41 +2,43 @@
 
 namespace models;
 
+use core\Configuration;
 use core\Model;
 use core\Core;
+use core\Logger;
 use core\Utils;
 use Imagick;
 
 class ProductModel extends Model
 {
-    public function createTmpImage($product_id, $file)
+    public function createTmpImage($file)
     {
-        $folderPath = 'files/tmp/';
+        $folderPath = Configuration::get('paths', 'Paths')['TempDir'];
         $file_path = pathinfo($folderPath . $file);
 
-        $fileName_preview = $file_path['filename'] . "_preview"; // 795x795 (product)
+        $relativePath = substr($folderPath, strlen($_SERVER['DOCUMENT_ROOT']));
 
-        $product = $this->getProductById($product_id);
-
-        $product['image'] = $file_path['filename'];
+        $fileName_preview = $file_path['filename'] . '_preview';
 
         $im = new Imagick();
 
-        $im->readImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folderPath . $file);
+        $im->readImage($folderPath . $file);
         $im->setimageformat('png');
         $im->thumbnailImage(795, 795, true, true);
-        $im->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
+        // $im->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
         $im->despeckleimage();
-        $im->writeImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folderPath . $fileName_preview . '.png');
+        $im->writeImage($folderPath . $fileName_preview . '.png');
 
         unlink($folderPath . $file);
 
-        return '/' . $folderPath . $fileName_preview . '.png';
+        Logger::log("Created preview file: " . $relativePath . $fileName_preview . '.png');
+
+        return $relativePath . $fileName_preview . '.png';
     }
 
     public function changeMainImage($product_id, $file)
     {
-        $folder = 'files/products/';
+        $folder = Configuration::get('paths', 'Paths')['ProductImagesDir'];
         $file_path = pathinfo($folder . $file);
 
         $file_xl = $file_path['filename'] . '_xl'; // 795x795 (product) xl
@@ -59,41 +61,43 @@ class ProductModel extends Model
 
         $im_xl = new Imagick();
 
-        $im_xl->readImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folder . $file);
+        $im_xl->readImage($folder . $file);
         $im_xl->setimageformat('png');
         $im_xl->thumbnailImage(795, 795, true, true);
-        $im_xl->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
+        // $im_xl->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
         $im_xl->despeckleimage();
-        $im_xl->writeImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folder . $file_xl . '.png');
+        $im_xl->writeImage($folder . $file_xl . '.png');
 
         $im_l = new Imagick();
 
-        $im_l->readImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folder . $file);
+        $im_l->readImage($folder . $file);
         $im_l->setimageformat('png');
-        $im_l->thumbnailImage(370, 520, true, true);
-        $im_l->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
+        $im_l->thumbnailImage(420, 420, true, true);
+        // $im_l->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
         $im_l->despeckleimage();
-        $im_l->writeImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folder . $file_l . '.png');
+        $im_l->writeImage($folder . $file_l . '.png');
 
         $im_m = new Imagick();
 
-        $im_m->readImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folder . $file);
+        $im_m->readImage($folder . $file);
         $im_m->setimageformat('png');
-        $im_m->thumbnailImage(200, 150, true, true);
-        $im_m->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
+        $im_m->thumbnailImage(200, 200, true, true);
+        // $im_m->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
         $im_m->despeckleimage();
-        $im_m->writeImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folder . $file_m . '.png');
+        $im_m->writeImage($folder . $file_m . '.png');
 
         $im_s = new Imagick();
 
-        $im_s->readImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folder . $file);
+        $im_s->readImage($folder . $file);
         $im_s->setimageformat('png');
         $im_s->thumbnailImage(65, 65, true, true);
-        $im_s->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
+        // $im_s->transparentPaintImage('rgb(255,255,255)', 0.0, Imagick::getQuantum() * 0.05, false);
         $im_s->despeckleimage();
-        $im_s->writeImage($_SERVER['DOCUMENT_ROOT'] . '/' . $folder . $file_s . '.png');
+        $im_s->writeImage($folder . $file_s . '.png');
 
         unlink($folder . $file);
+
+        Logger::log("Created product image for pruduct $product_id");
 
         $this->UpdateProduct($product, $product_id);
     }
@@ -212,9 +216,9 @@ class ProductModel extends Model
         $product['categoryID'] = intval($product['categoryID']);
         $product['sellerID'] = intval($user['UserID']);
         $product['image'] = '';
-        var_dump($product);
+
         $id = Core::getInstance()->getDataBase()->insert('product', $product);
-        var_dump($id);
+
         return [
             'error' => false,
             'id' => $id
@@ -286,7 +290,7 @@ class ProductModel extends Model
 
         $img_size = ['_s', '_m', '_l', '_xl'];
         $imgname = $product['image'];
-        $folder = 'files/products/';
+        $folder = Configuration::get('paths', 'Paths')['ProductImagesDir'];
 
         for ($i = 0; $i < count($img_size); $i++)
             if (is_file($folder . $imgname . $img_size[$i] . '.png'))
@@ -297,9 +301,9 @@ class ProductModel extends Model
         return true;
     }
 
-    public function getProducts($where = null, $orderBy = null)
+    public function getProducts($where = null, $orderBy = null, $limit = null)
     {
-        return Core::getInstance()->getDataBase()->select('product', '*', $where, $orderBy);
+        return Core::getInstance()->getDataBase()->select('product', '*', $where, $orderBy, $limit);
     }
 
     public function getProductById($id)
@@ -404,7 +408,7 @@ class ProductModel extends Model
 
     public function getOrderList($where = null, $orderBy = null)
     {
-        $rows = Core::getInstance()->getDataBase()->select('`order`', '*', $where, $orderBy);
+        $rows = Core::getInstance()->getDataBase()->select('`orders`', '*', $where, $orderBy);
         if (count($rows) > 0)
             return $rows;
         else
@@ -413,7 +417,7 @@ class ProductModel extends Model
 
     public function getOrderById($id)
     {
-        $rows = Core::getInstance()->getDataBase()->select('`order`', '*', ['orderID' => $id]);
+        $rows = Core::getInstance()->getDataBase()->select('`orders`', '*', ['orderID' => $id]);
         if (count($rows) > 0)
             return $rows[0];
         else
@@ -424,7 +428,7 @@ class ProductModel extends Model
     {
         $userModel = new AccountModel;
         $user = $userModel->getCurrentUser();
-        
+
         if ($user == null)
             return false;
 
@@ -458,7 +462,7 @@ class ProductModel extends Model
         $order = Utils::ArrayFilter($order, $fields);
 
         if (!empty($order)) {
-            Core::getInstance()->getDataBase()->update('order', $order, ['orderID' => $id]);
+            Core::getInstance()->getDataBase()->update('orders', $order, ['orderID' => $id]);
         }
         return true;
     }
@@ -471,7 +475,7 @@ class ProductModel extends Model
         if (empty($user) || $user['access'] !== '3')
             return false;
 
-        Core::getInstance()->getDataBase()->delete('order', "orderID = $id");
+        Core::getInstance()->getDataBase()->delete('orders', "orderID = $id");
         return true;
     }
 

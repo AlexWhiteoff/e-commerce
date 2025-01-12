@@ -4,7 +4,9 @@ namespace models;
 
 use core\Model;
 use core\Core;
+use core\Logger;
 use core\Utils;
+use Exception;
 
 class AccountModel extends Model
 {
@@ -80,7 +82,7 @@ class AccountModel extends Model
         $fields = ['email', 'password'];
         $user = Utils::ArrayFilter($user, $fields);
 
-        $user['password'] = md5($user['password']);
+        $user['password'] = password_hash($user['password'], PASSWORD_BCRYPT);
 
         Core::getInstance()->getDataBase()->insert('user', $user);
         return true;
@@ -88,22 +90,24 @@ class AccountModel extends Model
 
     public function AuthUser($email, $password)
     {
-        $password = md5($password);
+        try {
+            $users = Core::getInstance()->getDataBase()->select(
+                'user',
+                '*',
+                ['email' => $email]
+            );
+    
+            if (!empty($users)) {
+                $user = $users[0];
+                if (password_verify($password, $user['password']))
+                    return $user;
+            }
 
-        $users = Core::getInstance()->getDataBase()->select(
-            'user',
-            '*',
-            [
-                'email' => $email,
-                'password' => $password
-            ]
-        );
-
-        if (count($users) > 0) {
-            $user = $users[0];
-            return $user;
-        } else
             return false;
+        } catch (Exception $e) {
+            Logger::log('User authentication error: ' . $e->getMessage(), "ERROR");
+            return false;
+        }
     }
 
     public function getUserByEmail($email)
