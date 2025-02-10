@@ -1,62 +1,63 @@
 # Woodmade
 
-**Woodmade** – це e-commerce проект, який пропонує різноманітні товари з дерева преміальної якості на будь-який смак. Проект було створено не для комерційного використання, а лише для розвитку навичок веб-розробки та самовдосконалення.
+**Woodmade** is an e-commerce project offering a variety of premium-quality wooden products for every taste. The project was created not for commercial use but solely for the purpose of developing web development skills and self-improvement.
 
-Це один із перших масштабних, повноцінних проектів, розроблених із використанням сучасних підходів до програмування.
+This is one of the first large-scale, full-fledged projects developed using modern programming approaches.
 
-## Особливості проекту
+## Project Features
 
-- **Тип проекту:** Навчальний e-commerce додаток.
-- **Шаблон архітектури:** MVC (Model-View-Controller).
-- **CMS система:** Власноруч розроблена.
-- **Патерни програмування:** Використання сучасних підходів до проектування.
-- **База даних:** MySQL.
-- **Бекенд:** PHP версії 7.4.
-- **Фронтенд:** HTML, SCSS, JavaScript.
+- **Project Type:** Educational e-commerce application.
+- **Architecture Pattern:** MVC (Model-View-Controller).
+- **CMS System:** Custom-built.
+- **Design Patterns:** Utilization of modern design approaches.
+- **Database:** MySQL.
+- **Backend:** PHP version 7.4.
+- **Frontend:** HTML, SCSS, JavaScript.
 
-## Цілі проекту
+## Project Goals
 
-1. Розвиток навичок веб-розробки.
-2. Практика створення e-commerce додатків.
-3. Реалізація власної CMS системи та застосування шаблону MVC.
-4. Покращення розуміння патернів програмування та їх застосування у реальних проектах.
+1. Improve web development skills.
+2. Practice building e-commerce applications.
+3. Implement a custom CMS system and apply the MVC pattern.
+4. Enhance understanding of design patterns and their real-world applications.
 
-## Дизайн та натхнення
+## Design & Inspiration
 
-При створенні ідеї та дизайну проекту я був натхненний:
+While creating the idea and design of the project, I was inspired by:
 
-- [Шаблоном Figma](https://www.figma.com/file/k8i3wwEPgK0LHP1WGmldF9/GROVEMADE?node-id=0%3A1).
-- [Сайтом Grovemade](https://grovemade.com/).
+- [Figma Template](https://www.figma.com/file/k8i3wwEPgK0LHP1WGmldF9/GROVEMADE?node-id=0%3A1).
+- [Grovemade Website](https://grovemade.com/).
 
-Усі елементи дизайну в проекті були адаптовані та змінені відповідно до моїх цілей і вимог. Текстури, зображення товарів та інші матеріали не були взяті безпосередньо з цих ресурсів.
+All design elements in the project were adapted and modified according to my goals and requirements. Textures, product images, and other materials were not directly taken from these resources.
 
-## Установка проекту
+## Project Setup
 
-### Вимоги
+### Requirements
 
-- PHP 7.4 або новіша версія.
-- Веб-сервер (наприклад, Apache або Nginx).
-- MySQL сервер.
-- Node.js (для компіляції SCSS, якщо потрібно).
+- PHP 7.4 or later.
+- Web server (e.g., Apache or Nginx).
+- MySQL server.
+- Node.js (for SCSS compilation if needed).
 
-### Кроки для запуску
+### Steps to Run the Project
 
-1. Клонувати репозиторій:
+1. Clone the repository:
 
    ```bash
    git clone https://github.com/AlexWhiteoff/E-commerce.git
    ```
 
-2. Налаштувати базу даних:
+2. Set up the database:
 
-   - Імпортуйте файл `database.sql`, який знаходиться в кореневій директорії, у вашу MySQL базу даних.
+   - Import the `database.sql` file, located in the root directory, into your MySQL database.
 
-3. Налаштуйте конфігурацію в `config/config.php`:
+3. Configure the project in `config/config.php`:
 
-   - Додайте інформацію про доступ до бази даних (сервер, користувач, пароль, назва бази даних).
+   - Add database access information (server, user, password, database name).
 
-4. Запустіть веб-сервер і відкрийте проект у браузері за відповідною адресою (наприклад, `http://woodmade.local/`).
+4. Start the web server and open the project in a browser at the appropriate address (e.g., `http://woodmade.local/`).
 
-## Ліцензія
+## License
 
-Цей проект створений виключно для навчальних цілей. Він не призначений для комерційного використання чи розповсюдження. Усі права на оригінальні матеріали, зокрема шаблон Figma та дизайн Grovemade, належать їхнім авторам.
+This project is created solely for educational purposes. It is not intended for commercial use or distribution. All rights to the original materials, including the Figma template and Grovemade design, belong to their respective authors.
+
